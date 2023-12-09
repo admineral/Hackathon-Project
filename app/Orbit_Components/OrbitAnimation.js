@@ -4,23 +4,29 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 export default function OrbitAnimation({ orbits }) {
+    
   // Calculate the orbit path using sine and cosine for x and y
-  const calculateOrbitPath = (angle, size) => ({
-    x: Math.cos(angle) * size,
-    y: Math.sin(angle) * size
+  // Added an offset parameter to shift the starting position of the animation
+  const calculateOrbitPath = (angle, size, offset = 0) => ({
+    x: Math.cos(angle + offset) * size,
+    y: Math.sin(angle + offset) * size
   });
 
   // Use Framer Motion's keyframes to animate along each orbit path
-  const orbitAnimations = orbits.map(orbitSize => ({
-    x: Array.from({ length: 360 / 10 }, (_, i) => calculateOrbitPath((i * 10) * Math.PI / 180, orbitSize).x),
-    y: Array.from({ length: 360 / 10 }, (_, i) => calculateOrbitPath((i * 10) * Math.PI / 180, orbitSize).y),
-    transition: {
-      repeat: Infinity, // Change 'loop' to 'repeat' and set to Infinity for continuous animation
-      repeatType: "loop", // Ensure the animation loops smoothly
-      duration: orbitSize * 0.4, // Adjust duration based on orbit size
-      ease: "linear"
-    }
-  }));
+  const orbitAnimations = orbits.map((orbitSize, index) => {
+    // Calculate an offset for each orbit based on its index. This will ensure each orbit starts from a different position.
+    const offset = (index * 2 * Math.PI) / orbits.length;
+    return {
+      x: Array.from({ length: 360 / 10 }, (_, i) => calculateOrbitPath((i * 10) * Math.PI / 180, orbitSize, offset).x),
+      y: Array.from({ length: 360 / 10 }, (_, i) => calculateOrbitPath((i * 10) * Math.PI / 180, orbitSize, offset).y),
+      transition: {
+        repeat: Infinity, 
+        repeatType: "loop", 
+        duration: orbitSize * 0.4, 
+        ease: "linear"
+      }
+    };
+  });
 
   return (
     <>
