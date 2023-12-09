@@ -14,6 +14,7 @@ export const metadata = {
   themeColor: "#FFF",
 };
 
+// app/layout.tsx
 export default async function RootLayout({
   children,
 }: {
@@ -21,12 +22,11 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cx(sfPro.variable, inter.variable)}>
-        <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100" />
+      <body className={cx(sfPro.variable, inter.variable, "bg-gradient-to-br from-indigo-50 via-white to-cyan-100 min-h-screen flex flex-col justify-between")}>
         <Suspense fallback="...">
           <Nav />
         </Suspense>
-        <main className="flex min-h-screen w-full flex-col items-center justify-center py-32">
+        <main className="flex-grow w-full flex flex-col items-center justify-center py-32">
           {children}
         </main>
         <Footer />

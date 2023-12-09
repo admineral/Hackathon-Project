@@ -1,6 +1,7 @@
+// components/layout/footer.tsx
 export default function Footer() {
   return (
-    <div className="fixed bottom-0 w-full py-5 text-center">
+    <div className="w-full py-5 text-center">
       <p className="text-gray-500">
         A project by{" "}
         <a
