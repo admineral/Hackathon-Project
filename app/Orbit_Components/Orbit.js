@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import React from 'react';
 import HoverCard from './HoverCard';
 
-export default function Orbit({ size, index, totalOrbits, headline, text }) {
-  const [isHovered, setIsHovered] = useState(false);
+export default function Orbit({ size, index, totalOrbits, headline, text, isHovered, onHoverStart, onHoverEnd }) {
   const calculateOrbitPath = (angle, offset = 0) => ({
     x: Math.cos(angle + offset) * size,
     y: Math.sin(angle + offset) * size
@@ -42,12 +41,12 @@ export default function Orbit({ size, index, totalOrbits, headline, text }) {
           left: '50%',
           translateX: '-50%',
           translateY: '-50%',
-          zIndex: 1,
+          zIndex: isHovered ? 1001 : 1,
         }}
         initial={{ x: animation.x[0], y: animation.y[0] }}
         animate={animation}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
+        onHoverStart={onHoverStart}
+        onHoverEnd={onHoverEnd}
       >
         {isHovered && <HoverCard headline={headline} text={text} />}
       </motion.div>
