@@ -8,13 +8,13 @@ export default function Header() {
         className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-3xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
-        Innovating Journalism
+        Build Community
       </h1>
       <p
         className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
-        Revolutionize the way we approach news and media in the digital age.
+        Revolutionize the way we build and strengthen communities in the digital age.
       </p>
     </div>
   );
