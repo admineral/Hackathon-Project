@@ -7,7 +7,6 @@ export default function HoverCard({ orb }) {
   const [likes, setLikes] = useState(0); // State to keep track of likes
   const [hasLiked, setHasLiked] = useState(false); // State to keep track of whether the user has liked the orb
   const hoverCardRef = useRef(null); // Ref to the hover card
-  const [isRightSide, setIsRightSide] = useState(false); // State to keep track of whether the hover card is on the right side
 
   const handleClick = (e) => {
     if ('ontouchstart' in window || navigator.msMaxTouchPoints) {
@@ -17,25 +16,25 @@ export default function HoverCard({ orb }) {
 
   useEffect(() => {
     let canSwitch = true; // Variable to control whether the hover card can switch positions
-
+  
     const interval = setInterval(() => {
       // Continuously check the position of the hover card and adjust its position if it's outside of the screen
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
       if (canSwitch && hoverCardPosition.right > window.innerWidth) {
-        setIsRightSide(true);
+        hoverCardRef.current.style.transform = `translateX(-100%)`;
         canSwitch = false; // Prevent further switches
         setTimeout(() => {
           canSwitch = true; // Allow switches again after 10 seconds
         }, 10000);
       } else if (canSwitch && hoverCardPosition.left < 0) {
-        setIsRightSide(false);
+        hoverCardRef.current.style.transform = `translateX(0)`;
         canSwitch = false; // Prevent further switches
         setTimeout(() => {
           canSwitch = true; // Allow switches again after 10 seconds
         }, 10000);
       }
     }, 100); // Check the position every 100ms
-
+  
     // Clean up the interval when the component is unmounted
     return () => clearInterval(interval);
   }, []);
@@ -50,7 +49,7 @@ export default function HoverCard({ orb }) {
   return (
     <div 
       ref={hoverCardRef}
-      className={`absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105 ${isRightSide ? 'hover-card-right' : 'hover-card-left'}`} 
+      className={`absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105`} 
       style={{ zIndex: 1000 }}
       onClick={handleClick}
     >
