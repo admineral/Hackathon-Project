@@ -21,13 +21,13 @@ export default function HoverCard({ orb }) {
       // Continuously check the position of the hover card and adjust its position if it's outside of the screen
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
       if (canSwitch && hoverCardPosition.right > window.innerWidth) {
-        hoverCardRef.current.style.transform = `translateX(-100%)`;
+        hoverCardRef.current.style.left = `${window.innerWidth - hoverCardPosition.width}px`;
         canSwitch = false; // Prevent further switches
         setTimeout(() => {
           canSwitch = true; // Allow switches again after 10 seconds
         }, 10000);
       } else if (canSwitch && hoverCardPosition.left < 0) {
-        hoverCardRef.current.style.transform = `translateX(0)`;
+        hoverCardRef.current.style.left = '0px';
         canSwitch = false; // Prevent further switches
         setTimeout(() => {
           canSwitch = true; // Allow switches again after 10 seconds
