@@ -1,5 +1,5 @@
 // HoverCard.js
-import React, { useState, useLayoutEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaComment, FaThumbsUp } from 'react-icons/fa'; // Import Font Awesome icons
 
 export default function HoverCard({ orb }) {
@@ -15,15 +15,20 @@ export default function HoverCard({ orb }) {
     }
   };
 
-  useLayoutEffect(() => {
-    // Check the position of the hover card and adjust its position if it's outside of the screen
-    const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
-    if (hoverCardPosition.right > window.innerWidth) {
-      setPosition('hover-card-left');
-    } else if (hoverCardPosition.left < 0) {
-      setPosition('hover-card-right');
-    }
-  }, [activeOrb]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Check the position of the hover card and adjust its position if it's outside of the screen
+      const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
+      if (hoverCardPosition.right > window.innerWidth) {
+        setPosition('hover-card-left');
+      } else if (hoverCardPosition.left < 0) {
+        setPosition('hover-card-right');
+      }
+    }, 100); // Check the position every 100ms
+
+    // Clean up the interval when the component is unmounted
+    return () => clearInterval(interval);
+  }, []);
 
   const handleLike = () => {
     if (!hasLiked) { // If the user hasn't liked the orb yet
