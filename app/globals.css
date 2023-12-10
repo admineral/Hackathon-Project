@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.hover-card {
+.right {
   right: 0;
+}
+
+.left {
+  left: 0;
 }
 
 @media (max-width: 768px) {
