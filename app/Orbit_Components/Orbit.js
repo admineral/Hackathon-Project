@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
-import HoverCard from './HoverCard';
+import React from 'react';
+import Orb from './Orb';
 
 export default function Orbit({ size, index, totalOrbits, orbs }) {
   const calculateOrbitPath = (angle, offset = 0) => ({
@@ -34,29 +34,9 @@ export default function Orbit({ size, index, totalOrbits, orbs }) {
           zIndex: 0,
         }}
       />
-      {orbs.map((orb, orbIndex) => {
-        const [isHovered, setIsHovered] = useState(false);
-        return (
-          <motion.div
-            key={orbIndex}
-            className="absolute w-8 h-8 bg-blue-500 rounded-full"
-            style={{
-              top: '50%',
-              left: '50%',
-              translateX: '-50%',
-              translateY: '-50%',
-              zIndex: isHovered ? 1001 : 1,
-            }}
-            initial={{ x: animation.x[0], y: animation.y[0] }}
-            animate={animation}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-            onClick={() => setIsHovered(!isHovered)} // Toggle isHovered state on click
-          >
-            {isHovered && <HoverCard headline={orb.headline} text={orb.text} />}
-          </motion.div>
-        );
-      })}
+      {orbs.map((orb, orbIndex) => (
+        <Orb key={orbIndex} animation={animation} orb={orb} />
+      ))}
     </>
   );
 }

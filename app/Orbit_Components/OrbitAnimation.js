@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import Orbit from './Orbit';
 
 export default function OrbitAnimation({ orbits }) {
-  const [hoveredOrbit, setHoveredOrbit] = useState(null);
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,7 +21,11 @@ export default function OrbitAnimation({ orbits }) {
               { headline: `Orbit ${index + 1} Orb 1`, text: `This is the text for orbit ${index + 1} orb 1.` },
               { headline: `Orbit ${index + 1} Orb 2`, text: `This is the text for orbit ${index + 1} orb 2.` },
               // Add more orbs as needed
-            ]}
+            ].map((orb, orbIndex) => ({
+              ...orb,
+              headline: `Orbit ${index + 1} Orb ${orbIndex + 1}`,
+              text: `This is the text for orbit ${index + 1} orb ${orbIndex + 1}.`
+            }))}
           />
         ))}
       </div>
