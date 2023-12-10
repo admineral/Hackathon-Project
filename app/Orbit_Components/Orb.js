@@ -1,21 +1,10 @@
 // Orb.js
 import { motion } from 'framer-motion';
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import HoverCard from './HoverCard';
-import ActiveOrbContext from './ActiveOrbContext';
 
 export default function Orb({ animation, orb }) { 
   const [isHovered, setIsHovered] = useState(false);
-  const { activeOrb, setActiveOrb } = useContext(ActiveOrbContext);
-
-  // Function to handle click event
-  const handleClick = () => {
-    // Check if the device is a touch device
-    if ('ontouchstart' in window || navigator.msMaxTouchPoints) {
-      // If it is a touch device, set the active orb
-      setActiveOrb(orb);
-    }
-  };
 
   return (
     <motion.div
@@ -33,9 +22,8 @@ export default function Orb({ animation, orb }) {
       animate={animation}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={handleClick}
     >
-      {(isHovered || activeOrb === orb) && <HoverCard headline={orb.headline} text={orb.text} />}
+      {isHovered && <HoverCard orb={orb} />} {/* Pass the orb as a prop */}
     </motion.div>
   );
 }
