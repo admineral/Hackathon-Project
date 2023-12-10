@@ -1,15 +1,25 @@
 // HoverCard.js
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaComment, FaThumbsUp } from 'react-icons/fa'; // Import Font Awesome icons
 
 export default function HoverCard({ orb }) {
   const [activeOrb, setActiveOrb] = useState(null);
   const [likes, setLikes] = useState(0); // State to keep track of likes
   const [hasLiked, setHasLiked] = useState(false); // State to keep track of whether the user has liked the orb
+  const [position, setPosition] = useState('right'); // State to keep track of the position of the hover card
+  const hoverCardRef = useRef(null); // Ref to the hover card
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     if ('ontouchstart' in window || navigator.msMaxTouchPoints) {
       setActiveOrb(orb);
+      // Check the position of the orb and adjust the position of the hover card accordingly
+      const orbPosition = e.target.getBoundingClientRect();
+      const hoverCardWidth = hoverCardRef.current.offsetWidth;
+      if (orbPosition.left + hoverCardWidth > window.innerWidth) {
+        setPosition('left');
+      } else {
+        setPosition('right');
+      }
     }
   };
 
@@ -22,7 +32,8 @@ export default function HoverCard({ orb }) {
 
   return (
     <div 
-      className="absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105 hover-card" 
+      ref={hoverCardRef}
+      className={`absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105 ${position}`} 
       style={{ zIndex: 1000 }}
       onClick={handleClick}
     >
