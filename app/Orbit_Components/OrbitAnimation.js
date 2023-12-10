@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import Orbit from './Orbit';
 
-export default function OrbitAnimation({ orbits, orbsData, orbSizes }) {
+export default function OrbitAnimation({ orbits, orbsData }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -16,7 +16,6 @@ export default function OrbitAnimation({ orbits, orbsData, orbSizes }) {
           <Orbit
             key={index}
             size={size}
-            orbSize={orbSizes[index]} // Pass the orb size to the Orbit component
             index={index}
             totalOrbits={orbits.length}
             orbs={orbsData[index]}

@@ -2,7 +2,7 @@
 import React from 'react';
 import Orb from './Orb';
 
-export default function Orbit({ size, index, totalOrbits, orbs, orbSize }) {
+export default function Orbit({ size, index, totalOrbits, orbs }) {
   const calculateOrbitPath = (angle, offset = 0) => ({
     x: Math.cos(angle + offset) * size,
     y: Math.sin(angle + offset) * size
@@ -41,7 +41,7 @@ export default function Orbit({ size, index, totalOrbits, orbs, orbSize }) {
           }
         };
 
-        return <Orb key={orbIndex} animation={animation} orb={orb} orbSize={orbSize} />;
+        return <Orb key={orbIndex} animation={animation} orb={orb} />;
       })}
     </>
   );
