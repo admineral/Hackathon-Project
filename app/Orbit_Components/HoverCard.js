@@ -7,6 +7,7 @@ export default function HoverCard({ orb }) {
   const [likes, setLikes] = useState(0); // State to keep track of likes
   const [hasLiked, setHasLiked] = useState(false); // State to keep track of whether the user has liked the orb
   const hoverCardRef = useRef(null); // Ref to the hover card
+  const [isTransitioning, setIsTransitioning] = useState(false); // State to track if the hover card is transitioning
 
   const handleClick = (e) => {
     if ('ontouchstart' in window || navigator.msMaxTouchPoints) {
@@ -16,27 +17,34 @@ export default function HoverCard({ orb }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
+      // If the hover card is transitioning, don't check its position
+      if (isTransitioning) return;
+
       // Continuously check the position of the hover card and adjust its position if it's outside of the screen
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
-      const bufferZone = window.innerWidth * 0.2; // 20% of the screen width
-      const middleZoneStart = window.innerWidth * 0.4; // 40% of the screen width
-      const middleZoneEnd = window.innerWidth * 0.6; // 60% of the screen width
-
-      // If the hover card is within the middle zone, pause the continuous checking
-      if (hoverCardPosition.left > middleZoneStart && hoverCardPosition.right < middleZoneEnd) {
-        return;
-      }
+      const bufferZone = window.innerWidth * 0.1; // 10% of the screen width
 
       if (hoverCardPosition.right > window.innerWidth - bufferZone) {
         hoverCardRef.current.style.transform = `translateX(-100%)`;
+        setIsTransitioning(true);
       } else if (hoverCardPosition.left < bufferZone) {
         hoverCardRef.current.style.transform = `translateX(0)`;
+        setIsTransitioning(true);
       }
     }, 100); // Check the position every 100ms
 
     // Clean up the interval when the component is unmounted
     return () => clearInterval(interval);
-  }, []);
+  }, [isTransitioning]);
+
+  // After the transition duration, allow position checking again
+  useEffect(() => {
+    if (isTransitioning) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 500); // Transition duration
+    }
+  }, [isTransitioning]);
 
   const handleLike = () => {
     if (!hasLiked) { // If the user hasn't liked the orb yet
