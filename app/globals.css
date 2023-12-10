@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hover-card {
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .hover-card {
+    top: calc(100% + 1rem);
+    right: auto;
+  }
+}

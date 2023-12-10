@@ -22,7 +22,7 @@ export default function HoverCard({ orb }) {
 
   return (
     <div 
-      className="absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105" 
+      className="absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105 hover-card" 
       style={{ zIndex: 1000 }}
       onClick={handleClick}
     >
