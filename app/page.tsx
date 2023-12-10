@@ -5,7 +5,7 @@ import OrbitAnimation from './Orbit_Components/OrbitAnimation';
 import orbsData from './Orbit_Components/orbsData';
 
 export default function Home() {
-  const orbits = [75, 125, 180];
+  const orbits = [55, 110, 180];
 
   return (
     <>

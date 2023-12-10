@@ -11,7 +11,7 @@ export default function OrbitAnimation({ orbits, orbsData }) {
       animate={{ opacity: 1 }}
       transition={{ delay: 1, duration: 2 }}
     >
-      <div className="relative w-16 h-16 bg-black rounded-full" style={{ margin: 'auto' }}>
+      <div className="relative w-10 h-10 bg-black rounded-full" style={{ margin: 'auto' }}>
         {orbits.map((size, index) => (
           <Orbit
             key={index}
