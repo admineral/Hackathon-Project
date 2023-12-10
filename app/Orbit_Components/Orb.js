@@ -1,10 +1,12 @@
 // Orb.js
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react'; // Import useContext
 import HoverCard from './HoverCard';
+import ActiveOrbContext from './ActiveOrbContext'; // Import the context
 
 export default function Orb({ animation, orb }) { 
   const [isHovered, setIsHovered] = useState(false);
+  const { activeOrb, setActiveOrb } = useContext(ActiveOrbContext); // Consume the context
 
   return (
     <motion.div
@@ -22,9 +24,9 @@ export default function Orb({ animation, orb }) {
       animate={animation}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      onClick={() => setIsHovered(!isHovered)} 
+      onClick={() => setActiveOrb(orb)} // Set the active orb when clicked
     >
-      {isHovered && <HoverCard headline={orb.headline} text={orb.text} />}
+      {activeOrb === orb && <HoverCard headline={orb.headline} text={orb.text} />}
     </motion.div>
   );
 }
