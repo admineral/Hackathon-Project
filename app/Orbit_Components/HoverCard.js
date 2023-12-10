@@ -42,7 +42,7 @@ export default function HoverCard({ orb }) {
     if (isTransitioning) {
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 2000); // Transition duration
+      }, 10000); // Transition duration
     }
   }, [isTransitioning]);
 
