@@ -49,7 +49,7 @@ export default function HoverCard({ orb }) {
     if (isTransitioning) {
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 15000); // Transition duration
+      }, 20000); // Transition duration
     }
   }, [isTransitioning]);
 
