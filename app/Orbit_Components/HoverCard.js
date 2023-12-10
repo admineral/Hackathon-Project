@@ -15,7 +15,7 @@ export default function HoverCard({ orb }) {
       // Check the position of the orb and adjust the position of the hover card accordingly
       const orbPosition = e.target.getBoundingClientRect();
       const hoverCardWidth = hoverCardRef.current.offsetWidth;
-      if (orbPosition.left + hoverCardWidth > window.innerWidth) {
+      if (orbPosition.left + orbPosition.width + hoverCardWidth > window.innerWidth) {
         setPosition('hover-card-left');
       } else {
         setPosition('hover-card-right');
