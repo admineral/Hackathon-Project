@@ -12,6 +12,13 @@ export default function HoverCard({ orb }) {
   const handleClick = (e) => {
     if ('ontouchstart' in window || navigator.msMaxTouchPoints) {
       setActiveOrb(orb);
+      const clickPosition = e.clientX;
+      if (clickPosition > window.innerWidth / 2) {
+        hoverCardRef.current.style.transform = `translateX(-100%)`;
+      } else {
+        hoverCardRef.current.style.transform = `translateX(0)`;
+      }
+      setIsTransitioning(true);
     }
   };
 
