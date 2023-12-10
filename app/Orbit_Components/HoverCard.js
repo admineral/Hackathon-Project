@@ -23,7 +23,7 @@ export default function HoverCard({ orb }) {
       } else if (hoverCardPosition.left < 0) {
         hoverCardRef.current.style.transform = `translateX(0)`;
       }
-    }, 100); // Check the position every 100ms
+    }, 1000); // Check the position every 100ms
 
     // Clean up the interval when the component is unmounted
     return () => clearInterval(interval);
