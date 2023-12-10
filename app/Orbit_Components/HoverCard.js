@@ -12,6 +12,13 @@ export default function HoverCard({ orb }) {
   const handleClick = (e) => {
     if ('ontouchstart' in window || navigator.msMaxTouchPoints) {
       setActiveOrb(orb);
+      const clickPosition = e.clientX;
+      if (clickPosition > window.innerWidth / 2) {
+        hoverCardRef.current.style.transform = `translateX(-100%)`;
+      } else {
+        hoverCardRef.current.style.transform = `translateX(0)`;
+      }
+      setIsTransitioning(false);
     }
   };
 
@@ -22,10 +29,18 @@ export default function HoverCard({ orb }) {
 
       // Continuously check the position of the hover card and adjust its position if it's outside of the screen
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
-      if (hoverCardPosition.right > window.innerWidth) {
+      const middleZoneStart = window.innerWidth * 0.35; // 35% of the screen width
+      const middleZoneEnd = window.innerWidth * 0.65; // 65% of the screen width
+
+      // If the hover card is within the middle zone, pause the continuous checking
+      if (hoverCardPosition.left > middleZoneStart && hoverCardPosition.right < middleZoneEnd) {
+        return;
+      }
+
+      if (hoverCardPosition.right > middleZoneEnd) {
         hoverCardRef.current.style.transform = `translateX(-100%)`;
         setIsTransitioning(true);
-      } else if (hoverCardPosition.left < 0) {
+      } else if (hoverCardPosition.left < middleZoneStart) {
         hoverCardRef.current.style.transform = `translateX(0)`;
         setIsTransitioning(true);
       }
