@@ -49,7 +49,7 @@ export default function HoverCard({ orb }) {
     if (isTransitioning) {
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 20000); // Transition duration
+      }, 15000); // Transition duration
     }
   }, [isTransitioning]);
 
@@ -63,8 +63,8 @@ export default function HoverCard({ orb }) {
   return (
     <div 
       ref={hoverCardRef}
-      className={`absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-10000 ease-in-out hover:scale-105`} 
-      style={{ zIndex: 1000 }}
+      className={`absolute w-64 p-4 bg-white rounded-lg shadow-2xl hover:scale-105`} 
+      style={{ zIndex: 1000, transition: 'transform 20s', transform: isTransitioning ? 'translateX(-100%)' : 'translateX(0)' }}
       onClick={handleClick}
     >
       {(activeOrb === null || activeOrb === orb) && (
