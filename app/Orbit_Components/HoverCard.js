@@ -18,9 +18,9 @@ export default function HoverCard({ orb }) {
     const interval = setInterval(() => {
       // Continuously check the position of the hover card and adjust its position if it's outside of the screen
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
-      const bufferZone = window.innerWidth * 0.1; // 10% of the screen width
-      const middleZoneStart = window.innerWidth * 0.45; // 45% of the screen width
-      const middleZoneEnd = window.innerWidth * 0.55; // 55% of the screen width
+      const bufferZone = window.innerWidth * 0.2; // 20% of the screen width
+      const middleZoneStart = window.innerWidth * 0.4; // 40% of the screen width
+      const middleZoneEnd = window.innerWidth * 0.6; // 60% of the screen width
 
       // If the hover card is within the middle zone, pause the continuous checking
       if (hoverCardPosition.left > middleZoneStart && hoverCardPosition.right < middleZoneEnd) {
