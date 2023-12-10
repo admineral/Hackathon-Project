@@ -14,11 +14,11 @@ export default function HoverCard({ orb }) {
       setActiveOrb(orb);
       const clickPosition = e.clientX;
       if (clickPosition > window.innerWidth / 2) {
-        hoverCardRef.current.style.transform = `translateX(-100%)`;
-      } else {
         hoverCardRef.current.style.transform = `translateX(0)`;
+      } else {
+        hoverCardRef.current.style.transform = `translateX(-100%)`;
       }
-      setIsTransitioning(true);
+      setIsTransitioning(false);
     }
   };
 
