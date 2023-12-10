@@ -1,11 +1,11 @@
 // orbsData.js
 export default [
     [
-      { size: '10', headline: 'Orbit 1 Orb 1', text: 'This is the text for orbit 1 orb 1.' },
-      { size: '10', headline: 'Orbit 1 Orb 2', text: 'This is the text for orbit 1 orb 2.' },
-      { size: '10', headline: 'Orbit 1 Orb 3', text: 'This is the text for orbit 1 orb 3.' },
-      { size: '10', headline: 'Orbit 1 Orb 4', text: 'This is the text for orbit 1 orb 4.' },
-      { size: '10', headline: 'Orbit 1 Orb 5', text: 'This is the text for orbit 1 orb 5.' },
+      { size: '11', headline: 'Orbit 1 Orb 1', text: 'This is the text for orbit 1 orb 1.' },
+      { size: '11', headline: 'Orbit 1 Orb 2', text: 'This is the text for orbit 1 orb 2.' },
+      { size: '11', headline: 'Orbit 1 Orb 3', text: 'This is the text for orbit 1 orb 3.' },
+      { size: '11', headline: 'Orbit 1 Orb 4', text: 'This is the text for orbit 1 orb 4.' },
+      { size: '11', headline: 'Orbit 1 Orb 5', text: 'This is the text for orbit 1 orb 5.' },
       
     ],
     [
