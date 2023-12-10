@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 .hover-card-right {
-  right: 0;
-  left: auto;
+  right: auto;
+  left: 0;
 }
 
 .hover-card-left {
-  left: 0;
-  right: auto;
+  left: auto;
+  right: 0;
 }
 
 @media (max-width: 768px) {
