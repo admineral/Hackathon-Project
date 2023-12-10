@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
 import HoverCard from './HoverCard';
 
-export default function Orbit({ size, index, totalOrbits, headline, text, isHovered, onHoverStart, onHoverEnd }) {
+export default function Orbit({ size, index, totalOrbits, orbs }) {
   const calculateOrbitPath = (angle, offset = 0) => ({
     x: Math.cos(angle + offset) * size,
     y: Math.sin(angle + offset) * size
@@ -34,22 +34,29 @@ export default function Orbit({ size, index, totalOrbits, headline, text, isHove
           zIndex: 0,
         }}
       />
-      <motion.div
-        className="absolute w-8 h-8 bg-blue-500 rounded-full"
-        style={{
-          top: '50%',
-          left: '50%',
-          translateX: '-50%',
-          translateY: '-50%',
-          zIndex: isHovered ? 1001 : 1,
-        }}
-        initial={{ x: animation.x[0], y: animation.y[0] }}
-        animate={animation}
-        onHoverStart={onHoverStart}
-        onHoverEnd={onHoverEnd}
-      >
-        {isHovered && <HoverCard headline={headline} text={text} />}
-      </motion.div>
+      {orbs.map((orb, orbIndex) => {
+        const [isHovered, setIsHovered] = useState(false);
+        return (
+          <motion.div
+            key={orbIndex}
+            className="absolute w-8 h-8 bg-blue-500 rounded-full"
+            style={{
+              top: '50%',
+              left: '50%',
+              translateX: '-50%',
+              translateY: '-50%',
+              zIndex: isHovered ? 1001 : 1,
+            }}
+            initial={{ x: animation.x[0], y: animation.y[0] }}
+            animate={animation}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
+            onClick={() => setIsHovered(!isHovered)} // Toggle isHovered state on click
+          >
+            {isHovered && <HoverCard headline={orb.headline} text={orb.text} />}
+          </motion.div>
+        );
+      })}
     </>
   );
 }

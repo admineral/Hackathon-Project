@@ -19,11 +19,11 @@ export default function OrbitAnimation({ orbits }) {
             size={size}
             index={index}
             totalOrbits={orbits.length}
-            headline={`Orbit ${index + 1}`}
-            text={`This is the text for orbit ${index + 1}.`}
-            isHovered={hoveredOrbit === index}
-            onHoverStart={() => setHoveredOrbit(index)}
-            onHoverEnd={() => setHoveredOrbit(null)}
+            orbs={[
+              { headline: `Orbit ${index + 1} Orb 1`, text: `This is the text for orbit ${index + 1} orb 1.` },
+              { headline: `Orbit ${index + 1} Orb 2`, text: `This is the text for orbit ${index + 1} orb 2.` },
+              // Add more orbs as needed
+            ]}
           />
         ))}
       </div>
