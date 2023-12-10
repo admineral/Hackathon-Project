@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import React from 'react';
 import Orb from './Orb';
 
@@ -9,17 +8,8 @@ export default function Orbit({ size, index, totalOrbits, orbs }) {
   });
 
   const offset = (index * 2 * Math.PI) / totalOrbits;
-  const animation = {
-    x: Array.from({ length: 360 / 10 }, (_, i) => calculateOrbitPath((i * 10) * Math.PI / 180, offset).x),
-    y: Array.from({ length: 360 / 10 }, (_, i) => calculateOrbitPath((i * 10) * Math.PI / 180, offset).y),
-    transition: {
-      repeat: Infinity, 
-      repeatType: "loop", 
-      duration: size * 0.4, 
-      ease: "linear",
-      delay: index * 0.5
-    }
-  };
+  let lastOrbOffset = 0; // Keep track of the last orb's offset
+  const minDistance = 0.5; // Define the minimum distance between orbs here
 
   return (
     <>
@@ -34,9 +24,25 @@ export default function Orbit({ size, index, totalOrbits, orbs }) {
           zIndex: 0,
         }}
       />
-      {orbs.map((orb, orbIndex) => (
-        <Orb key={orbIndex} animation={animation} orb={orb} />
-      ))}
+      {orbs.map((orb, orbIndex) => {
+        const randomOffset = Math.random() * (2 * Math.PI / orbs.length - minDistance) + minDistance;
+        const orbOffset = lastOrbOffset + randomOffset;
+        lastOrbOffset = orbOffset; // Update the last orb's offset
+
+        const animation = {
+          x: Array.from({ length: 360 / 10 + 1 }, (_, i) => calculateOrbitPath((i * 10) * Math.PI / 180, offset + orbOffset).x),
+          y: Array.from({ length: 360 / 10 + 1 }, (_, i) => calculateOrbitPath((i * 10) * Math.PI / 180, offset + orbOffset).y),
+          transition: {
+            repeat: Infinity, 
+            repeatType: "loop", 
+            duration: size * 0.4, 
+            ease: "linear",
+            delay: index * 0.5
+          }
+        };
+
+        return <Orb key={orbIndex} animation={animation} orb={orb} />;
+      })}
     </>
   );
 }
