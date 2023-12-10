@@ -15,16 +15,26 @@ export default function HoverCard({ orb }) {
   };
 
   useEffect(() => {
+    let canSwitch = true; // Variable to control whether the hover card can switch positions
+  
     const interval = setInterval(() => {
       // Continuously check the position of the hover card and adjust its position if it's outside of the screen
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
-      if (hoverCardPosition.right > window.innerWidth) {
+      if (canSwitch && hoverCardPosition.right > window.innerWidth) {
         hoverCardRef.current.style.transform = `translateX(-100%)`;
-      } else if (hoverCardPosition.left < 0) {
+        canSwitch = false; // Prevent further switches
+        setTimeout(() => {
+          canSwitch = true; // Allow switches again after 10 seconds
+        }, 10000);
+      } else if (canSwitch && hoverCardPosition.left < 0) {
         hoverCardRef.current.style.transform = `translateX(0)`;
+        canSwitch = false; // Prevent further switches
+        setTimeout(() => {
+          canSwitch = true; // Allow switches again after 10 seconds
+        }, 10000);
       }
-    }, 1000); // Check the position every 100ms
-
+    }, 100); // Check the position every 100ms
+  
     // Clean up the interval when the component is unmounted
     return () => clearInterval(interval);
   }, []);
