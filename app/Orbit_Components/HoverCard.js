@@ -23,6 +23,13 @@ export default function HoverCard({ orb }) {
       // Continuously check the position of the hover card and adjust its position if it's outside of the screen
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
       const bufferZone = window.innerWidth * 0.1; // 10% of the screen width
+      const middleZoneStart = window.innerWidth * 0.35; // 35% of the screen width
+      const middleZoneEnd = window.innerWidth * 0.65; // 65% of the screen width
+
+      // If the hover card is within the middle zone, pause the continuous checking
+      if (hoverCardPosition.left > middleZoneStart && hoverCardPosition.right < middleZoneEnd) {
+        return;
+      }
 
       if (hoverCardPosition.right > window.innerWidth - bufferZone) {
         hoverCardRef.current.style.transform = `translateX(-100%)`;
@@ -42,7 +49,7 @@ export default function HoverCard({ orb }) {
     if (isTransitioning) {
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 10000); // Transition duration
+      }, 20000); // Transition duration
     }
   }, [isTransitioning]);
 
