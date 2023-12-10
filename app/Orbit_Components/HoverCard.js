@@ -1,12 +1,11 @@
 // HoverCard.js
-import React, { useState, useLayoutEffect, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaComment, FaThumbsUp } from 'react-icons/fa'; // Import Font Awesome icons
 
 export default function HoverCard({ orb }) {
   const [activeOrb, setActiveOrb] = useState(null);
   const [likes, setLikes] = useState(0); // State to keep track of likes
   const [hasLiked, setHasLiked] = useState(false); // State to keep track of whether the user has liked the orb
-  const [position, setPosition] = useState('right'); // State to keep track of the position of the hover card
   const hoverCardRef = useRef(null); // Ref to the hover card
 
   const handleClick = (e) => {
@@ -15,30 +14,20 @@ export default function HoverCard({ orb }) {
     }
   };
 
-  useLayoutEffect(() => {
-    // Check the position of the hover card and adjust its position if it's outside of the screen
-    const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
-    if (hoverCardPosition.right > window.innerWidth) {
-      setPosition('hover-card-left');
-    } else if (hoverCardPosition.left < 0) {
-      setPosition('hover-card-right');
-    }
-  }, [activeOrb]);
-
   useEffect(() => {
     const interval = setInterval(() => {
       // Continuously check the position of the hover card and adjust its position if it's outside of the screen
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
-      if (position === 'right' && hoverCardPosition.right > window.innerWidth) {
-        hoverCardRef.current.style.right = `${window.innerWidth - hoverCardPosition.right}px`;
-      } else if (position === 'left' && hoverCardPosition.left < 0) {
-        hoverCardRef.current.style.left = `${-hoverCardPosition.left}px`;
+      if (hoverCardPosition.right > window.innerWidth) {
+        hoverCardRef.current.style.transform = `translateX(${window.innerWidth - hoverCardPosition.right}px)`;
+      } else if (hoverCardPosition.left < 0) {
+        hoverCardRef.current.style.transform = `translateX(${-hoverCardPosition.left}px)`;
       }
     }, 100); // Check the position every 100ms
 
     // Clean up the interval when the component is unmounted
     return () => clearInterval(interval);
-  }, [position]);
+  }, []);
 
   const handleLike = () => {
     if (!hasLiked) { // If the user hasn't liked the orb yet
@@ -50,7 +39,7 @@ export default function HoverCard({ orb }) {
   return (
     <div 
       ref={hoverCardRef}
-      className={`absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105 ${position === 'right' ? 'hover-card-right' : 'hover-card-left'}`} 
+      className={`absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105`} 
       style={{ zIndex: 1000 }}
       onClick={handleClick}
     >
