@@ -1,15 +1,16 @@
+// Orbit.js
 import React from 'react';
 import Orb from './Orb';
 
-export default function Orbit({ size, index, totalOrbits, orbs }) {
+export default function Orbit({ size, index, totalOrbits, orbs, orbSize }) {
   const calculateOrbitPath = (angle, offset = 0) => ({
     x: Math.cos(angle + offset) * size,
     y: Math.sin(angle + offset) * size
   });
 
   const offset = (index * 2 * Math.PI) / totalOrbits;
-  let lastOrbOffset = 0; // Keep track of the last orb's offset
-  const minDistance = 0.5; // Define the minimum distance between orbs here
+  const segmentSize = 2 * Math.PI / orbs.length; // Size of each segment
+  const minDistance = 0.1; // Minimum distance from the edges of the segment
 
   return (
     <>
@@ -25,9 +26,8 @@ export default function Orbit({ size, index, totalOrbits, orbs }) {
         }}
       />
       {orbs.map((orb, orbIndex) => {
-        const randomOffset = Math.random() * (2 * Math.PI / orbs.length - minDistance) + minDistance;
-        const orbOffset = lastOrbOffset + randomOffset;
-        lastOrbOffset = orbOffset; // Update the last orb's offset
+        const segmentStart = orbIndex * segmentSize; // Start of the segment
+        const orbOffset = segmentStart + minDistance + Math.random() * (segmentSize - 2 * minDistance); // Random position within the segment
 
         const animation = {
           x: Array.from({ length: 360 / 10 + 1 }, (_, i) => calculateOrbitPath((i * 10) * Math.PI / 180, offset + orbOffset).x),
@@ -41,7 +41,7 @@ export default function Orbit({ size, index, totalOrbits, orbs }) {
           }
         };
 
-        return <Orb key={orbIndex} animation={animation} orb={orb} />;
+        return <Orb key={orbIndex} animation={animation} orb={orb} orbSize={orbSize} />;
       })}
     </>
   );

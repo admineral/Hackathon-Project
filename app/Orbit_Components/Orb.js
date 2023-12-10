@@ -1,16 +1,17 @@
+// Orb.js
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import HoverCard from './HoverCard';
 
-const ORB_SIZE = '5'; // Define orb size here
-
-export default function Orb({ animation, orb }) {
+export default function Orb({ animation, orb, orbSize }) { // Receive orbSize as a prop
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
-      className={`absolute w-${ORB_SIZE} h-${ORB_SIZE} bg-blue-500 rounded-full`}
+      className="absolute bg-blue-500 rounded-full" // Remove the w- and h- classes
       style={{
+        width: `${orbSize}px`, // Set the width using orbSize
+        height: `${orbSize}px`, // Set the height using orbSize
         top: '50%',
         left: '50%',
         translateX: '-50%',
