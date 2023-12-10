@@ -33,7 +33,7 @@ export default function HoverCard({ orb }) {
   return (
     <div 
       ref={hoverCardRef}
-      className={`absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105 ${position}`} 
+      className={`absolute w-64 p-4 bg-white rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105 ${position === 'right' ? 'hover-card-right' : 'hover-card-left'}`} 
       style={{ zIndex: 1000 }}
       onClick={handleClick}
     >

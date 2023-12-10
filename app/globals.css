@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.right {
+.hover-card-right {
   right: 0;
 }
 
-.left {
+.hover-card-left {
   left: 0;
 }
 
