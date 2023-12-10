@@ -19,9 +19,9 @@ export default function HoverCard({ orb }) {
       // Continuously check the position of the hover card and adjust its position if it's outside of the screen
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
       if (hoverCardPosition.right > window.innerWidth) {
-        hoverCardRef.current.style.right = `${window.innerWidth - hoverCardPosition.right}px`;
+        hoverCardRef.current.style.transform = `translateX(-100%)`;
       } else if (hoverCardPosition.left < 0) {
-        hoverCardRef.current.style.left = `${-hoverCardPosition.left}px`;
+        hoverCardRef.current.style.transform = `translateX(0)`;
       }
     }, 100); // Check the position every 100ms
 
