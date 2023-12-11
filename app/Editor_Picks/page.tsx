@@ -68,7 +68,7 @@ export default function EditorPicks() {
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
       </Head>
       <div className="text-white">
-        <div className="container mx-auto px-4">
+        <div> {/* Removed container and px-4 classes */}
           <h2 className="text-2xl font-bold my-4">
             Editor's Picks &gt;
           </h2>
