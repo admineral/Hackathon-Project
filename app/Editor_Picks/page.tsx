@@ -2,8 +2,6 @@
 
     import Head from 'next/head';
     import Image from 'next/image';
-    
-    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
     import { FaComment, FaHeart } from 'react-icons/fa';
  
     
@@ -59,7 +57,7 @@ const articles = [
     }
 }
     
-  export default function EditorPicks() {
+export default function EditorPicks() {
     return (
       <div>
         <Head>
