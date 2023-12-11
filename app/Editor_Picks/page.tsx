@@ -77,7 +77,7 @@ const articles = [
             {articles.map((article, index) => (
     <div key={article.id} className={`flex-none w-full sm:w-1/2 md:w-1/4 lg:w-80 rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white ${index !== articles.length - 1 ? "sm:mr-4" : ""} border border-gray-500`}>
       <div className="relative">
-        <Image alt="Article image" className="rounded-t-lg" src={article.image} width={320} height={180} layout="responsive" />
+      <Image alt="Article image" className="rounded-t-lg" src={article.image} width={320} height={180} layout="responsive" priority />
       </div>
       <div className="p-4">
         <h3 className="text-yellow-500 mt-2">{article.title}</h3>
