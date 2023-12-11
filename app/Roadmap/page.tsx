@@ -39,14 +39,13 @@ const RoadmapItem = ({ item }: { item: Item }) => {
     };
 
     const [showComments, setShowComments] = useState(false);
-
     const Comments = ({ item }: { item: Item }) => {
         return (
           <div className="mt-4 bg-gray-800 p-4 rounded-lg">
             {item.comments && item.comments.map((comment) => (
               <div key={comment.id} className="my-2 flex items-center bg-gray-900 rounded-lg">
                 <div className="flex-grow p-4 flex items-center">
-                  <LuUserCircle2 className="text-gray-300 mr-4" size="1.5em" />
+                  <LuUserCircle2 className="text-gray-300 mr-8" size="40px" />
                   <div>
                     <p className="text-gray-300 font-semibold">{comment.author}</p>
                     <p className="text-gray-400">{comment.text}</p>
@@ -64,7 +63,7 @@ const RoadmapItem = ({ item }: { item: Item }) => {
             ))}
           </div>
         );
-      };
+    };
       
 
       return (
