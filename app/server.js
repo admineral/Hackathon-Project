@@ -93,8 +93,8 @@ app.post('/crawl', async (req, res) => {
     res.json({ 
       message: 'Crawl successful', 
       downloadLinks: {
-        rawExtraction: `http://localhost:3001/raw_extraction.txt`,
-        finalExtraction: `http://localhost:3001/final_extraction.txt`
+        rawExtraction: `http://localhost:3000/raw_extraction.txt`,
+        finalExtraction: `http://localhost:3000/final_extraction.txt`
       }
     });
     console.log('Sending response:', { message: 'Crawl successful' });
