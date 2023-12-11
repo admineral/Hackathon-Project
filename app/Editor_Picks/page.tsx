@@ -6,6 +6,7 @@ import Image from "next/image";
 import { FaComment } from 'react-icons/fa';
 import { IoRocketOutline } from "react-icons/io5";
 import { articles } from './articlesData';
+import { BiCommentDetail } from "react-icons/bi";
 
 export default function EditorPicks() {
   return (
@@ -45,15 +46,16 @@ export default function EditorPicks() {
                     <p className="text-gray-400 text-xs">{article.author}</p>
                     <p className="text-gray-400 text-xs">{article.date}</p>
                   </div>
-                  <div className="flex items-center mt-2">
-                    <button className="text-gray-400 mr-2">
-                      <FaComment /> {article.comments}
-                    </button>
-                    <button className="text-gray-400 border border-gray-400 rounded-lg px-3 py-1 flex items-center">
-  <IoRocketOutline/>
-  <span className="ml-2">{article.likes}</span>
-</button>
-                  </div>
+                  <div className="flex justify-between mt-4">
+  <button className="text-gray-400 flex items-center">
+    <BiCommentDetail />
+    <span className="ml-2">{article.comments}</span>
+  </button>
+  <button className="text-gray-400 border border-gray-400 rounded-lg px-3 py-1 flex items-center">
+    <IoRocketOutline/>
+    <span className="ml-2">{article.likes}</span>
+  </button>
+</div>
                 </div>
               </div>
             ))}
