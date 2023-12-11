@@ -1,24 +1,39 @@
 export const roadmapItemsData = [
-    {
-        id: 1,
-        title: 'MIT 166 KM/H AUF A12: Polizei zog aggressiven Raser aus dem Verkehr',
-        description: 'Am Sonntag entdeckte eine Zivilstreife einen Raser auf der Inntalautobahn, der mit 166 km/h unterwegs war. Der Fahrer, ein 39-jähriger Thailänder, wurde angehalten und sein Führerschein wurde sofort eingezogen.',
-        votes: 257,
-        status: ['Krone'], // Status set to 'Community'
-        comments: [ // Add comments here
-          {
+  {
+    id: 1,
+    title: 'MIT 166 KM/H AUF A12: Polizei zog aggressiven Raser aus dem Verkehr',
+    description: 'Am Sonntag entdeckte eine Zivilstreife einen Raser auf der Inntalautobahn, der mit 166 km/h unterwegs war. Der Fahrer, ein 39-jähriger Thailänder, wurde angehalten und sein Führerschein wurde sofort eingezogen.',
+    votes: 257,
+    status: ['Krone'], // Status set to 'Community'
+    comments: [ // Add comments here
+        {
             id: 1,
             text: 'Das ist viel zu schnell! Gut, dass die Polizei eingegriffen hat.',
             author: 'Anna'
-          },
-          {
+        },
+        {
             id: 2,
             text: 'Bei solchen Geschwindigkeiten ist ein Führerscheinentzug gerechtfertigt.',
             author: 'Tom'
-          },
-          // ... add more comments as needed
-        ],
-      },
+        },
+        {
+            id: 3,
+            text: 'Ich bin froh, dass niemand verletzt wurde.',
+            author: 'Lisa'
+        },
+        {
+            id: 4,
+            text: 'Hoffentlich wird er seine Lektion lernen.',
+            author: 'Markus'
+        },
+        {
+            id: 5,
+            text: 'Solche Fahrer sollten härter bestraft werden.',
+            author: 'Julia'
+        },
+        // ... add more comments as needed
+    ],
+},
       {
         id: 2,
         title: 'Mehr Fahrradwege in Wien!',
