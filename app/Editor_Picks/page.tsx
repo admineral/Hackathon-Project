@@ -39,7 +39,7 @@ const articles = [
       },
       {
         id: 4,
-        title: '„KRONE“-GASTKOMMENTAR',
+        title: '&apos;KRONE&apos;-GASTKOMMENTAR',
         description: summarize('Österreich zählt zu Europas Spitzenreitern, was Lebensqualität und Einkommen betrifft. Leider spielen wir auch bei der Geldentwertung in einer eigenen Liga. Im November haben wir 5,4 Prozent an Kaufkraft verloren, während sich das restliche Europa stabilisiert. Deutschland kam auf 3,2 Prozent Inflation, der Euro-Raum kratzt mit 2,4 Prozent bereits an der angepeilten Zielmarke von maximal 2 Prozent. Wo also liegt das Problem unserer Wohlstandsnation?', 100),
         author: 'Christian Baha',
         date: '10.12.2023 11:00',
