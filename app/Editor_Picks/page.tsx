@@ -1,19 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client"
 
-    import Head from 'next/head';
-    import Image from "next/image";
-    import { FaComment, FaHeart } from 'react-icons/fa';
-    import { articles } from './articlesData';
- 
-    
+import Head from 'next/head';
+import Image from "next/image";
+import { FaComment } from 'react-icons/fa';
+import { IoRocketOutline } from "react-icons/io5";
+import { articles } from './articlesData';
 
-
-
-    
 export default function EditorPicks() {
   return (
-    <div className="w-full mx-auto"> {/* Add this line */}
+    <div className="w-full mx-auto">
       <Head>
         <title>Editor's Picks</title>
         <meta charSet="utf-8" />
@@ -53,9 +49,10 @@ export default function EditorPicks() {
                     <button className="text-gray-400 mr-2">
                       <FaComment /> {article.comments}
                     </button>
-                    <button className="text-gray-400">
-                      <FaHeart/> {article.likes}
-                    </button>
+                    <button className="text-gray-400 border border-gray-400 rounded-lg px-3 py-1 flex items-center">
+  <IoRocketOutline/>
+  <span className="ml-2">{article.likes}</span>
+</button>
                   </div>
                 </div>
               </div>
