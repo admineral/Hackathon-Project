@@ -72,9 +72,9 @@ export default function EditorPicks() {
             <h2 className="text-2xl font-bold my-4">
               Editor's Picks &gt;
             </h2>
-            <div className="flex overflow-x-auto space-x-4 pb-4">
-            {articles.map((article, index) => (
-    <div key={article.id} className={"flex-none sm:w-full md:w-1/2 lg:w-1/4 xl:w-80 rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white border border-gray-500"}>
+            <div className="flex overflow-x-auto px-4 space-x-4 pb-4">
+  {articles.map((article, index) => (
+    <div key={article.id} className={"flex-none sm:w-full md:w-1/2 lg:w-1/4 xl:w-80 rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white border border-gray-500 mx-2"}>
       <div className="relative">
       <Image alt="Article image" className="rounded-t-lg" src={article.image} width={320} height={180} layout="responsive" priority />
       </div>
