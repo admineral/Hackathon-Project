@@ -26,7 +26,10 @@ const DemoModal = ({
               className="h-10 w-10 rounded-full"
               width={20}
               height={20}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </a>
           <h3 className="font-display text-2xl font-bold">Precedent</h3>
           <p className="text-sm text-gray-500">

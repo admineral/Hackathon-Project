@@ -57,7 +57,10 @@ export default function UserDropdown({ session }: { session: Session }) {
             src={image || `https://avatars.dicebear.com/api/micah/${email}.svg`}
             width={40}
             height={40}
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </button>
       </Popover>
     </div>

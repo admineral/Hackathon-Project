@@ -8,8 +8,15 @@ import UserDropdown from "./user-dropdown";
 import { Session } from "next-auth";
 
 export default function NavBar({ session }: { session: Session | null }) {
-  const { SignInModal, setShowSignInModal } = useSignInModal();
+  const signInModal = useSignInModal();
   const scrolled = useScroll(50);
+
+  if (!signInModal) {
+    // handle the case when useSignInModal returns null or undefined
+    return null;
+  }
+
+  const { SignInModal, setShowSignInModal } = signInModal;
 
   return (
     <>
@@ -29,6 +36,10 @@ export default function NavBar({ session }: { session: Session | null }) {
               width="30"
               height="30"
               className="mr-2 rounded-sm"
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
             ></Image>
             <p>Kronews</p>
           </Link>
