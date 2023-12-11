@@ -67,7 +67,7 @@ const RoadmapItem = ({ item }: { item: Item }) => {
       
 
       return (
-        <div className="bg-gray-800 p-4 rounded-lg flex flex-col items-center justify-between md:w-1/2 md:h-auto mx-auto">
+        <div className="bg-gray-800 p-4 rounded-lg flex flex-col items-center justify-between md:w-3/4 md:h-auto mx-auto">
           <div className="flex-grow w-full">
             <div className="flex justify-between items-center">
               <div className="flex-grow">
