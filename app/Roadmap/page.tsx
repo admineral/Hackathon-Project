@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { FaChevronUp, FaChevronDown, FaHotjar,FaArrowUp, FaArrowDown } from 'react-icons/fa';
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown,IoIosArrowUp } from "react-icons/io";
 import { LuUserCircle2 } from "react-icons/lu";
 import { roadmapItemsData } from './roadmapData';
 import { PiUsersThreeBold } from "react-icons/pi";
@@ -95,10 +95,14 @@ const RoadmapItem = ({ item }: { item: Item }) => {
             </div>
           </div>
         </div>
+        {showComments ? (
+          <IoIosArrowUp className="mt-4" color="white" size="2em" onClick={() => setShowComments(!showComments)} />
+        ) : (
           <IoIosArrowDown className="mt-4" color="white" size="2em" onClick={() => setShowComments(!showComments)} />
-          {showComments && <Comments item={item} />}
-        </div>
-      );
+        )}
+        {showComments && <Comments item={item} />}
+      </div>
+    );
     };
 
 // Parent component that renders a list of RoadmapItem components
