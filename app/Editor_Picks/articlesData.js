@@ -152,7 +152,7 @@ export const articles = [
     date: '',
     comments: 0,
     likes: 0,
-    image: '/public/Bild17.png',
+    image: '/Bild17.png',
     isAd: true
 }
 
