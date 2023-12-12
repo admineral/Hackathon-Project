@@ -29,3 +29,23 @@
   padding: 10px;
 }
 
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--rounded-md);
+  font-weight: var(--font-medium);
+  background-color: var(--ring-offset-background);
+  transition: var(--transition-colors);
+  outline: none;
+  box-shadow: 0 0 0 var(--ring-2) var(--ring-ring), 0 0 0 var(--ring-offset-2) transparent;
+  pointer-events: auto;
+  opacity: 1;
+  &:hover {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+  height: 10px;
+  padding: 2px 4px;
+  font-size: var(--text-xs);
+}
