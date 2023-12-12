@@ -130,8 +130,8 @@ export const articles = [
         description: summarize('Wie die „Krone“ berichtet hat, bezog Österreich im Oktober erstmals 90 Prozent des importierten Erdgases aus Reich von Wladimir Putin. Ein Rekordwert, seit E-Control die Daten erhebt. Das Klimaschutzministerium begründet diese Entwicklung mit dem niedrigeren Konsum.', 100),
         author: 'Österreich',
         date: '11.12.2023 20:00',
-        comments: 0,
-        likes: 0,
+        comments: 78,
+        likes: 187,
         image: '/Bild15.png' 
     },
     {
@@ -140,8 +140,8 @@ export const articles = [
       description: summarize('Kaum hat man beim FC Bayern die böse 1:5-Schlappe gegen Eintracht Frankfurt am Wochenende verdaut, gibt’s mit einem angedrohten Fan-Ausschluss den nächsten argen Nackenschlag für die Münchner! Wegen des Einsatzes verbotener Pyrotechnik sowie des Werfens von Gegenständen aus dem Bayern-Fan-Block im Auswärtsspiel beim FC Kopenhagen setzte es für die Bayern eine Geldstrafe in Höhe von 40.000 Euro.', 100),
       author: 'Fußball International',
       date: '11.12.2023 18:31',
-      comments: 0,
-      likes: 0,
+      comments: 187,
+      likes: 255,
       image: '/Bild16.png' 
   },
   {

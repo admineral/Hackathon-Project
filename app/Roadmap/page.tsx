@@ -40,7 +40,7 @@ const RoadmapItem = ({ item }: { item: Item }) => {
     const [showComments, setShowComments] = useState(false);
     const Comments = ({ item }: { item: Item }) => {
       return (
-        <div className="mt-4 bg-gray-800 p-4 rounded-lg w-full overflow-y-auto max-h-[15rem]">
+        <div className="mt-4 bg-gray-800 p-4 rounded-lg w-full overflow-y-auto max-h-[22rem]">
           {item.comments && item.comments.map((comment, index) => (
             <div key={comment.id} className={`${index !== 0 ? 'my-2' : ''} flex items-center bg-gray-900 rounded-lg`}>
               <div className="flex-grow p-4 flex items-center">
