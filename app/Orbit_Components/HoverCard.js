@@ -1,6 +1,5 @@
 // HoverCard.js
 import React, { useState, useEffect, useRef } from 'react';
-import { FaComment, FaThumbsUp } from 'react-icons/fa'; // Import Font Awesome icons
 import { BiCommentDetail } from "react-icons/bi";
 import { IoRocketOutline } from "react-icons/io5";
 import { motion } from 'framer-motion';
@@ -18,28 +17,29 @@ export default function HoverCard({ orb }) {
   };
 
   useEffect(() => {
-    let canSwitch = true; // Variable to control whether the hover card can switch positions
-  
-    const interval = setInterval(() => {
-      // Continuously check the position of the hover card and adjust its position if it's outside of the screen
-      const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
-      if (canSwitch && hoverCardPosition.right > window.innerWidth) {
-        hoverCardRef.current.style.transform = `translateX(-100%)`;
-        canSwitch = false; // Prevent further switches
-        setTimeout(() => {
-          canSwitch = true; // Allow switches again after 10 seconds
-        }, 10000);
-      } else if (canSwitch && hoverCardPosition.left < 0) {
-        hoverCardRef.current.style.transform = `translateX(0)`;
-        canSwitch = false; // Prevent further switches
-        setTimeout(() => {
-          canSwitch = true; // Allow switches again after 10 seconds
-        }, 10000);
+    const hoverCard = hoverCardRef.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // If the hover card is not fully visible
+        if (!entry.isIntersecting) {
+          // Adjust the position of the hover card
+          hoverCard.style.transform = `translateX(-100%)`;
+        }
+      },
+      {
+        // Define the margins for the root (viewport)
+        rootMargin: '0px',
+        // Set the visibility threshold to 100%
+        threshold: 1.0
       }
-    }, 100); // Check the position every 100ms
-  
-    // Clean up the interval when the component is unmounted
-    return () => clearInterval(interval);
+    );
+
+    // Start observing the hover card
+    observer.observe(hoverCard);
+
+    // Clean up the observer when the component is unmounted
+    return () => observer.unobserve(hoverCard);
   }, []);
 
   const handleLike = () => {
@@ -81,14 +81,14 @@ export default function HoverCard({ orb }) {
               <motion.div 
                 animate={hasLiked ? { x: [0, 15, -15, 0], y: [0, -15, 15, 0], opacity: [1, 0, 0, 1] } : {}}
                 transition={{ duration: 1, times: [0, 0.2, 0.8, 1], loop: Infinity }}
-                >
-                  <IoRocketOutline />
-                </motion.div>
-                <span className="ml-2">{likes}</span>
-              </motion.button>
-            </div>
-          </>
-        )}
-      </div>
-    );
-  }
+              >
+                <IoRocketOutline />
+              </motion.div>
+              <span className="ml-2">{likes}</span>
+            </motion.button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
