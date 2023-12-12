@@ -53,7 +53,7 @@ export default function EditorPicks() {
             {articles.map((article, index) => {
               const isRocketClicked = rocketStates[article.id.toString()].isClicked;
               const likes = rocketStates[article.id.toString()].likes;
-  
+
               return (
                 <motion.div 
                   key={article.id} 
@@ -82,28 +82,26 @@ export default function EditorPicks() {
                       <p className="text-gray-400 text-xs">{article.author}</p>
                       <p className="text-gray-400 text-xs">{article.date}</p>
                     </div>
-                    {!article.isAd && (
-                      <div className="flex justify-between mt-4">
-                        <button className="text-gray-400 flex items-center">
-                          <BiCommentDetail />
-                          <span className="ml-2">{article.comments}</span>
-                        </button>
-                        <motion.button 
-                          className={`border border-gray-400 rounded-lg px-3 py-1 flex items-center ${isRocketClicked ? 'bg-blue-300 text-black' : 'text-gray-400'}`}
-                          onClick={() => handleRocketClick(article.id.toString())}
-                          whileHover={{ scale: 1.2 }}
-                          transition={{ duration: 0.3 }}
+                    <div className="flex justify-between mt-4">
+                      <button className="text-gray-400 flex items-center">
+                        <BiCommentDetail />
+                        <span className="ml-2">{article.comments}</span>
+                      </button>
+                      <motion.button 
+                        className={`border border-gray-400 rounded-lg px-3 py-1 flex items-center ${isRocketClicked ? 'bg-blue-300 text-black' : 'text-gray-400'}`}
+                        onClick={() => handleRocketClick(article.id.toString())}
+                        whileHover={{ scale: 1.2 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <motion.div 
+                          animate={isRocketClicked ? { x: [0, 15, -15, 0], y: [0, -15, 15, 0], opacity: [1, 0, 0, 1] } : {}}
+                          transition={{ duration: 1, times: [0, 0.2, 0.8, 1], loop: Infinity }}
                         >
-                          <motion.div 
-                            animate={isRocketClicked ? { x: [0, 15, -15, 0], y: [0, -15, 15, 0], opacity: [1, 0, 0, 1] } : {}}
-                            transition={{ duration: 1, times: [0, 0.2, 0.8, 1], loop: Infinity }}
-                          >
-                            <IoRocketOutline/>
-                          </motion.div>
-                          <span className="ml-2">{likes}</span>
-                        </motion.button>
-                      </div>
-                    )}
+                          <IoRocketOutline/>
+                        </motion.div>
+                        <span className="ml-2">{likes}</span>
+                      </motion.button>
+                    </div>
                   </div>
                 </motion.div>
               );
