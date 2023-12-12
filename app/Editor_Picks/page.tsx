@@ -55,12 +55,13 @@ export default function EditorPicks() {
               const likes = rocketStates[article.id.toString()].likes;
   
               return (
-                <motion.div 
-                  key={article.id} 
-                  className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-80 rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white border border-gray-500 mx-2 my-2"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
+<motion.div 
+  key={article.id} 
+  className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-80 rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white border border-gray-500 mx-2 my-2"
+  style={{ height: 'auto' }}
+  whileHover={{ scale: 1.02 }}
+  transition={{ duration: 0.3 }}
+>
                   <div className="relative">
                     <Image
                       alt="Article image"
