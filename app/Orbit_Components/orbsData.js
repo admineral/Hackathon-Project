@@ -29,7 +29,7 @@ export default [
       { size: '27', headline: 'Orbit 3 Orb 8', text: 'This is the text for orbit 3 orb 8.' },
       { size: '42', headline: 'Orbit 3 Orb 9', text: 'This is the text for orbit 3 orb 9.' },
       { size: '26', headline: 'Orbit 3 Orb 10', text: 'This is the text for orbit 3 orb 10.' },
-      { size: '33', headline: 'Orbit 3 Orb 11', text: 'This is the text for orbit 3 orb 11.' },
+      { size: '55', headline: 'Weiße Weihnachten?', text: 'Die Chance auf weiße Weihnachten auch in den Tälern lebt. Es wird aber eine Zitterpartie', image: '/Bild2.png' },
       
      
     ],
