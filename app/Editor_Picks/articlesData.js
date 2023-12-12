@@ -125,7 +125,7 @@ export const articles = [
           isAd: true
       },
       {
-        id: 14,
+        id: 12,
         title: 'OBWOHL VERBRAUCH SINKT',
         description: summarize('Wie die „Krone“ berichtet hat, bezog Österreich im Oktober erstmals 90 Prozent des importierten Erdgases aus Reich von Wladimir Putin. Ein Rekordwert, seit E-Control die Daten erhebt. Das Klimaschutzministerium begründet diese Entwicklung mit dem niedrigeren Konsum.', 100),
         author: 'Österreich',
@@ -135,7 +135,7 @@ export const articles = [
         image: '/Bild15.png' 
     },
     {
-      id: 15,
+      id: 13,
       title: 'NÄCHSTER NACKENSCHLAG',
       description: summarize('Kaum hat man beim FC Bayern die böse 1:5-Schlappe gegen Eintracht Frankfurt am Wochenende verdaut, gibt’s mit einem angedrohten Fan-Ausschluss den nächsten argen Nackenschlag für die Münchner! Wegen des Einsatzes verbotener Pyrotechnik sowie des Werfens von Gegenständen aus dem Bayern-Fan-Block im Auswärtsspiel beim FC Kopenhagen setzte es für die Bayern eine Geldstrafe in Höhe von 40.000 Euro.', 100),
       author: 'Fußball International',
@@ -145,7 +145,7 @@ export const articles = [
       image: '/Bild16.png' 
   },
   {
-    id: 16,
+    id: 14,
     title: 'Die häufigsten Fehler beim Fahren mit Automatikgetriebe',
     description: 'Anzeige',
     author: 'FREENET.DE',
@@ -154,7 +154,88 @@ export const articles = [
     likes: 0,
     image: '/Bild17.png',
     isAd: true
-}
+},
+{
+  id: 15,
+  title: 'ÖVP ÜBER GRÜNE EMPÖRT',
+  description: summarize('Aktivistin beschützt? Krach nach „Zadic-Weisung“. Eine Weisung des Justizministeriums zur Haftfrage im Ermittlungsverfahren gegen die deutsche Klimaaktivistin Anja Windl sorgt für koalitionäre Verstimmung. ÖVP-Generalsekretär Christian Stocker verlangt von der grünen Justizministerin Alma Zadić Aufklärung.', 100),
+  author: 'Politik',
+  date: '12.12.2023 16:28',
+  comments: 0,
+  likes: 0,
+  image: '/Bild18.png'
+},
+{
+  id: 16,
+  title: 'SPIELTE MIT ŠIMIĆ',
+  description: summarize('Mysteriös! Kroaten-Fußballer stirbt mit 34 Jahren. Eine Sportler-Tragödie erschüttert den Fußball in Kroatien: Plötzlich und unerwartet ist ausgerechnet wenige Tage vor Weihnachten der langjährige Erstliga-Kicker Ivan Čeliković verstorben! Der in der Saison 2020/21 beim NK Lokomotiva Zagreb mit dem jetzigen Salzburger Roko Šimić als Teamkamerad aufgelaufene Defensiv-Spezialist wurde nur 34 Jahre alt. Zur Todesursache wurden keine Angaben gemacht …', 100),
+  author: 'Fußball International',
+  date: '12.12.2023 17:42',
+  comments: 0,
+  likes: 0,
+  image: '/Bild19.png'
+},
+{
+  id: 17,
+  title: 'RUMOREN IM BENKO-REICH',
+  description: summarize('„Fragwürdige Geschäfte“ Grund für Signa-Abgang? Die Signa kommt nicht zur Ruhe: Offenkundig wurden die Ungereimtheiten innerhalb des Imperiums von Immobilienjongleur René Benko Montagabend, als der Konzern die fristlose Entlassung von Top-Manager Timo Herzberg bekannt gab. Hintergrund dürften fragwürdige Geschäfte sein.', 100),
+  author: 'Wirtschaft',
+  date: '12.12.2023 16:18',
+  comments: 0,
+  likes: 0,
+  image: '/Bild20.png'
+},
+{
+  id: 18,
+  title: 'KLEINKIND ALS HELD',
+  description: summarize('Vierjähriger bemerkte Brand und alarmierte Vater. Ein Vierjähriger machte auf einen Wohnungsbrand in St. Martin/T. (Pongau) in Salzburg aufmerksam, wodurch die Einsatzkräfte rasch alarmiert werden konnten.', 100),
+  author: 'Salzburg',
+  date: '12.12.2023 16:29',
+  comments: 0,
+  likes: 0,
+  image: '/Bild21.png'
+  },
+  {
+    id: 19,
+    title: 'TRAGISCHER TODESFALL',
+    description: summarize('Vater brach beim Schaufeln von Schnee tot zusammen. Ein Familienvater wollte vermutlich die Solarpaneele vom Schnee befreien - ein Vorhaben, dass ihm zum tödlichen Verhängnis wurde. Beim Abschaufeln der Photovoltaikanlage auf einem Dach seines Bauernhofs soll ein Familienvater in Herzogsdorf verstorben sein - allerdings nicht durch einen Absturz.', 100),
+    author: 'Oberösterreich',
+    date: '07.12.2023 06:00',
+    comments: 0,
+    likes: 0,
+    image: '/Bild22.png'
+  },
+  {
+    id: 20,
+    title: 'KLIRRENDE KÄLTE',
+    description: summarize('Nach Schneewalze kommt die Eispeitsche: -16 Grad! Nach dem Schneechaos am Samstag hat sich die Lage zwar beruhigt. Neuschnee blieb am Sonntag aus, dafür legt sich laut Meteorologen im Laufe der Abend- und Nachtstunden klirrende Kälte mit bis zu minus 16 Grad über das Land.', 100),
+    author: 'Wien',
+    date: '03.12.2023 16:40',
+    comments: 0,
+    likes: 0,
+    image: '/Bild23.png'
+  },
+  {
+    id: 21,
+    title: 'FORGE OF EMPIRES',
+    description: 'Wenn du Strategiespiele liebst, ist dieses Spiel ein Muss',
+    author: 'Ad',
+    date: '',
+    comments: 0,
+    likes: 0,
+    image: '/Bild24.png',
+    isAd: true
+  },
+  {
+    id: 22,
+    title: 'SCHIN-BET-VERHÖR',
+    description: summarize('„Verrückte“: Ex-Minister rechnet nun mit Hamas ab. Der ehemalige Kommunikationsminister der Hamas hat in einem Verhör beim israelischen Inlandsgeheimdienst den jetzigen Terror-Chef Yahya al-Sinwar scharf kritisiert. Die Führung der Hamas sei eine Gruppe von „Verrückten“.', 100),
+    author: 'Ausland',
+    date: '12.12.2023 19:25',
+    comments: 0,
+    likes: 0,
+    image: '/Bild25.png'
+  }
 
 
 
