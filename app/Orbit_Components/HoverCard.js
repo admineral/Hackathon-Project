@@ -25,19 +25,19 @@ export default function HoverCard({ orb }) {
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
       if (window.innerWidth <= 768) { 
         if (canSwitch && hoverCardPosition.right > window.innerWidth) {
-          hoverCardRef.current.style.transition = 'transform 5s'; 
+          hoverCardRef.current.style.transition = 'transform 6s'; 
           hoverCardRef.current.style.transform = `translateX(-100%)`;
           canSwitch = false; 
           setTimeout(() => {
             canSwitch = true; 
-          }, 6000);
+          }, 2000);
         } else if (canSwitch && hoverCardPosition.left < 0) {
-          hoverCardRef.current.style.transition = 'transform 5s'; 
+          hoverCardRef.current.style.transition = 'transform 6s'; 
           hoverCardRef.current.style.transform = `translateX(0)`;
           canSwitch = false; 
           setTimeout(() => {
             canSwitch = true; 
-          }, 6000);
+          }, 2000);
         }
       }
     }, 100); 
