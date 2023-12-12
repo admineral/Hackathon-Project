@@ -30,14 +30,14 @@ export default function HoverCard({ orb }) {
           canSwitch = false; // Prevent further switches
           setTimeout(() => {
             canSwitch = true; // Allow switches again after 10 seconds
-          }, 9000);
+          }, 8000);
         } else if (canSwitch && hoverCardPosition.left < 0) {
-          hoverCardRef.current.style.transition = 'transform 3s'; // Add this line
+          hoverCardRef.current.style.transition = 'transform 4s'; // Add this line
           hoverCardRef.current.style.transform = `translateX(0)`;
           canSwitch = false; // Prevent further switches
           setTimeout(() => {
             canSwitch = true; // Allow switches again after 10 seconds
-          }, 9000);
+          }, 8000);
         }
       }
     }, 100); // Check the position every 100ms
