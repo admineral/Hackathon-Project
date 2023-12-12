@@ -85,7 +85,7 @@ export default function EditorPicks() {
                     {!article.isAd && (
                       <div className="flex justify-between mt-4">
                         <button className="text-gray-400 flex items-center">
-                          <BiCommentDetail />
+                          <BiCommentDetail style={{ fontSize: '20px' }} /> {/* Adjusted icon size */}
                           <span className="ml-2">{article.comments}</span>
                         </button>
                         <motion.button 
