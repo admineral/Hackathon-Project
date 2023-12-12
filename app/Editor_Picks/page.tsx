@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Image from "next/image";
 import { IoRocketOutline } from "react-icons/io5";
+import { motion } from 'framer-motion';
 import { articles } from './articlesData';
 import { BiCommentDetail } from "react-icons/bi";
 
@@ -63,7 +64,12 @@ export default function EditorPicks() {
                         className={`border border-gray-400 rounded-lg px-3 py-1 flex items-center ${isRocketClicked ? 'bg-blue-300 text-black' : 'text-gray-400'}`}
                         onClick={handleRocketClick}
                       >
-                        <IoRocketOutline/>
+                        <motion.div 
+                          animate={isRocketClicked ? { x: [0, 15, -15, 0], y: [0, -15, 15, 0], opacity: [1, 0, 1, 1] } : {}}
+                          transition={{ duration: 1, loop: Infinity }}
+                        >
+                          <IoRocketOutline/>
+                        </motion.div>
                         <span className="ml-2">{likes}</span>
                       </button>
                     </div>
