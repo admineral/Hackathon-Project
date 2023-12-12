@@ -212,7 +212,7 @@ export const articles = [
     author: 'Wien',
     date: '03.12.2023 16:40',
     comments: 67,
-    likes: 123,
+    likes: 97,
     image: '/Bild23.png'
   },
   {
@@ -262,8 +262,8 @@ export const articles = [
     description: summarize('Covid: „Die Leute sollten weniger Angst haben“. In gewissen Fällen hilft ein Medikament schon mit einer Infusion. Das fanden Mediziner in Salzburg heraus. Ein Arzt will die Angst vor Corona senken.', 100),
     author: 'Salzburg',
     date: '06.12.2023 09:00',
-    comments: 88,
-    likes: 124,
+    comments: 109,
+    likes: 154,
     image: '/Bild28.png'
   },
   {
@@ -272,7 +272,7 @@ export const articles = [
     description: summarize('Neue Beweise, dass Schmid log? Kurz-Team blitzt ab. Thomas Schmid hat am Montag vor Gericht gegen Sebastian Kurz ausgesagt. Acht Stunden lang dauerte die Befragung. Die Verteidigung von Kurz versuchte, die Glaubwürdigkeit des Zeugen zu untergraben und wollte dazu neue Beweismittel vorlegen. Der Richter schmetterte aber all diese Versuche ab.', 100),
     author: 'Politik',
     date: '11.12.2023 19:17',
-    comments: 30,
+    comments: 78,
     likes: 199,
     image: '/Bild29.png'
     },
@@ -343,7 +343,7 @@ export const articles = [
                 description: summarize('„Bei den Gehältern wird dir angst und bange“. Die Stadt Wien hat erst vorige Woche das 150 Millionen Euro schwere Personalpaket für die Mitarbeiter des Gesundheitsverbundes vorgestellt - der Ärztekammer ist das zu wenig, sie ruft zum Protestmarsch auf. Wir befragen den zuständigen Gesundheitsstadtrat: Peter Hacker (SPÖ) über den Ärzteprotest als Punschstand-Tour, die Skandale der Kammer und das Ende der Privatpraxen nebenbei.', 100),
                 author: 'Wien',
                 date: '29.11.2023 06:00',
-                comments: 77,
+                comments: 122,
                 likes: 233,
                 image: '/Bild37.png'
                 },
@@ -353,8 +353,8 @@ export const articles = [
                   description: summarize('Van der Bellen rügt Klima-Zankereien der Regierung. Angesichts der Differenzen in der Regierung zum Klimaplan mahnt Bundespräsident Alexander Van der Bellen zu Tempo beim Klimaschutz. Den Regierungsstreit wolle der 79-Jährige aber nicht bewerten. Eines könne er aber mit Sicherheit sagen: Der Klimawandel sei kein „Scherzproblem“.', 100),
                   author: 'Politik',
                   date: '05.12.2023 15:07',
-                  comments: 98,
-                  likes: 145,
+                  comments: 105,
+                  likes: 195,
                   image: '/Bild38.png'
                   },
                   {

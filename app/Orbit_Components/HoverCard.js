@@ -47,10 +47,8 @@ export default function HoverCard({ orb }) {
   }, []);
 
   const handleLike = () => {
-    if (!hasLiked) { 
-      setLikes(likes + 1); 
-      setHasLiked(true); 
-    }
+    setHasLiked(!hasLiked);
+    setLikes(likes + (hasLiked ? -1 : 1));
   };
 
   return (
