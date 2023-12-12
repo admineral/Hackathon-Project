@@ -92,17 +92,17 @@ export const articles = [
           image: '/Bild14.png',
           isAd: true
       },
-
-        {
-          id: 9,
-          title: 'PLANT „SCHOCKTHERAPIE“',
-          description: summarize('Inmitten einer schweren Wirtschaftskrise ist der ultraliberale Ökonom Javier Milei am Sonntag vor dem Parlament in Buenos Aires als argentinischer Präsident vereidigt worden. In seiner Antrittsrede stimmte der 53-Jährige die Bevölkerung auf eine wirtschaftliche Rosskur ein. Es gebe keine Alternative zu einer finanzpolitischen Schocktherapie, so Milei.', 100),
-          author: 'Krone.at',
-          date: '10.12.2023 19:21',
-          comments: 4,
-          likes: 23,
-          image: '/Bild2.png' 
+      {
+        id: 9,
+        title: 'TEAMWORK BRINGT‘S',
+        description: summarize('Hackathon macht die „Krone“ fit für die Zukunft. Spannender zweiter Tag beim „Hackathon - The Crown“. Für die einzelnen Teams bestehend aus Jugendlichen und Young Professionals aus verschiedenen Fachdisziplinen hieß es am Dienstag, ihre Ideen und Projekte zu gestalten, um damit die „Krone“ und vielleicht die Medienwelt der Zukunft revolutionieren zu können.', 100),
+        author: 'Österreich',
+        date: '12.12.2023 16:12',
+        comments: 0,
+        likes: 0,
+        image: '/Bild30.png'
         },
+
         {
           id: 10,
           title: 'BEI LOTTERIEN GEMELDET',
@@ -235,7 +235,149 @@ export const articles = [
     comments: 0,
     likes: 0,
     image: '/Bild25.png'
-  }
+  },
+  {
+    id: 23,
+    title: 'DROHUNG AN LETTLAND',
+    description: summarize('Putin reitet mit Tirade gegen NATO-Land aus. Gerade vor dem Hintergrund des Überfalls auf die Ukraine lässt Russlands Präsident Wladimir Putin derzeit mit bemerkenswert bedrohlichen Aussagen aufhorchen. Sein Ziel diesmal: Lettland. Der Baltenstaat behandle seine russische Minderheit „schweinisch“, so der Kreml-Chef - und sprach zugleich eine Drohung aus.', 100),
+    author: 'Ausland',
+    date: '05.12.2023 06:41',
+    comments: 0,
+    likes: 0,
+    image: '/Bild26.png'
+  },
+  {
+    id: 24,
+    title: 'PV-FIRMA INSOLVENT',
+    description: summarize('Großpleite vor Weihnachten: 94 Jobs in Gefahr! Schon vor zwei Jahren ist der Kärntner Photovoltaik-Spezialist Energetica in die Pleite geschlittert. Kaum durch prominente Großinvestoren wie Raiffeisen gerettet, musste nun neuerlich Konkurs angemeldet werden - mit insgesamt 40 Millionen Euro! 94 Dienstnehmer bangen um ihre Jobs - und das vor Weihnachten.', 100),
+    author: 'Kärnten',
+    date: '07.12.2023 16:01',
+    comments: 0,
+    likes: 0,
+    image: '/Bild27.png'
+  },
+  {
+    id: 25,
+    title: 'SALZBURGER MEDIZINER',
+    description: summarize('Covid: „Die Leute sollten weniger Angst haben“. In gewissen Fällen hilft ein Medikament schon mit einer Infusion. Das fanden Mediziner in Salzburg heraus. Ein Arzt will die Angst vor Corona senken.', 100),
+    author: 'Salzburg',
+    date: '06.12.2023 09:00',
+    comments: 0,
+    likes: 0,
+    image: '/Bild28.png'
+  },
+  {
+    id: 26,
+    title: '„SEHR GUTER AUFTRITT“',
+    description: summarize('Neue Beweise, dass Schmid log? Kurz-Team blitzt ab. Thomas Schmid hat am Montag vor Gericht gegen Sebastian Kurz ausgesagt. Acht Stunden lang dauerte die Befragung. Die Verteidigung von Kurz versuchte, die Glaubwürdigkeit des Zeugen zu untergraben und wollte dazu neue Beweismittel vorlegen. Der Richter schmetterte aber all diese Versuche ab.', 100),
+    author: 'Politik',
+    date: '11.12.2023 19:17',
+    comments: 0,
+    likes: 0,
+    image: '/Bild29.png'
+    },
+    {
+      id: 27,
+      title: 'PLANT „SCHOCKTHERAPIE“',
+      description: summarize('Inmitten einer schweren Wirtschaftskrise ist der ultraliberale Ökonom Javier Milei am Sonntag vor dem Parlament in Buenos Aires als argentinischer Präsident vereidigt worden. In seiner Antrittsrede stimmte der 53-Jährige die Bevölkerung auf eine wirtschaftliche Rosskur ein. Es gebe keine Alternative zu einer finanzpolitischen Schocktherapie, so Milei.', 100),
+      author: 'Krone.at',
+      date: '10.12.2023 19:21',
+      comments: 4,
+      likes: 23,
+      image: '/Bild2.png' 
+    },
+    {
+      id: 28,
+      title: '„KRONE“-ADVENTKALENDER',
+      description: summarize('Die Gewinner vom 01.12.2023. Verlost wurden 4 x 1 Samsung Galaxy Z Flip5 Smartphone. Das Galaxy Z Flip5 flext mit Vielfalt: Einfach falten und in die Hosentasche stecken. Freihändige Selfies. Aufnahmen ohne Stativ. Wie einen Laptop abstellen und freihändig die coolsten Bilder und Aufnahmen damit machen.', 100),
+      author: 'Nachrichten',
+      date: '07.12.2023 07:44',
+      comments: 0,
+      likes: 0,
+      image: '/Bild31.png'
+      },
+      {
+        id: 29,
+        title: 'BEEINDRUCKENDES VIDEO',
+        description: summarize('Gewaltige Sprengung mitten im Rottauer Stausee. Die Bilder von der Sprengung mitten im Rottauer Stausee sind äußerst beeindruckend. Die „Krone“ sprach mit Sprengmeister Franz Schuster über die Explosion und die damit verbundenen Gefahren.', 100),
+        author: 'Kärnten',
+        date: '08.12.2023 08:01',
+        comments: 0,
+        likes: 0,
+        image: '/Bild32.png'
+        },
+        {
+          id: 30,
+          title: 'RAID',
+          description: 'Spiele das beste RPG Abenteuer 2024 jetzt gratis!',
+          author: 'Anzeige',
+          date: '',
+          comments: 0,
+          likes: 0,
+          image: '/Bild33.png',
+          isAd: true
+          },
+          {
+            id: 31,
+            title: '20 SEKUNDEN FALL',
+            description: summarize('Bungee-Sprung aus 233 Metern Höhe: Mann tot. Trauer und Bestürzung herrschen derzeit in China. Dort ist nach einem Bungee-Sprung von einer der weltweit höchsten dafür vorgesehenen Plattformen ein Tourist verstorben.', 100),
+            author: 'Ausland',
+            date: '04.12.2023 15:44',
+            comments: 0,
+            likes: 0,
+            image: '/Bild34.png'
+            },
+            {
+              id: 32,
+              title: 'VON AUTO GERAMMT',
+              description: summarize('Todesdrama! Ski-WM-Bronzener stirbt mit 35 Jahren. Schockwellen der Bestürzung und der Trauer erfüllen die Welt der Freestyle-Skifahrer: Maxim Gustik ist im Alter von gerade einmal 35 Jahren gestorben! Der Weißrusse kam bei einem tragischen Unfall in seiner Heimatstadt Minsk ums Leben, er wurde von einem Auto erfasst und tödlich verletzt ...', 100),
+              author: 'Wintersport',
+              date: '11.12.2023 17:34',
+              comments: 0,
+              likes: 0,
+              image: '/Bild35.png'
+              },
+              {
+                id: 33,
+                title: 'HACKER ÜBER KAMMER:',
+                description: summarize('„Bei den Gehältern wird dir angst und bange“. Die Stadt Wien hat erst vorige Woche das 150 Millionen Euro schwere Personalpaket für die Mitarbeiter des Gesundheitsverbundes vorgestellt - der Ärztekammer ist das zu wenig, sie ruft zum Protestmarsch auf. Wir befragen den zuständigen Gesundheitsstadtrat: Peter Hacker (SPÖ) über den Ärzteprotest als Punschstand-Tour, die Skandale der Kammer und das Ende der Privatpraxen nebenbei.', 100),
+                author: 'Wien',
+                date: '29.11.2023 06:00',
+                comments: 0,
+                likes: 0,
+                image: '/Bild37.png'
+                },
+                {
+                  id: 34,
+                  title: '„KEIN SCHERZPROBLEM“',
+                  description: summarize('Van der Bellen rügt Klima-Zankereien der Regierung. Angesichts der Differenzen in der Regierung zum Klimaplan mahnt Bundespräsident Alexander Van der Bellen zu Tempo beim Klimaschutz. Den Regierungsstreit wolle der 79-Jährige aber nicht bewerten. Eines könne er aber mit Sicherheit sagen: Der Klimawandel sei kein „Scherzproblem“.', 100),
+                  author: 'Politik',
+                  date: '05.12.2023 15:07',
+                  comments: 0,
+                  likes: 0,
+                  image: '/Bild38.png'
+                  },
+                  {
+                    id: 35,
+                    title: 'SCHNOPSN.COM',
+                    description: 'Österreichs Kultspiel Schnapsen jetzt auch um echtes Geld!',
+                    author: 'Anzeige',
+                    date: '',
+                    comments: 0,
+                    likes: 0,
+                    image: '/Bild39.png',
+                    isAd: true
+                    },
+                    {
+                      id: 36,
+                      title: 'TIERE AN BORD',
+                      description: summarize('Iran testete Raumkapsel für Astronauten. Der Iran hat am Mittwoch - laut eigenen Angaben erfolgreich - eine Raumkapsel zur künftigen Beförderung von Astronauten getestet. Wann die Islamische Republik mit der neuen Technologie Menschen ins Weltall befördern will, ist unklar.', 100),
+                      author: 'Wissenschaft',
+                      date: '07.12.2023 10:58',
+                      comments: 0,
+                      likes: 0,
+                      image: '/Bild40.png'
+                      }
 
 
 
