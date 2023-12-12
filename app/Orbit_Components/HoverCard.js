@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 export default function HoverCard({ orb }) {
   const [activeOrb, setActiveOrb] = useState(null);
-  const [likes, setLikes] = useState(0); // State to keep track of likes
+  const [likes, setLikes] = useState(orb.likes); // Initialize likes from orb data
   const [hasLiked, setHasLiked] = useState(false); // State to keep track of whether the user has liked the orb
   const hoverCardRef = useRef(null); // Ref to the hover card
 
@@ -25,12 +25,14 @@ export default function HoverCard({ orb }) {
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
       if (window.innerWidth <= 768) { // Check if the viewport width is less than or equal to 768px
         if (canSwitch && hoverCardPosition.right > window.innerWidth) {
+          hoverCardRef.current.style.transition = 'transform 3s'; // Add this line
           hoverCardRef.current.style.transform = `translateX(-100%)`;
           canSwitch = false; // Prevent further switches
           setTimeout(() => {
             canSwitch = true; // Allow switches again after 10 seconds
           }, 10000);
         } else if (canSwitch && hoverCardPosition.left < 0) {
+          hoverCardRef.current.style.transition = 'transform 3s'; // Add this line
           hoverCardRef.current.style.transform = `translateX(0)`;
           canSwitch = false; // Prevent further switches
           setTimeout(() => {
@@ -72,7 +74,7 @@ export default function HoverCard({ orb }) {
           <div className="flex justify-between mt-4">
             <button className="text-gray-400 flex items-center">
               <BiCommentDetail style={{ fontSize: '20px' }} />
-              <span className="ml-2">{orb.comments || 10}</span> {/* Fictive number of comments */}
+              <span className="ml-2">{orb.comments}</span> {/* Use comments from orb data */}
             </button>
             <motion.button 
               className={`border border-gray-400 rounded-lg px-3 py-1 flex items-center ${hasLiked ? 'bg-blue-300 text-black' : 'text-gray-400'}`}
