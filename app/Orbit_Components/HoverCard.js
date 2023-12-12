@@ -30,14 +30,14 @@ export default function HoverCard({ orb }) {
           canSwitch = false; 
           setTimeout(() => {
             canSwitch = true; 
-          }, 3000);
+          }, 5000);
         } else if (canSwitch && hoverCardPosition.left < 0) {
           hoverCardRef.current.style.transition = 'transform 6s'; 
           hoverCardRef.current.style.transform = `translateX(0)`;
           canSwitch = false; 
           setTimeout(() => {
             canSwitch = true; 
-          }, 3000);
+          }, 5000);
         }
       }
     }, 100); 
