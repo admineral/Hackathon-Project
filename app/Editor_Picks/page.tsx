@@ -65,8 +65,8 @@ export default function EditorPicks() {
                         onClick={handleRocketClick}
                       >
                         <motion.div 
-                          animate={isRocketClicked ? { x: [0, 15, -15, 0], y: [0, -15, 15, 0], opacity: [1, 0, 1, 1] } : {}}
-                          transition={{ duration: 1, loop: Infinity }}
+                          animate={isRocketClicked ? { x: [0, 15, -15, 0], y: [0, -15, 15, 0], opacity: [1, 0, 0, 1] } : {}}
+                          transition={{ duration: 1, times: [0, 0.2, 0.8, 1], loop: Infinity }}
                         >
                           <IoRocketOutline/>
                         </motion.div>
