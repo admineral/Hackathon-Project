@@ -1,36 +1,65 @@
-// orbsData.js
-export default [
-    [
-      { size: '11', headline: 'Orbit 1 Orb 1', text: 'This is the text for orbit 1 orb 1.' },
-      { size: '11', headline: 'Orbit 1 Orb 2', text: 'This is the text for orbit 1 orb 2.' },
-      { size: '11', headline: 'Orbit 1 Orb 3', text: 'This is the text for orbit 1 orb 3.' },
-      { size: '11', headline: 'Orbit 1 Orb 4', text: 'This is the text for orbit 1 orb 4.' },
-      { size: '11', headline: 'Orbit 1 Orb 5', text: 'This is the text for orbit 1 orb 5.' },
-      
-    ],
-    [
-      { size: '20', headline: 'Orbit 2 Orb 1', text: 'This is the text for orbit 2 orb 1.' },
-      { size: '20', headline: 'Orbit 2 Orb 2', text: 'This is the text for orbit 2 orb 2.' },
-      { size: '20', headline: 'Orbit 2 Orb 3', text: 'This is the text for orbit 2 orb 3.' },
-      { size: '20', headline: 'Orbit 2 Orb 4', text: 'This is the text for orbit 2 orb 4.' },
-      { size: '20', headline: 'Orbit 2 Orb 5', text: 'This is the text for orbit 2 orb 5.' },
-      { size: '20', headline: 'Orbit 2 Orb 6', text: 'This is the text for orbit 2 orb 6.' },
-      { size: '20', headline: 'Orbit 2 Orb 7', text: 'This is the text for orbit 2 orb 7.' },
-      { size: '20', headline: 'Orbit 2 Orb 8', text: 'This is the text for orbit 2 orb 8.' },
-    ],
-    [
-      { size: '30', headline: 'Orbit 3 Orb 1', text: 'This is the text for orbit 3 orb 1.' },
-      { size: '35', headline: 'Orbit 3 Orb 2', text: 'This is the text for orbit 3 orb 2.' },
-      { size: '28', headline: 'Orbit 3 Orb 3', text: 'This is the text for orbit 3 orb 3.' },
-      { size: '30', headline: 'Orbit 3 Orb 4', text: 'This is the text for orbit 3 orb 4.' },
-      { size: '32', headline: 'Orbit 3 Orb 5', text: 'This is the text for orbit 3 orb 5.' },
-      { size: '38', headline: 'Orbit 3 Orb 6', text: 'This is the text for orbit 3 orb 6.' },
-      { size: '20', headline: 'Orbit 3 Orb 7', text: 'This is the text for orbit 3 orb 7.' },
-      { size: '27', headline: 'Orbit 3 Orb 8', text: 'This is the text for orbit 3 orb 8.' },
-      { size: '42', headline: 'Orbit 3 Orb 9', text: 'This is the text for orbit 3 orb 9.' },
-      { size: '26', headline: 'Orbit 3 Orb 10', text: 'This is the text for orbit 3 orb 10.' },
-      { size: '55', headline: 'Weiße Weihnachten?', text: 'Die Chance auf weiße Weihnachten auch in den Tälern lebt. Es wird aber eine Zitterpartie', image: '/Bild2.png', comments: 5, likes: 10 },
-      
-     
-    ],
+import articles from '../Editor_Picks/articlesData.js';
+
+// Define the size for each orbit
+const ORBIT_SIZES = [
+  { min: 10, max: 15 },
+  { min: 5, max: 30 },
+  { min: 20, max: 30 }
 ];
+
+// Define the relevance range for each orbit
+const ORBIT_RELEVANCE_RANGES = [
+  { min: 0, max: 100 },
+  { min: 51, max: 300 },
+  { min: 201, max: 300 }
+];
+
+// Function to calculate the relevance score
+function calculateRelevance(article) {
+  const likesWeight = 2;
+  const commentsWeight = 1;
+  return likesWeight * article.likes + commentsWeight * article.comments;
+}
+
+// Function to map a relevance score to a size within a given range
+function mapRelevanceToSize(relevance, sizeRange) {
+  const normalizedRelevance = (relevance - ORBIT_RELEVANCE_RANGES[0].min) / (ORBIT_RELEVANCE_RANGES[2].max - ORBIT_RELEVANCE_RANGES[0].min);
+  return sizeRange.min + normalizedRelevance * (sizeRange.max - sizeRange.min);
+}
+
+// Function to map articles to orbs
+function mapArticlesToOrbs(articles) {
+  const orbsData = [[], [], []];
+
+  articles.forEach(article => {
+    const relevance = calculateRelevance(article);
+    let orbitIndex;
+
+    if (relevance <= ORBIT_RELEVANCE_RANGES[0].max) {
+      orbitIndex = 0;
+    } else if (relevance <= ORBIT_RELEVANCE_RANGES[1].max) {
+      orbitIndex = 1;
+    } else {
+      orbitIndex = 2;
+    }
+
+    const orb = {
+      size: mapRelevanceToSize(relevance, ORBIT_SIZES[orbitIndex]),
+      headline: article.title,
+      text: article.description,
+      image: article.image,
+      comments: article.comments,
+      likes: article.likes,
+      isAd: article.isAd // Add this line
+    };
+
+    orbsData[orbitIndex].push(orb);
+  });
+
+  return orbsData;
+}
+
+// Use the mapArticlesToOrbs function to transform your articles data
+const orbsData = mapArticlesToOrbs(articles);
+
+export default orbsData;
