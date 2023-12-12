@@ -8,7 +8,34 @@ import { motion } from 'framer-motion';
 import { articles } from './articlesData';
 import { BiCommentDetail } from "react-icons/bi";
 
+type RocketState = {
+  [key: string]: {
+    isClicked: boolean;
+    likes: number;
+  };
+};
+
 export default function EditorPicks() {
+  const [rocketStates, setRocketStates] = useState<RocketState>(
+    articles.reduce(
+      (acc, article) => ({
+        ...acc,
+        [article.id.toString()]: { isClicked: false, likes: article.likes },
+      }),
+      {}
+    )
+  );
+
+  const handleRocketClick = (id: string) => {
+    setRocketStates({
+      ...rocketStates,
+      [id]: {
+        isClicked: !rocketStates[id].isClicked,
+        likes: rocketStates[id].likes + 1,
+      },
+    });
+  };
+
   return (
     <div className="w-full mx-auto">
       <Head>
@@ -24,16 +51,16 @@ export default function EditorPicks() {
           </h2>
           <div className="flex overflow-x-auto space-x-4 pb-4">
             {articles.map((article, index) => {
-              const [isRocketClicked, setIsRocketClicked] = useState(false);
-              const [likes, setLikes] = useState(article.likes);
-
-              const handleRocketClick = () => {
-                setIsRocketClicked(!isRocketClicked);
-                setLikes(likes + 1);
-              };
+              const isRocketClicked = rocketStates[article.id.toString()].isClicked;
+              const likes = rocketStates[article.id.toString()].likes;
 
               return (
-                <div key={article.id} className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-80 rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white border border-gray-500 mx-2 my-2">
+                <motion.div 
+                  key={article.id} 
+                  className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-80 rounded-lg overflow-hidden shadow-lg bg-gray-800 text-white border border-gray-500 mx-2 my-2"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <div className="relative">
                     <Image
                       alt="Article image"
@@ -60,9 +87,11 @@ export default function EditorPicks() {
                         <BiCommentDetail />
                         <span className="ml-2">{article.comments}</span>
                       </button>
-                      <button 
+                      <motion.button 
                         className={`border border-gray-400 rounded-lg px-3 py-1 flex items-center ${isRocketClicked ? 'bg-blue-300 text-black' : 'text-gray-400'}`}
-                        onClick={handleRocketClick}
+                        onClick={() => handleRocketClick(article.id.toString())}
+                        whileHover={{ scale: 1.2 }}
+                        transition={{ duration: 0.3 }}
                       >
                         <motion.div 
                           animate={isRocketClicked ? { x: [0, 15, -15, 0], y: [0, -15, 15, 0], opacity: [1, 0, 0, 1] } : {}}
@@ -71,10 +100,10 @@ export default function EditorPicks() {
                           <IoRocketOutline/>
                         </motion.div>
                         <span className="ml-2">{likes}</span>
-                      </button>
+                      </motion.button>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
