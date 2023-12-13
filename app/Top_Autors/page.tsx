@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { badges, authors_gesamt, authors_heute, authors_woche, authors_monat } from './data';
 
 function App() {
-    const [selectedTime, setSelectedTime] = useState('All time');
+    const [selectedTime, setSelectedTime] = useState('Gesamt');
     const [displayedAuthors, setDisplayedAuthors] = useState(authors_gesamt);
     const [maxWidth, setMaxWidth] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
