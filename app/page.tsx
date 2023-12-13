@@ -1,19 +1,22 @@
 // app/page.tsx
 "use client"
+import React, { useEffect, useState } from 'react';
 import Header from './LandingPage_Components/Header';
 import OrbitAnimation from './Orbit_Components/OrbitAnimation';
 import orbsData from './Orbit_Components/orbsData';
 import RoadmapList from './Roadmap/page';
 import EditorPicks from './Editor_Picks/page'; 
 import TopAuthors from './Top_Autors/page';
-import React, { useLayoutEffect,useEffect, useState } from 'react';
 
 export default function Home() {
   const orbits = [55, 110, 180];
   const [isMobile, setIsMobile] = useState(false);
 
-  useLayoutEffect(() => {
-    setIsMobile(window.innerWidth <= 768);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   return (
