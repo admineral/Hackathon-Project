@@ -16,9 +16,9 @@ export const authors_gesamt = [
 
 export const authors_heute = [
     { name: 'Peter Pilz', score: 50000, followers: 250000, image: '/peter.png', premium: true, badgeId: 4 },
-    { name: 'Max Mustermann', score: 30000, followers: 150000, image: 'https://placehold.co/50x50', premium: false, badgeId: 3 },
+    { name: 'Max', score: 30000, followers: 150000, image: 'https://placehold.co/50x50', premium: false, badgeId: 3 },
     { name: 'Anna Schmidt', score: 40000, followers: 200000, image: 'https://placehold.co/50x50', premium: true, badgeId: 4 },
-    { name: 'Johannes Bauer', score: 35000, followers: 175000, image: 'https://placehold.co/50x50', premium: false, badgeId: 3 },
+    { name: 'Johannes', score: 35000, followers: 175000, image: 'https://placehold.co/50x50', premium: false, badgeId: 3 },
 
  
 ];
