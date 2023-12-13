@@ -24,7 +24,7 @@ export default function Footer() {
         {", "}
         <a
           className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
-          href="#"
+          href="https://www.linkedin.com/in/maximilian-berens-3601252a5"
           target="_blank"
           rel="noopener noreferrer"
         >
