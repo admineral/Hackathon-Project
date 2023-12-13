@@ -35,7 +35,7 @@ function App() {
     const timeOptions = ['Heute', 'Woche', 'Monat', 'Gesamt'];
 
     return (
-        <div className="bg-gray-800 text-white p-4 rounded-lg"> {/* Adjusted padding here */}
+        <div className="bg-gray-800 text-white p-2 rounded-lg"> {/* Adjusted padding here */}
         <h2 className="text-2xl font-semibold mb-4">Krone insights</h2>
         <div className="bg-gray-900 p-4 rounded-lg">
             <h3 className="text-xl font-semibold mb-4">Top Autoren</h3>
