@@ -12,14 +12,32 @@ export default function Footer() {
         >
           Elias Zobler
         </a>
-        {" "}and{" "}
+        {", "}
         <a
           className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
-          href="https://github.com/nixknameee"
+          href="https://www.linkedin.com/in/nikoll-gjokaj-929249240/"
           target="_blank"
           rel="noopener noreferrer"
         >
           Nikoll Gjokaj
+        </a>
+        {", "}
+        <a
+          className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Maximilian Berens
+        </a>
+        {" and "}
+        <a
+          className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
+          href="https://www.linkedin.com/in/grigorii-konstantinov-3726a425a/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Grigorii Konstantinov
         </a>
       </p>
     </div>
