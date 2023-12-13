@@ -7,7 +7,7 @@ export const badges = [
 
 export const authors_gesamt = [
     { name: 'Krone', score: 100000, followers: 500000, image: '/Krone_Profile.png', premium: true, badgeId: 1 },
-    { name: 'Peter Pilz', score: 50000, followers: 250000, image: '/peter.png', premium: true, badgeId: 4, link: '/profile/peter-pilz' },
+    { name: 'Peter Pilz', score: 50000, followers: 250000, image: '/peter.png', premium: true, badgeId: 4, link: '/Profile' },
     { name: 'Armin Wolf', score: 92044, followers: 392074, image: '/wolf.png', premium: true, badgeId: 2 },
     { name: 'Ingrid Thurnher', score: 86454, followers: 335143, image: '/thurn.png', premium: true, badgeId: 2 },
 
