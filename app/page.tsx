@@ -6,13 +6,13 @@ import orbsData from './Orbit_Components/orbsData';
 import RoadmapList from './Roadmap/page';
 import EditorPicks from './Editor_Picks/page'; 
 import TopAuthors from './Top_Autors/page';
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect,useEffect, useState } from 'react';
 
 export default function Home() {
   const orbits = [55, 110, 180];
   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setIsMobile(window.innerWidth <= 768);
   }, []);
 
