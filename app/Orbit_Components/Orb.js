@@ -8,8 +8,9 @@ export default function Orb({ animation, orb }) {
 
   return (
     <motion.div
-      className="absolute bg-blue-500 rounded-full" 
+      className="absolute rounded-full" 
       style={{
+        backgroundColor: orb.color, // Use the color property here
         width: `${orb.size}px`, 
         height: `${orb.size}px`, 
         top: '50%',

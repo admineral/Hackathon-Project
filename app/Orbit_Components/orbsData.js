@@ -1,4 +1,8 @@
 import articles from '../Editor_Picks/articlesData.js';
+import chroma from 'chroma-js';
+
+// Create a color scale
+const colorScale = chroma.scale(['lightcyan', 'blue', 'darkblue']);
 
 // Define the size for each orbit
 const ORBIT_SIZES = [
@@ -43,14 +47,17 @@ function mapArticlesToOrbs(articles) {
       orbitIndex = 2;
     }
 
+    const size = mapRelevanceToSize(relevance, ORBIT_SIZES[orbitIndex]);
+
     const orb = {
-      size: mapRelevanceToSize(relevance, ORBIT_SIZES[orbitIndex]),
+      size: size,
       headline: article.title,
       text: article.description,
       image: article.image,
       comments: article.comments,
       likes: article.likes,
-      isAd: article.isAd // Add this line
+      isAd: article.isAd,
+      color: colorScale(size / 100).hex(),  // Adjust the color scale sensitivity here
     };
 
     orbsData[orbitIndex].push(orb);
