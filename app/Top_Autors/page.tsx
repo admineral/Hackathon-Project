@@ -55,6 +55,7 @@ function App() {
                 {displayedAuthors.map((author, index) => {
     const badge = badges.find(badge => badge.id === author.badgeId);
     return (
+        //<Link href={String(author.link)} key={index}></Link>
         <Link href="/Profile" key={index}>
             <div className="flex items-center justify-between bg-gray-700 p-4 mb-2 rounded-lg">
                 <div className="flex items-center">
