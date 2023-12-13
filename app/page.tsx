@@ -17,7 +17,7 @@ export default function Home() {
         <OrbitAnimation orbits={orbits} orbsData={orbsData} />
       </div>
       <EditorPicks />
-      <div style={{ textAlign: 'left' }}> {/* Add a div with text-align: left */}
+      <div style={{ display: 'flex', justifyContent: 'flex-start' }}> {/* Add a div with flex and justifyContent: 'flex-start' */}
         <TopAuthors />
       </div>
       <RoadmapList />

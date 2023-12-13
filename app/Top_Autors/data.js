@@ -11,7 +11,7 @@ export const authors_gesamt = [
     { name: 'Armin Wolf', score: 92044, followers: 392074, image: 'https://placehold.co/50x50', premium: true, badgeId: 2 },
     { name: 'Ingrid Thurnher', score: 86454, followers: 335143, image: 'https://placehold.co/50x50', premium: true, badgeId: 2 },
     { name: 'Corinna Milborn', score: 79894, followers: 323685, image: 'https://placehold.co/50x50', premium: true, badgeId: 2 },
-    { name: 'Lou Lorenz-Dittlbacher', score: 84502, followers: 276624, image: 'https://placehold.co/50x50', premium: true, badgeId: 2 },
+    { name: 'Lorenz-Dittlbacher', score: 84502, followers: 276624, image: 'https://placehold.co/50x50', premium: true, badgeId: 2 },
  
 ];
 
