@@ -1,13 +1,13 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { badges, authors_gesamt, authors_heute, authors_woche, authors_monat } from './data';
-
-
 
 function App() {
     const [selectedTime, setSelectedTime] = useState('All time');
     const [displayedAuthors, setDisplayedAuthors] = useState(authors_gesamt);
+    const [maxWidth, setMaxWidth] = useState(0);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const handleTimeSelect = (option: string) => {
         setSelectedTime(option);
@@ -25,6 +25,12 @@ function App() {
                 setDisplayedAuthors(authors_gesamt);
         }
     };
+
+    useEffect(() => {
+        if (containerRef.current !== null) {
+            setMaxWidth(containerRef.current.offsetWidth);
+        }
+    }, [selectedTime]);
 
     const timeOptions = ['Heute', 'Woche', 'Monat', 'Gesamt'];
 
@@ -44,6 +50,7 @@ function App() {
                     </span>
                 ))}
                 </div>
+                <div ref={containerRef} style={{minWidth: `${maxWidth}px`}}>
                 {displayedAuthors.map((author, index) => {
                     const badge = badges.find(badge => badge.id === author.badgeId);
                     return (
@@ -64,6 +71,7 @@ function App() {
                         </div>
                     );
                 })}
+                </div>
             </div>
         </div>
     );
