@@ -10,7 +10,7 @@ import TopAuthors from './Top_Autors/page';
 
 export default function Home() {
   const orbits = [55, 110, 180];
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
   
 
   useEffect(() => {
