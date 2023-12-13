@@ -1,3 +1,4 @@
+// app/Profile/page.tsx
 import React from 'react';
 import ProfileCard from './ProfileCard';
 import { profileCards } from './profileCardsData';
@@ -34,7 +35,7 @@ const ProfileComponent = () => {
       <div className="flex justify-between px-6 mt-4">
     
       </div>
-      <div className="grid grid-cols-3 gap-4 p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-6">
         {profileCards.map((card, index) => (
           <ProfileCard
             key={index}

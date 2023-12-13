@@ -56,7 +56,6 @@ function App() {
                 {displayedAuthors.map((author, index) => {
     const badge = badges.find(badge => badge.id === author.badgeId);
     return (
-        
         <Link href="/Profile" key={index}>
             <div className="flex items-center justify-between bg-gray-700 p-4 mb-2 rounded-lg">
                 <div className="flex items-center">
@@ -71,7 +70,7 @@ function App() {
                         </div>
                     </div>
                 </div>
-                <button className="text-blue-400 border border-blue-400 rounded-lg px-4 py-1 hover:bg-blue-400 hover:text-white transition-colors duration-200 flex-shrink-0">Follow</button>
+                <button onClick={(e) => e.stopPropagation()} className="text-blue-400 border border-blue-400 rounded-lg px-4 py-1 hover:bg-blue-400 hover:text-white transition-colors duration-200 flex-shrink-0">Follow</button>
             </div>
         </Link>
     );
