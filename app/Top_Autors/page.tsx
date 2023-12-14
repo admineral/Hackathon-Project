@@ -4,11 +4,20 @@ import { badges, authors_gesamt, authors_heute, authors_woche, authors_monat } f
 import Link from 'next/link';
 import Image from 'next/image';
 
+interface Author {
+  name: string;
+  image: string;
+  badgeId: number;
+  score: number;
+  followers: number;
+}
+
 function App() {
     const [selectedTime, setSelectedTime] = useState('Gesamt');
-    const [displayedAuthors, setDisplayedAuthors] = useState(authors_gesamt);
+    const [displayedAuthors, setDisplayedAuthors] = useState<Author[]>(authors_gesamt);
     const [maxWidth, setMaxWidth] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
+    const [followStatus, setFollowStatus] = useState<Record<string, boolean>>({}); // New state variable for follow status
 
     const handleTimeSelect = (option: string) => {
         setSelectedTime(option);
@@ -53,7 +62,7 @@ function App() {
                 <div ref={containerRef} style={{minWidth: `${maxWidth}px`}}>
                 {displayedAuthors.map((author, index) => {
                     const badge = badges.find(badge => badge.id === author.badgeId);
-                    const [isFollowed, setIsFollowed] = useState(false); // New state variable for follow status
+                    const isFollowed = followStatus[author.name]; // Get follow status of the author
                     return (
                         <div key={index} className="flex items-center justify-between bg-gray-700 p-4 mb-2 rounded-lg">
                             <Link href="/Profile" passHref>
@@ -81,7 +90,7 @@ function App() {
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     e.preventDefault();
-                                    setIsFollowed(!isFollowed); // Toggle follow status
+                                    setFollowStatus(prevStatus => ({...prevStatus, [author.name]: !isFollowed})); // Toggle follow status
                                 }} 
                                 className={`border border-blue-400 rounded-lg px-4 py-1 ${isFollowed ? 'bg-blue-400 text-white' : 'text-blue-400 hover:bg-blue-400 hover:text-white'} transition-colors duration-200 flex-shrink-0`}
                             >
