@@ -1,7 +1,7 @@
-// Header.js
-import React from 'react';
+// Header.tsx
+import React, { FC } from 'react';
 
-export default function Header() {
+const Header: FC = () => {
   return (
     <div className="z-10 w-full max-w-2xl px-5 xl:px-0">
       <h1
@@ -19,3 +19,5 @@ export default function Header() {
     </div>
   );
 }
+
+export default Header;

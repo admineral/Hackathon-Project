@@ -27,13 +27,13 @@ export default function EditorPicks() {
   );
 
   const handleRocketClick = (id: string) => {
-    setRocketStates({
-      ...rocketStates,
+    setRocketStates(prevState => ({
+      ...prevState,
       [id]: {
-        isClicked: !rocketStates[id].isClicked,
-        likes: rocketStates[id].likes + 1,
+        isClicked: !prevState[id].isClicked,
+        likes: prevState[id].isClicked ? prevState[id].likes - 1 : prevState[id].likes + 1,
       },
-    });
+    }));
   };
 
   return (

@@ -1,10 +1,10 @@
 // app/page.tsx
 "use client"
 import React, { useEffect, useState } from 'react';
-import Header from './LandingPage_Components/Header';
+import Header from '../components/layout/Header';
 import OrbitAnimation from './Orbit_Components/OrbitAnimation';
 import orbsData from './Orbit_Components/orbsData';
-import RoadmapList from './Roadmap/page';
+import RoadmapList from './Reddit_Posts/page';
 import EditorPicks from './Editor_Picks/page'; 
 import TopAuthors from './Top_Autors/page';
 

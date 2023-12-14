@@ -22,7 +22,7 @@ const DemoModal = ({
           <a href="https://precedent.dev">
             <Image
               src="/logo.png"
-              alt="Precedent Logo"
+              alt="kronews logo"
               className="h-10 w-10 rounded-full"
               width={20}
               height={20}
