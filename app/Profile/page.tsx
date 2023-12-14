@@ -1,4 +1,5 @@
 // app/Profile/page.tsx
+import Image from 'next/image';
 import React from 'react';
 import ProfileCard from './ProfileCard';
 import { profileCards } from './profileCardsData';
@@ -7,13 +8,13 @@ const ProfileComponent = () => {
   return (
     <div className="text-black"> 
       <div className="flex flex-col items-center py-6">
-        <img
+        <Image
           src="/peter.png"
           alt="Profile"
           className="rounded-full"
-          width="80"
-          height="80"
-          style={{ aspectRatio: '80 / 80', objectFit: 'cover' }}
+          width={80}
+          height={80}
+          objectFit="cover"
         />
         <h1 className="text-3xl font-bold mt-2">Peter Pilz</h1>
         <p className="text-sm mt-1">Beigetreten vor 6 Jahren</p>

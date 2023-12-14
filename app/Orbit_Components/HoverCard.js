@@ -1,6 +1,6 @@
 // HoverCard.js
 import React, { useState, useEffect, useRef } from 'react';
-import { FaComment, FaThumbsUp } from 'react-icons/fa'; 
+import Image from 'next/image';
 import { BiCommentDetail } from "react-icons/bi";
 import { IoRocketOutline } from "react-icons/io5";
 import { motion } from 'framer-motion';
@@ -61,11 +61,13 @@ export default function HoverCard({ orb }) {
       {(activeOrb === null || activeOrb === orb) && (
         <>
           <div style={{ width: '224px', height: '150px', position: 'relative' }}>
-            <img
-              className="absolute top-0 left-0 w-full h-full object-cover rounded-t-lg"
-              src={orb.image}
-              alt={orb.headline}
-            />
+          <Image
+            src={orb.image}
+            alt={orb.headline}
+            layout="fill"
+            objectFit="cover"
+            className="absolute top-0 left-0 w-full h-full rounded-t-lg"
+          />
           </div>
           <h3 className={`font-bold mt-4 ${orb.headline.length > 20 ? 'text-base' : 'text-lg'}`}>{orb.headline}</h3>
           <p className={`mt-2 ${orb.text.length > 50 ? 'text-xs' : 'text-sm'}`}>{orb.text}</p>

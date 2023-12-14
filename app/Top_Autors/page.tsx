@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { badges, authors_gesamt, authors_heute, authors_woche, authors_monat } from './data';
 import Link from 'next/link';
+import Image from 'next/image';
 //<Link href={String(author.link)} key={index}></Link>
 
 function App() {
@@ -57,22 +58,29 @@ function App() {
     const badge = badges.find(badge => badge.id === author.badgeId);
     return (
         <Link href="/Profile" key={index}>
-            <div className="flex items-center justify-between bg-gray-700 p-4 mb-2 rounded-lg">
-                <div className="flex items-center">
-                    <img src={author.image} alt={`Profile picture of ${author.name}`} className="rounded-full w-10 h-10 mr-3" />
-                    <div className="flex flex-col flex-grow">
-                        <div className="flex items-center justify-between">
-                            <div className="font-semibold truncate">{author.name}</div>
-                            {badge && <span className={`font-sans ${badge.color} text-gray-900 text-xs px-1.5 py-0.5 rounded-full ml-1 mr-3 flex-shrink-0`}>{badge.name}</span>}
-                        </div>
-                        <div className="text-gray-400 text-sm truncate">
-                            <i className="fas fa-user mr-1"></i> {author.score.toLocaleString()} <i className="fas fa-users ml-3 mr-1"></i> {author.followers.toLocaleString()}
-                        </div>
+        <div className="flex items-center justify-between bg-gray-700 p-4 mb-2 rounded-lg">
+            <div className="flex items-center">
+                <Image 
+                    src={author.image} 
+                    alt={`Profile picture of ${author.name}`} 
+                    className="rounded-full w-10 h-10 mr-3" 
+                    width={40} 
+                    height={40} 
+                    objectFit="cover"
+                />
+                <div className="flex flex-col flex-grow">
+                    <div className="flex items-center justify-between">
+                        <div className="font-semibold truncate">{author.name}</div>
+                        {badge && <span className={`font-sans ${badge.color} text-gray-900 text-xs px-1.5 py-0.5 rounded-full ml-1 mr-3 flex-shrink-0`}>{badge.name}</span>}
+                    </div>
+                    <div className="text-gray-400 text-sm truncate">
+                        <i className="fas fa-user mr-1"></i> {author.score.toLocaleString()} <i className="fas fa-users ml-3 mr-1"></i> {author.followers.toLocaleString()}
                     </div>
                 </div>
-                <button onClick={(e) => e.stopPropagation()} className="text-blue-400 border border-blue-400 rounded-lg px-4 py-1 hover:bg-blue-400 hover:text-white transition-colors duration-200 flex-shrink-0">Follow</button>
             </div>
-        </Link>
+            <button onClick={(e) => e.stopPropagation()} className="text-blue-400 border border-blue-400 rounded-lg px-4 py-1 hover:bg-blue-400 hover:text-white transition-colors duration-200 flex-shrink-0">Follow</button>
+        </div>
+    </Link>
     );
 })}
                 </div>
