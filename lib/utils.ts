@@ -1,11 +1,18 @@
+/**
+ * This file contains utility functions used throughout the application.
+ */
+
+// Import necessary modules
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import ms from "ms";
 
+// Function to merge class names using clsx and tailwind-merge
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// Function to calculate and return the time elapsed since a given timestamp
 export const timeAgo = (timestamp: Date, timeOnly?: boolean): string => {
   if (!timestamp) return "never";
   return `${ms(Date.now() - new Date(timestamp).getTime())}${
@@ -13,6 +20,7 @@ export const timeAgo = (timestamp: Date, timeOnly?: boolean): string => {
   }`;
 };
 
+// Function to fetch data from a given URL and handle any errors that occur during the fetch
 export async function fetcher<JSON = any>(
   input: RequestInfo,
   init?: RequestInit,
@@ -35,6 +43,7 @@ export async function fetcher<JSON = any>(
   return res.json();
 }
 
+// Function to format numbers into a more readable format (e.g. 1K, 1M, 1B, etc.)
 export function nFormatter(num: number, digits?: number) {
   if (!num) return "0";
   const lookup = [
@@ -58,11 +67,13 @@ export function nFormatter(num: number, digits?: number) {
     : "0";
 }
 
+// Function to capitalize the first letter of a string
 export function capitalize(str: string) {
   if (!str || typeof str !== "string") return str;
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// Function to truncate a string to a specified length and append '...' to the end
 export const truncate = (str: string, length: number) => {
   if (!str || str.length <= length) return str;
   return `${str.slice(0, length)}...`;
