@@ -8,13 +8,10 @@ import { Suspense } from "react";
 
 export const metadata = {
   title: "Kronews",
-  description:
-    "Krone-Hackathon",
-  metadataBase: new URL("https://precedent-krone.vercel.app"),
-  themeColor: "#FFF",
+  description: "Krone-Hackathon",
+  url: "https://precedent-krone.vercel.app",
 };
 
-// app/layout.tsx
 export default async function RootLayout({
   children,
 }: {
