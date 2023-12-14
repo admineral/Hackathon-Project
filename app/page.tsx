@@ -20,7 +20,7 @@ export default function Home() {
         <OrbitAnimation orbits={orbits} orbsData={orbsData} />
       </div>
       <EditorPicks />
-      <div style={{ display: 'flex', alignSelf: 'flex-start', marginLeft: isMobile ? '0px' : '100px' }}>
+      <div style={{ display: 'flex', alignSelf: 'flex-start', marginLeft: isMobile ? '0rem' : '6.25rem' }}>
         <TopAuthors />
       </div>
       <RoadmapList />
