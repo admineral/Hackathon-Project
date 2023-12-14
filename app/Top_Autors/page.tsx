@@ -1,10 +1,8 @@
 "use client"
-
 import React, { useEffect, useRef, useState } from 'react';
 import { badges, authors_gesamt, authors_heute, authors_woche, authors_monat } from './data';
 import Link from 'next/link';
 import Image from 'next/image';
-//<Link href={String(author.link)} key={index}></Link>
 
 function App() {
     const [selectedTime, setSelectedTime] = useState('Gesamt');
@@ -39,7 +37,6 @@ function App() {
 
     return (
         <div className="bg-gray-800 text-white p-2 rounded-lg">
-            <h2 className="text-2xl font-semibold mb-4">Krone insights</h2>
             <div className="bg-gray-900 p-4 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Top Autoren</h3>
                 <div className="text-blue-400 mb-4">
@@ -55,34 +52,44 @@ function App() {
                 </div>
                 <div ref={containerRef} style={{minWidth: `${maxWidth}px`}}>
                 {displayedAuthors.map((author, index) => {
-    const badge = badges.find(badge => badge.id === author.badgeId);
-    return (
-        <Link href="/Profile" key={index}>
-        <div className="flex items-center justify-between bg-gray-700 p-4 mb-2 rounded-lg">
-            <div className="flex items-center">
-                <Image 
-                    src={author.image} 
-                    alt={`Profile picture of ${author.name}`} 
-                    className="rounded-full w-10 h-10 mr-3" 
-                    width={40} 
-                    height={40} 
-                    objectFit="cover"
-                />
-                <div className="flex flex-col flex-grow">
-                    <div className="flex items-center justify-between">
-                        <div className="font-semibold truncate">{author.name}</div>
-                        {badge && <span className={`font-sans ${badge.color} text-gray-900 text-xs px-1.5 py-0.5 rounded-full ml-1 mr-3 flex-shrink-0`}>{badge.name}</span>}
-                    </div>
-                    <div className="text-gray-400 text-sm truncate">
-                        <i className="fas fa-user mr-1"></i> {author.score.toLocaleString()} <i className="fas fa-users ml-3 mr-1"></i> {author.followers.toLocaleString()}
-                    </div>
-                </div>
-            </div>
-            <button onClick={(e) => e.stopPropagation()} className="text-blue-400 border border-blue-400 rounded-lg px-4 py-1 hover:bg-blue-400 hover:text-white transition-colors duration-200 flex-shrink-0">Follow</button>
-        </div>
-    </Link>
-    );
-})}
+                    const badge = badges.find(badge => badge.id === author.badgeId);
+                    const [isFollowed, setIsFollowed] = useState(false); // New state variable for follow status
+                    return (
+                        <div key={index} className="flex items-center justify-between bg-gray-700 p-4 mb-2 rounded-lg">
+                            <Link href="/Profile" passHref>
+                                <div className="flex items-center">
+                                <Image 
+                                    src={author.image} 
+                                    alt={`Profile picture of ${author.name}`} 
+                                    className="rounded-full w-10 h-10 mr-3" 
+                                    width={40} 
+                                    height={40} 
+                                    style={{ objectFit: 'cover' }}
+                                    />
+                                    <div className="flex flex-col flex-grow">
+                                        <div className="flex items-center justify-between">
+                                            <div className="font-semibold truncate">{author.name}</div>
+                                            {badge && <span className={`font-sans ${badge.color} text-gray-900 text-xs px-1.5 py-0.5 rounded-full ml-1 mr-3 flex-shrink-0`}>{badge.name}</span>}
+                                        </div>
+                                        <div className="text-gray-400 text-sm truncate">
+                                            <i className="fas fa-user mr-1"></i> {author.score.toLocaleString()} <i className="fas fa-users ml-3 mr-1"></i> {author.followers.toLocaleString()}
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                            <button 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    setIsFollowed(!isFollowed); // Toggle follow status
+                                }} 
+                                className={`border border-blue-400 rounded-lg px-4 py-1 ${isFollowed ? 'bg-blue-400 text-white' : 'text-blue-400 hover:bg-blue-400 hover:text-white'} transition-colors duration-200 flex-shrink-0`}
+                            >
+                                {isFollowed ? 'Unfollow' : 'Follow'}
+                            </button>
+                        </div>
+                    );
+                })}
                 </div>
             </div>
         </div>
