@@ -7,9 +7,13 @@ import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
 
 export const metadata = {
+  metadataBase: new URL('https://www.kronews.at'),
   title: "Kronews",
   description: "Krone-Hackathon",
-  url: "https://precedent-krone.vercel.app",
+  url: "https://www.kronews.at/",
+  openGraph: {
+    images: '/og-image.png', // replace with your Open Graph image's relative path
+  },
 };
 
 export default async function RootLayout({
