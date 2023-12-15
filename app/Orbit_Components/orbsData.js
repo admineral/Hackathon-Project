@@ -6,7 +6,7 @@ const colorScale = chroma.scale(['lightcyan', 'blue', 'darkblue']);
 
 // Define the size for each orbit
 const ORBIT_SIZES = [
-  { min: 10, max: 15 },
+  { min: 15, max: 16 },
   { min: 5, max: 30 },
   { min: 20, max: 30 }
 ];

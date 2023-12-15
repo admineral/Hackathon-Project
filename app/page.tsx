@@ -1,17 +1,24 @@
 // app/page.tsx
 "use client"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/layout/Header';
 import OrbitAnimation from './Orbit_Components/OrbitAnimation';
 import orbsData from './Orbit_Components/orbsData';
 import RoadmapList from './Reddit_Posts/page';
 import EditorPicks from './Editor_Picks/page'; 
 import TopAuthors from './Top_Autors/page';
-import useMediaQuery from '../lib/hooks/use-media-query'; // import the hook
 
 export default function Home() {
   const orbits = [55, 110, 180];
-  const { isMobile } = useMediaQuery(); // use the hook
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+  
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <>
@@ -20,7 +27,7 @@ export default function Home() {
         <OrbitAnimation orbits={orbits} orbsData={orbsData} />
       </div>
       <EditorPicks />
-      <div style={{ display: 'flex', alignSelf: 'flex-start', marginLeft: isMobile ? '0rem' : '6.25rem' }}>
+      <div style={{ display: 'flex', alignSelf: 'flex-start', marginLeft: isMobile ? '0px' : '150px' }}>
         <TopAuthors />
       </div>
       <RoadmapList />
