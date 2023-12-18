@@ -24,8 +24,8 @@ export default function Home() {
       <div className="flex justify-center items-center h-screen">
         <OrbitAnimation />
       </div>
-      <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} justify-start items-start w-full`}>
-        <div className="w-full pl-4 md:flex md:space-x-4">
+      <div className="flex flex-col md:flex-row justify-start items-start w-full">
+        <div className={`w-full ${isMobile ? '' : 'pl-4'} md:flex md:space-x-4`}>
           <div className="w-full md:w-1/3" style={{ minWidth: '200px' }}>
             <TopAuthors />
           </div>
