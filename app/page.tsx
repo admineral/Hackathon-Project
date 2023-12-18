@@ -29,7 +29,7 @@ export default function Home() {
           <div className="w-full md:w-1/3" style={{ minWidth: '200px' }}>
             <TopAuthors />
           </div>
-          <div className="w-full md:flex-grow" style={{ maxWidth: 'calc(100% - 450px)' }}>
+          <div className="w-full md:flex-grow">
             <EditorPicks />
           </div>
         </div>
