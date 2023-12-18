@@ -6,6 +6,7 @@ import OrbitAnimation from '../components/Blackhole/Orbit_Component';
 import RoadmapList from '../components/Roadmap/RoadmapList_Component'; 
 import EditorPicks from '../components/Editor_Picks/EditorPicks_Component'; 
 import TopAuthors from '../components/Top_Authors/TopAuthors_Component'; 
+import MapBox from '../components/Map/Map_Component';
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
@@ -24,16 +25,19 @@ export default function Home() {
         <OrbitAnimation />
       </div>
       <div className="flex flex-col justify-start items-start w-full">
-        <div className="flex w-full pl-4"> {/* Added left padding to the parent div */}
-          <div className="w-1/3" style={{ minWidth: '200px' }}> {/* Set a minimum width for TopAuthors */}
+        <div className="flex w-full pl-4">
+          <div className="w-1/3" style={{ minWidth: '200px' }}>
             <TopAuthors />
           </div>
-          <div className="flex-grow" style={{ maxWidth: 'calc(100% - 450px)' }}> {/* Allow EditorPicks to grow but not beyond the remaining space */}
+          <div className="flex-grow" style={{ maxWidth: 'calc(100% - 450px)' }}>
             <EditorPicks />
           </div>
         </div>
       </div>
       <RoadmapList />
+      <div style={{ height: '500px', width: '100%' }}> {/* Container with specific height and width */}
+        <MapBox />
+      </div>
     </>
   );
 }
