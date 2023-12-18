@@ -2,14 +2,12 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Header from '../components/layout/Header';
-import OrbitAnimation from './Orbit_Components/OrbitAnimation';
-import orbsData from './Orbit_Components/orbsData';
-import RoadmapList from './Reddit_Posts/page';
-import EditorPicks from './Editor_Picks/page'; 
-import TopAuthors from './Top_Autors/page';
+import OrbitAnimation from '../components/Blackhole/Orbit_Component'; 
+import RoadmapList from '../components/Roadmap/RoadmapList_Component'; 
+import EditorPicks from '../components/Editor_Picks/EditorPicks_Component'; 
+import TopAuthors from '../components/Top_Authors/TopAuthors_Component'; 
 
 export default function Home() {
-  const orbits = [55, 110, 180];
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
   
 
@@ -24,11 +22,15 @@ export default function Home() {
     <>
       <Header />
       <div className="flex justify-center items-center h-screen">
-        <OrbitAnimation orbits={orbits} orbsData={orbsData} />
+        <OrbitAnimation />
       </div>
-      <EditorPicks />
-      <div style={{ display: 'flex', alignSelf: 'flex-start', marginLeft: isMobile ? '0px' : '150px' }}>
-        <TopAuthors />
+      <div className="flex flex-col justify-start items-start">
+        <div className="w-full">
+          <EditorPicks />
+        </div>
+        <div>
+          <TopAuthors />
+        </div>
       </div>
       <RoadmapList />
     </>

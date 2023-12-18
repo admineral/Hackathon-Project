@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react';
-import { badges, authors_gesamt, authors_heute, authors_woche, authors_monat } from './data';
+import { badges, authors_gesamt, authors_heute, authors_woche, authors_monat } from '../../Data/data';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 interface Author {
   name: string;
@@ -12,7 +12,7 @@ interface Author {
   followers: number;
 }
 
-function App() {
+export default function TopAuthors() {
     const [selectedTime, setSelectedTime] = useState('Gesamt');
     const [displayedAuthors, setDisplayedAuthors] = useState<Author[]>(authors_gesamt);
     const [maxWidth, setMaxWidth] = useState(0);
@@ -93,8 +93,7 @@ function App() {
                                     setFollowStatus(prevStatus => ({...prevStatus, [author.name]: !isFollowed})); // Toggle follow status
                                 }} 
                                 className={`border border-blue-400 rounded-lg px-4 py-1 ${isFollowed ? 'bg-blue-400 text-white' : 'text-blue-400 hover:bg-blue-400 hover:text-white'} transition-colors duration-200 flex-shrink-0`}
-                            >
-                                {isFollowed ? 'Unfollow' : 'Follow'}
+                            >                                {isFollowed ? 'Unfollow' : 'Follow'}
                             </button>
                         </div>
                     );
@@ -104,5 +103,4 @@ function App() {
         </div>
     );
 }
-
-export default App;
+                               

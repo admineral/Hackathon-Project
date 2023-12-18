@@ -2,7 +2,7 @@ export const badges = [
     { id: 1, name: 'Krone', color: 'bg-red-600' },
     { id: 2, name: 'Journalist', color: 'bg-blue-400' },
     { id: 3, name: 'Contributor', color: 'bg-purple-400' },
-    { id: 4, name: 'Premium', color: 'bg-yellow-400' },
+    { id: 4, name: 'Premium', color: 'bg-red-600' }, // Change color to 'bg-red-600'
 ];
 
 export const authors_gesamt = [

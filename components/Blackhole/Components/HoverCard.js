@@ -1,6 +1,6 @@
 // HoverCard.js
 import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { BiCommentDetail } from "react-icons/bi";
 import { IoRocketOutline } from "react-icons/io5";
 import { motion } from 'framer-motion';
@@ -61,16 +61,17 @@ export default function HoverCard({ orb }) {
       {(activeOrb === null || activeOrb === orb) && (
         <>
           <div style={{ width: '224px', height: '150px', position: 'relative' }}>
-          <Image
-            src={orb.image}
-            alt={orb.headline}
-            layout="fill"
-            objectFit="cover"
-            className="absolute top-0 left-0 w-full h-full rounded-t-lg"
-          />
+            <Image
+              src={orb.image}
+              alt={orb.headline}
+              layout="fill"
+              objectFit="cover"
+              className="absolute top-0 left-0 w-full h-full rounded-t-lg"
+              priority
+            />
+            <h3 className={`absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 ${orb.headline.length > 20 ? 'text-base' : 'text-lg'}`}>{orb.headline}</h3>
           </div>
-          <h3 className={`font-bold mt-4 ${orb.headline.length > 20 ? 'text-base' : 'text-lg'}`}>{orb.headline}</h3>
-          <p className={`mt-2 ${orb.text.length > 50 ? 'text-xs' : 'text-sm'}`}>{orb.text}</p>
+          {orb.isAd && <p className={`mt-2 ${orb.text.length > 50 ? 'text-xs' : 'text-sm'}`}>{orb.text}</p>}
           {!orb.isAd && (
             <div className="flex justify-between mt-4">
               <button className="text-gray-400 flex items-center">
@@ -93,8 +94,8 @@ export default function HoverCard({ orb }) {
                 </motion.button>
               </div>
             )}
-          </>
-        )}
-      </div>
-    );
-  }
+        </>
+      )}
+    </div>
+  );
+}
