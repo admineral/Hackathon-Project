@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.marker {
+    background-color: red;
+     background-size: cover;
+  width: 30px; /* Breite des Markers */
+  height: 30px; /* Höhe des Markers */
+  border-radius: 50%; /* Kreisförmiger Marker */
+  border: 2px solid white; /* Weißer Rand um den Marker */
+}
