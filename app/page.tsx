@@ -2,17 +2,15 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Header from '../components/layout/Header';
-import OrbitAnimation from './Orbit_Components/OrbitAnimation';
-import orbsData from './Orbit_Components/orbsData';
-import RoadmapList from './Reddit_Posts/page';
-import EditorPicks from './Editor_Picks/page'; 
-import TopAuthors from './Top_Autors/page';
+import OrbitAnimation from '../components/Blackhole/Orbit_Component'; 
+import RoadmapList from '../components/Roadmap/RoadmapList_Component'; 
+import EditorPicks from '../components/Editor_Picks/EditorPicks_Component'; 
+import TopAuthors from '../components/Top_Authors/TopAuthors_Component'; 
+import MapBox from '../components/Map/Map_Component';
 
 export default function Home() {
-  const orbits = [55, 110, 180];
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
   
-
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
@@ -24,13 +22,22 @@ export default function Home() {
     <>
       <Header />
       <div className="flex justify-center items-center h-screen">
-        <OrbitAnimation orbits={orbits} orbsData={orbsData} />
+        <OrbitAnimation />
       </div>
-      <EditorPicks />
-      <div style={{ display: 'flex', alignSelf: 'flex-start', marginLeft: isMobile ? '0px' : '150px' }}>
-        <TopAuthors />
+      <div className="flex flex-col justify-start items-start w-full">
+        <div className="flex w-full pl-4">
+          <div className="w-1/3" style={{ minWidth: '200px' }}>
+            <TopAuthors />
+          </div>
+          <div className="flex-grow" style={{ maxWidth: 'calc(100% - 450px)' }}>
+            <EditorPicks />
+          </div>
+        </div>
       </div>
       <RoadmapList />
+      <div style={{ height: '500px', width: '100%' }}> {/* Container with specific height and width */}
+        <MapBox />
+      </div>
     </>
   );
 }

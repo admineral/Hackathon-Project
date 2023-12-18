@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react';
-import { badges, authors_gesamt, authors_heute, authors_woche, authors_monat } from './data';
+import { badges, authors_gesamt, authors_heute, authors_woche, authors_monat } from '../../Data/data';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/image"; // Updated to use new next/image
 
 interface Author {
   name: string;
@@ -12,7 +12,7 @@ interface Author {
   followers: number;
 }
 
-function App() {
+export default function TopAuthors() {
     const [selectedTime, setSelectedTime] = useState('Gesamt');
     const [displayedAuthors, setDisplayedAuthors] = useState<Author[]>(authors_gesamt);
     const [maxWidth, setMaxWidth] = useState(0);
@@ -73,12 +73,12 @@ function App() {
                                     className="rounded-full w-10 h-10 mr-3" 
                                     width={40} 
                                     height={40} 
-                                    style={{ objectFit: 'cover' }}
+                                    objectFit='cover' // Updated to use objectFit prop
                                     />
                                     <div className="flex flex-col flex-grow">
                                         <div className="flex items-center justify-between">
                                             <div className="font-semibold truncate">{author.name}</div>
-                                            {badge && <span className={`font-sans ${badge.color} text-gray-900 text-xs px-1.5 py-0.5 rounded-full ml-1 mr-3 flex-shrink-0`}>{badge.name}</span>}
+                                            {badge && <span style={{backgroundColor: badge.color}} className="font-sans text-gray-900 text-xs px-1.5 py-0.5 rounded-full ml-1 mr-3 flex-shrink-0">{badge.name}</span>}
                                         </div>
                                         <div className="text-gray-400 text-sm truncate">
                                             <i className="fas fa-user mr-1"></i> {author.score.toLocaleString()} <i className="fas fa-users ml-3 mr-1"></i> {author.followers.toLocaleString()}
@@ -104,5 +104,3 @@ function App() {
         </div>
     );
 }
-
-export default App;

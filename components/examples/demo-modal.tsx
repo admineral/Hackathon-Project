@@ -1,4 +1,4 @@
-import Modal from "@/components/shared/modal";
+import Modal from "@/components/examples/shared/modal";
 import {
   useState,
   Dispatch,
@@ -6,7 +6,7 @@ import {
   useCallback,
   useMemo,
 } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const DemoModal = ({
   showDemoModal,

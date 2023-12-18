@@ -1,10 +1,10 @@
 "use client";
-// OrbitAnimation.js
 import { motion } from 'framer-motion';
 import React from 'react';
-import Orbit from './Orbit';
+import Orbit from './Components/Orbit';
+import { orbsData, orbits } from './Components/orbsData'; // Import orbsData and orbits
 
-export default function OrbitAnimation({ orbits, orbsData }) {
+export default function OrbitAnimation() { 
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -18,7 +18,7 @@ export default function OrbitAnimation({ orbits, orbsData }) {
             size={size}
             index={index}
             totalOrbits={orbits.length}
-            orbs={orbsData[index]}
+            orbs={orbsData[index]} 
           />
         ))}
       </div>

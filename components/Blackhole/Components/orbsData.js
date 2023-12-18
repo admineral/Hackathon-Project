@@ -1,4 +1,4 @@
-import articles from '../Editor_Picks/articlesData.js';
+import articles from '../../../Data/articlesData.js';
 import chroma from 'chroma-js';
 
 // Create a color scale
@@ -17,6 +17,9 @@ const ORBIT_RELEVANCE_RANGES = [
   { min: 51, max: 300 },
   { min: 201, max: 300 }
 ];
+
+// Define the orbits
+const orbits = [55, 110, 180];
 
 // Function to calculate the relevance score
 function calculateRelevance(article) {
@@ -69,4 +72,4 @@ function mapArticlesToOrbs(articles) {
 // Use the mapArticlesToOrbs function to transform your articles data
 const orbsData = mapArticlesToOrbs(articles);
 
-export default orbsData;
+export { orbsData, orbits };

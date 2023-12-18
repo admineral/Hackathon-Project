@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { FaChevronUp, FaChevronDown, FaHotjar,FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import { IoIosArrowDown,IoIosArrowUp } from "react-icons/io";
 import { LuUserCircle2 } from "react-icons/lu";
-import { roadmapItemsData } from './roadmapData';
 import { PiUsersThreeBold } from "react-icons/pi";
 
 interface Item {
@@ -22,7 +21,7 @@ interface Comment {
 }
 
 // RoadmapItem component
-const RoadmapItem = ({ item }: { item: Item }) => {
+export default function RoadmapItem({ item }: { item: Item }) {
     const [votes, setVotes] = useState(item.votes);
 
     const handleVote = (increment: number) => {
@@ -103,17 +102,5 @@ const RoadmapItem = ({ item }: { item: Item }) => {
         {showComments && <Comments item={item} />}
       </div>
     );
-    };
-
-// Parent component that renders a list of RoadmapItem components
-const RoadmapList = () => {
-    return (
-      <div className="container mx-auto px-4 py-8 space-y-4">
-        {roadmapItemsData.map((item) => (
-          <RoadmapItem key={item.id} item={item} />
-        ))}
-      </div>
-    );
-  };
-
-export default RoadmapList;
+};
+             

@@ -1,4 +1,4 @@
-// app/Profile/ProfileCard.tsx
+// components/ProfileCard.tsx
 import React from 'react';
 import { IoRocketOutline } from "react-icons/io5";
 import { BiCommentDetail } from "react-icons/bi";
