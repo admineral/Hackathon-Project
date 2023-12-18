@@ -26,7 +26,7 @@ export default function Home() {
       </div>
       <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} justify-start items-start w-full`}>
         <div className="flex w-full pl-4">
-          <div className="w-full md:w-1/3" style={{ minWidth: '200px' }}>
+          <div className={`${isMobile ? 'w-full' : 'w-1/3 md:w-1/3'}`} style={{ minWidth: '200px' }}>
             <TopAuthors />
           </div>
           <div className="flex-grow" style={{ maxWidth: 'calc(100% - 450px)' }}>
