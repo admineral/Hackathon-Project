@@ -24,13 +24,11 @@ export default function Home() {
       <div className="flex justify-center items-center h-screen">
         <OrbitAnimation />
       </div>
+      <EditorPicks />
       <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} justify-start items-start w-full`}>
         <div className="w-full pl-4 md:flex md:space-x-4">
           <div className="w-full md:w-1/3" style={{ minWidth: '200px' }}>
             <TopAuthors />
-          </div>
-          <div className="w-full md:flex-grow" style={{ maxWidth: 'calc(100% - 450px)' }}>
-            <EditorPicks />
           </div>
         </div>
       </div>
