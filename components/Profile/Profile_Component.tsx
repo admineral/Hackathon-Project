@@ -3,8 +3,10 @@ import Image from "next/legacy/image";
 import React from 'react';
 import ProfileCard from './components/ProfileCard';
 import { profileCards } from '../../Data/profileCardsData'; 
+import { container } from "@/lib/cosmosdb";
 
-const ProfileComponent = () => {
+
+const ProfileComponent = ({userData}) => {
   return (
     <div className="text-black"> 
       <div className="flex flex-col items-center py-6">
@@ -20,7 +22,7 @@ const ProfileComponent = () => {
         <p className="text-sm mt-1">Beigetreten vor 6 Jahren</p>
         <div className="flex space-x-10 mt-4">
           <div>
-            <div className="text-xl font-semibold">2770</div>
+            <div className="text-xl font-semibold">{userData && userData.followers ? userData.followers : 'Lade...'}</div>
             <div className="text-sm">FOLLOWERS</div> 
           </div>
           <div>
