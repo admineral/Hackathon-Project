@@ -3,10 +3,43 @@
 @tailwind utilities;
 
 .marker {
-    background-color: red;
-     background-size: cover;
-  width: 30px; /* Breite des Markers */
-  height: 30px; /* Höhe des Markers */
-  border-radius: 50%; /* Kreisförmiger Marker */
-  border: 2px solid white; /* Weißer Rand um den Marker */
+  cursor: pointer;
+}
+
+.cluster-marker {
+  /* Style for cluster markers */
+  background-color: #000000;
+  color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+.custom-marker {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.marker-image {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  margin-right: 0.5rem;
+}
+
+.marker-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.marker-title {
+  font-weight: bold;
+}
+
+.marker-description {
+  color: #555;
 }
