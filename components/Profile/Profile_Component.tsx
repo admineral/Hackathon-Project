@@ -1,12 +1,45 @@
-// components/ProfileComponent.tsx
+"use client"
 import Image from "next/legacy/image";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProfileCard from './components/ProfileCard';
 import { profileCards } from '../../Data/profileCardsData'; 
-import { container } from "@/lib/cosmosdb";
+import { container, fetchData } from "@/lib/cosmosdb";
+import { updateFollowers } from "@/lib/cosmosdb";
 
 
-const ProfileComponent = ({userData}) => {
+const ProfileComponent = () => {
+  const [userData, setUserData] = useState(null);
+ 
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        // Beispiel-Query: Passen Sie dies an Ihre Datenstruktur an
+        const query = "SELECT * FROM c WHERE c.userId = 'peter123'";
+        const data = await fetchData(query);
+        if (data.length > 0) {
+          setUserData(data[0]);
+        }
+      } catch (error) {
+        console.error("Fehler beim Abrufen der Nutzerdaten", error);
+      }
+    };
+
+    getUserData();
+  }, []);
+
+  const handleIncreaseFollowers = async () => {
+    if (userData) {
+      const newFollowerCount = userData.followers + 1;
+      try {
+        const updatedUser = await updateFollowers(userData.id, newFollowerCount);
+        setUserData(updatedUser); // Aktualisieren des State
+      } catch (error) {
+        console.error("Fehler beim Aktualisieren der Follower", error);
+      }
+    }
+  };
+  
   return (
     <div className="text-black"> 
       <div className="flex flex-col items-center py-6">
