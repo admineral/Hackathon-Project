@@ -36,7 +36,7 @@ export default function EditorPicks() {
   };
 
   return (
-    <div className="flex-grow mx-auto">
+    <div className="w-full mx-auto">
       <div className="text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold my-4 text-black">
