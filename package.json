@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@azure/cosmos": "^4.0.0",
+    "@azure/identity": "^4.0.0",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@next-auth/prisma-adapter": "^1.0.7",

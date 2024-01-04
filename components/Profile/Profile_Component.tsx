@@ -2,43 +2,31 @@
 import Image from "next/legacy/image";
 import React, { useEffect, useState } from 'react';
 import ProfileCard from './components/ProfileCard';
-import { profileCards } from '../../Data/profileCardsData'; 
-import { container, fetchData } from "@/lib/cosmosdb";
-import { updateFollowers } from "@/lib/cosmosdb";
+import { profileCards } from '../../Data/profileCardsData';
+import { Product } from "modules/products";
+import { fetchData } from "next-auth/client/_utils";
+import { Items } from "@azure/cosmos";
 
 
 const ProfileComponent = () => {
-  const [userData, setUserData] = useState(null);
- 
+  const [products, setProducts] = useState([]); // Zustand für deine Daten
 
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        // Beispiel-Query: Passen Sie dies an Ihre Datenstruktur an
-        const query = "SELECT * FROM c WHERE c.userId = 'peter123'";
-        const data = await fetchData(query);
-        if (data.length > 0) {
-          setUserData(data[0]);
-        }
-      } catch (error) {
-        console.error("Fehler beim Abrufen der Nutzerdaten", error);
-      }
-    };
-
-    getUserData();
-  }, []);
-
-  const handleIncreaseFollowers = async () => {
-    if (userData) {
-      const newFollowerCount = userData.followers + 1;
-      try {
-        const updatedUser = await updateFollowers(userData.id, newFollowerCount);
-        setUserData(updatedUser); // Aktualisieren des State
-      } catch (error) {
-        console.error("Fehler beim Aktualisieren der Follower", error);
-      }
+  // Funktion zum Laden der Daten
+  const loadData = async () => {
+    const response = await fetch('../../app/api/route.ts');
+    if (!response.ok) {
+      console.error('Fehler beim Laden der Daten');
+      return;
     }
+    const fetchedData = await response.json();
+    setProducts(fetchedData); // Aktualisiere den Zustand mit den geladenen Daten
   };
+
+  // Lade Daten beim Initialisieren der Komponente
+  useEffect(() => {
+    loadData();
+  }, []);
+ 
   
   return (
     <div className="text-black"> 
@@ -55,7 +43,7 @@ const ProfileComponent = () => {
         <p className="text-sm mt-1">Beigetreten vor 6 Jahren</p>
         <div className="flex space-x-10 mt-4">
           <div>
-            <div className="text-xl font-semibold">{userData && userData.followers ? userData.followers : 'Lade...'}</div>
+            <div className="text-xl font-semibold">{products}</div>
             <div className="text-sm">FOLLOWERS</div> 
           </div>
           <div>
