@@ -1,8 +1,8 @@
 {
     "crons": [
       {
-        "path": "https://www.kronews.at/api/update",
-        "schedule": "0 5 * * *"
+        "path": "/api/update",
+        "schedule": "0 1 * * *"
       }
     ]
-}
+  }
