@@ -12,6 +12,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'vercel.com',
       },
+      // Add the new hostname here
+      {
+        protocol: 'https',
+        hostname: 'imgl.krone.at',
+      },
     ],
   },
   async redirects() {
