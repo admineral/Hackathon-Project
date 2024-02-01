@@ -1,0 +1,356 @@
+/* Setting the height of the html and body to 100% */
+html,
+body {
+  height: 100%;
+}
+
+/* Styling the body */
+body {
+  --fg: black; /* Foreground color variable */
+  --bg: rgb(255, 255, 255); /* Background color variable */
+  --react: #6170fb; /* React color variable */
+  margin: 0; /* Removing default margin */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Setting the font family */
+  background: var(--bg); /* Setting the background color */
+  color: var(--fg); /* Setting the text color */
+  overflow: hidden; /* Hiding overflow */
+}
+
+/* Styling the selected text */
+::selection {
+  background: var(--react); /* Setting the background color of the selected text */
+  color: var(--bg); /* Setting the color of the selected text */
+}
+
+/* Styling for dark color scheme preference */
+@media (prefers-color-scheme: dark) {
+  body {
+    --fg: white; /* Changing foreground color variable for dark mode */
+    --bg: black; /* Changing background color variable for dark mode */
+  }
+}
+
+/* Styling the main tag */
+main {
+  position: relative; /* Setting the position to relative */
+  width: 100vw; /* Setting the width to 100% of the viewport width */
+  height: 100%; /* Setting the height to 100% */
+  padding: 2.5rem; /* Adding padding */
+  box-sizing: border-box; /* Including padding and border in the element's total width and height */
+}
+
+/* Styling the h1 tag within the main tag */
+main h1 {
+  font-size: min(16vw, 4rem); /* Setting the font size to the minimum of 16% of the viewport width or 4rem */
+  font-weight: 600; /* Making the font semi-bold */
+  margin: 0; /* Removing any default margin */
+  text-align: center; /* Centering the text */
+  position: absolute; /* Taking the h1 out of the normal document flow */
+  top: 10vh; /* Positioning the h1 10% from the top of the viewport height */
+  left: 0; /* Aligning the h1 to the left edge of its container */
+  width: 100%; /* Ensuring the h1 spans the full width of its container */
+  padding: 0 2.5rem; /* Adding padding on the left and right */
+  box-sizing: border-box; /* Including padding and border in the element's total width and height */
+  line-height: 1; /* Setting the line height equal to the font size */
+}
+
+/* Styling the span tag within the h1 tag */
+main h1 span {
+  display: block; /* Making the span a block-level element */
+  max-width: 6em; /* Setting a maximum width of 6em */
+  margin: 0 auto; /* Adding automatic horizontal margins to center the span */
+}
+
+/* Styling the .info class within the main tag */
+main .info {
+  --border-color: rgba(0, 0, 0, 0.08); /* Border color variable */
+  position: absolute; /* Setting the position to absolute */
+  bottom: 9rem; /* Positioning the element 9rem from the bottom */
+  left: 0; /* Aligning the element to the left edge of its container */
+  width: 100%; /* Ensuring the element spans the full width of its container */
+  display: grid; /* Setting the display to grid */
+  padding: 0 2.5rem; /* Adding padding on the left and right */
+  font-size: min(5vw, 2rem); /* Setting the font size to the minimum of 5% of the viewport width or 2rem */
+  box-sizing: border-box; /* Including padding and border in the element's total width and height */
+}
+/* Styling the .block class within the main tag */
+main .block {
+  display: flex; /* Setting the display to flex for layout */
+  margin: 0; /* Removing any default margin */
+  padding: 1rem 0; /* Adding padding on the top and bottom */
+}
+
+/* Styling the first child of the .block class within the main tag */
+main .block:nth-child(1) {
+  border-bottom: 1px solid var(--border-color); /* Adding a bottom border */
+}
+
+/* Styling the span tag within the .block class */
+main .block span {
+  display: block; /* Making the span a block-level element */
+  margin: 0 0 0.2em 0; /* Adding a small bottom margin */
+  text-transform: uppercase; /* Transforming the text to uppercase */
+  font-size: 0.6em; /* Setting the font size */
+}
+
+/* Styling the strong tag within the .block class */
+main .block strong {
+  display: block; /* Making the strong a block-level element */
+  font-size: 1.4em; /* Setting the font size */
+  margin: 0; /* Removing any default margin */
+  font-weight: 600; /* Making the font semi-bold */
+}
+
+/* Styling the .na class within the strong tag in .block class */
+main .block strong.na {
+  color: #ccc; /* Changing the text color */
+  font-weight: normal; /* Making the font weight normal */
+}
+
+/* Styling the .debug class */
+.debug {
+  position: absolute; /* Setting the position to absolute */
+  bottom: 20px; /* Positioning the element 20px from the bottom */
+  text-align: center; /* Centering the text */
+  width: 100%; /* Ensuring the element spans the full width of its container */
+  font-size: 11px; /* Setting the font size */
+  color: #999; /* Setting the text color */
+}
+
+/* Styling for screens with a minimum width of 640px */
+@media (min-width: 640px) {
+  main h1 {
+    font-size: min(8vw, 4rem); /* Setting the font size to the minimum of 8% of the viewport width or 4rem */
+  }
+  main h1 span {
+    max-width: none; /* Removing the maximum width */
+  }
+  main .info {
+    display: flex; /* Setting the display to flex for layout */
+    justify-content: center; /* Centering the items along the horizontal line */
+    position: relative; /* Setting the position to relative */
+    top: 60vh; /* Positioning the element 60% from the top of the viewport height */
+    gap: 4rem; /* Setting the gap between grid items */
+    grid-template-columns: 1fr 1fr; /* Setting the grid columns to two equal fractions */
+  }
+  main .block:nth-child(1) {
+    border-bottom: none; /* Removing the bottom border */
+    justify-content: end; /* Aligning the items to the end of the main axis */
+  }
+  main .block:nth-child(2) {
+    justify-content: start; /* Aligning the items to the start of the main axis */
+  }
+}
+
+/* Styling for dark color scheme preference */
+@media (prefers-color-scheme: dark) {
+  main .block:nth-child(1) {
+    --border-color: rgba(255, 255, 255, 0.35); /* Changing the border color variable for dark mode */
+  }
+}
+/* Card animations and styles */
+
+/* Fade-in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0; /* Start with no opacity */
+  }
+  to {
+    opacity: 1; /* End with full opacity */
+  }
+}
+
+/* Grow animation */
+@keyframes grow {
+  0% {
+    opacity: 0; /* Start with no opacity */
+    transform: scale(0.96); /* Start with a slightly smaller scale */
+  }
+  3% {
+    opacity: 0.7; /* Increase opacity */
+    transform: scale(1.03); /* Slightly increase scale */
+  }
+  3.6% {
+    opacity: 0.8; /* Increase opacity */
+    transform: scale(1.05); /* Slightly increase scale */
+  }
+  4.2% {
+    opacity: 0.9; /* Increase opacity */
+    transform: scale(1.03); /* Slightly decrease scale */
+  }
+  6% {
+    opacity: 1; /* Full opacity */
+    transform: scale(1); /* Original scale */
+  }
+  95% {
+    opacity: 1; /* Full opacity */
+    transform: scale(1); /* Original scale */
+  }
+  100% {
+    opacity: 0; /* End with no opacity */
+    transform: scale(1); /* End with original scale */
+  }
+}
+
+/* Spin animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); /* Start with no rotation */
+  }
+  100% {
+    transform: rotate(-360deg); /* End with a full rotation */
+  }
+}
+
+/* Styling the svg with class .card */
+svg.card {
+  position: absolute; /* Setting the position to absolute */
+  width: 100%; /* Setting the width to 100% */
+  height: 100%; /* Setting the height to 100% */
+  overflow: visible; /* Making the overflow visible */
+}
+
+/* Styling the .satellite class within the .card class */
+.card .satellite {
+  fill: var(--bg); /* Setting the fill color to the background color variable */
+  stroke-width: 1.165; /* Setting the stroke width */
+  animation: fade-in 0.5s both; /* Applying the fade-in animation */
+}
+
+/* Styling the .orange.satellite class within the .card class */
+.card .orange.satellite {
+  stroke: var(--react); /* Setting the stroke color to the react color variable */
+}
+
+/* Styling the .gray.satellite class within the .card class */
+.card .gray.satellite {
+  stroke: #7b0e0e; /* Setting the stroke color to a dark red */
+}
+
+/* Styling the .orbit class within the .card class */
+.card .orbit {
+  fill: none; /* No fill color */
+  stroke-width: 1.165; /* Setting the stroke width */
+  animation: grow 5s linear both infinite; /* Applying the grow animation */
+  stroke: black !important;
+  
+}
+
+/* Styling the g tag within the .orbits class in the .card class */
+.card .orbits > g {
+  animation: spin 60s linear both infinite; /* Applying the spin animation */
+}
+
+/* Styling the second child of the g tag within the .orbits class in the .card class */
+.card .orbits > g:nth-child(2) {
+  animation-duration: 80s; /* Changing the animation duration */
+}
+
+/* Styling the third child of the g tag within the .orbits class in the .card class */
+.card .orbits > g:nth-child(3) {
+  animation-duration: 100s; /* Changing the animation duration */
+}
+
+/* Styling the fourth child of the g tag within the .orbits class in the .card class */
+.card .orbits > g:nth-child(4) {
+  animation-duration: 120s; /* Changing the animation duration */
+}
+
+/* Styling the #gradient-vercel id within the .card class */
+.card #gradient-vercel {
+  --g1: #a21414; /* Gradient color variable 1 */
+  --g2: #333; /* Gradient color variable 2 */
+}
+
+/* Styling the stop tag within the .card class */
+.card stop {
+  stop-color: rgba(0, 0, 0, 0.3); /* Setting the stop color to a semi-transparent black */
+}
+
+/* Styling for screens with a minimum width of 800px */
+@media (min-width: 800px) {
+  .card .orbits > g:nth-child(3) {
+    animation-duration: 150s; /* Changing the animation duration */
+  }
+
+  .card .orbits > g:nth-child(4) {
+    animation-duration: 180s; /* Changing the animation duration */
+  }
+}
+
+/* Styling for dark color scheme preference */
+@media (prefers-color-scheme: dark) {
+  .card #gradient-vercel {
+    --g1: #eee; /* Changing gradient color variable 1 for dark mode */
+    --g2: #fff; /* Changing gradient color variable 2 for dark mode */
+  }
+
+  .card stop {
+    stop-color: white; /* Changing the stop color to white for dark mode */
+  }
+}
+
+/* Styling for reduced motion preference */
+@media (prefers-reduced-motion) {
+  .card .satellite,
+  .card .orbit,
+  .card .orbits > g {
+    animation: none; /* Removing animations for reduced motion preference */
+  }
+}
+/* Footer styles */
+
+/* Styling the footer */
+footer {
+  display: flex; /* Setting the display to flex for layout */
+  justify-content: center; /* Centering the items along the horizontal line */
+  align-items: center; /* Centering the items along the vertical line */
+  position: fixed; /* Fixing the position */
+  bottom: 0; /* Positioning the footer at the bottom */
+  left: 0; /* Aligning the footer to the left */
+  width: 100%; /* Ensuring the footer spans the full width of its container */
+  padding: 2.5rem; /* Adding padding */
+  box-sizing: border-box; /* Including padding and border in the element's total width and height */
+  font-size: 14px; /* Setting the font size */
+}
+
+/* Styling the p tag within the footer */
+footer p {
+  margin: 0.5em 0; /* Adding top and bottom margins */
+  color: var(--fg); /* Setting the text color to the foreground color variable */
+}
+
+/* Styling the a tag within the footer */
+footer a {
+  text-decoration: none; /* Removing the underline from the link */
+  color: var(--react); /* Setting the link color to the react color variable */
+  font-weight: bold; /* Making the font bold */
+  transition: all 0.3s ease; /* Adding a transition effect to all properties */
+}
+
+/* Styling the a tag within the footer on hover */
+footer a:hover {
+  text-decoration: underline; /* Adding an underline to the link on hover */
+  color: #ff6347; /* Changing the link color on hover */
+  transform: scale(1.1); /* Increasing the size of the link on hover */
+}
+
+/* Hover animation */
+@keyframes hoverAnimation {
+  0% { transform: scale(1); } /* Start with original scale */
+  50% { transform: scale(1.1); } /* Increase scale */
+  100% { transform: scale(1); } /* End with original scale */
+}
+
+/* Applying the hover animation to the a tag within the footer on hover */
+footer a:hover {
+  animation: hoverAnimation 1s infinite; /* Applying the animation */
+}
+
+/* Styling for screens with a minimum width of 800px */
+@media (min-width: 800px) {
+  footer {
+    justify-content: space-around; /* Distributing the items evenly along the horizontal line */
+  }
+}

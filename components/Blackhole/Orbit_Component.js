@@ -2,18 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Orbit from './Components/Orbit';
-import { mapArticlesToOrbs, orbits } from './Components/orbsData'; // Importieren Sie nur die Funktion und die Orbitgrößen
-import fetchAndCacheArticles from '../../Data/articlesData'; // Pfad anpassen
+import { mapArticlesToOrbs, orbits } from './Components/orbsData'; 
+import fetchAndCacheArticles from '../../Data/articlesData'; 
 
 export default function OrbitAnimation() {
-  const [orbsData, setOrbsData] = useState([[], [], []]); // Initialer Zustand für orbsData
+  const [orbsData, setOrbsData] = useState([[], [], []]); 
 
   useEffect(() => {
     const loadAndProcessArticles = async () => {
       try {
-        const articles = await fetchAndCacheArticles(); // Laden der Artikel
-        const generatedOrbsData = mapArticlesToOrbs(articles); // Generieren von orbsData basierend auf den Artikeln
-        setOrbsData(generatedOrbsData); // Aktualisieren des Zustands mit den generierten Daten
+        const articles = await fetchAndCacheArticles(); 
+        const generatedOrbsData = mapArticlesToOrbs(articles);
+        setOrbsData(generatedOrbsData); 
       } catch (error) {
         console.error('Fehler beim Laden und Verarbeiten der Artikel:', error);
       }
@@ -35,7 +35,7 @@ export default function OrbitAnimation() {
             size={size}
             index={index}
             totalOrbits={orbits.length}
-            orbs={orbsData[index]} // Verwenden Sie den aktualisierten Zustand von orbsData
+            orbs={orbsData[index]} 
           />
         ))}
       </div>

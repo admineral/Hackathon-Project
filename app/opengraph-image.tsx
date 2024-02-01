@@ -26,7 +26,7 @@ export default async function OG() {
         }}
       >
         <img
-          src={`https://${process.env.VERCEL_URL || "precedent.dev"}/logo.png`}
+          src={`https://${process.env.VERCEL_URL}/logo.png`}
           alt="Kronews Logo"
           tw="w-20 h-20 mb-4 opacity-95"
         />

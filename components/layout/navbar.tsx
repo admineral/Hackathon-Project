@@ -33,7 +33,7 @@ export default function NavBar({ session }: { session: Session | null }) {
           <Link href="/" className="flex items-center font-display text-2xl">
             <Image
               src="/logo.png"
-              alt="Precedent logo"
+              alt="krone_logo"
               width="30"
               height="30"
               className="mr-2 rounded-sm"
@@ -42,7 +42,7 @@ export default function NavBar({ session }: { session: Session | null }) {
                 height: "auto",
               }}
             ></Image>
-            <p>Kronews</p>
+            <p className="text-black">Kronews</p> 
           </Link>
           <div>
             {session ? (
