@@ -20,7 +20,7 @@ interface Article {
   } | null;
 }
 
-interface FinalArticle {
+export interface FinalArticle {
   id: number;
   guid: string | undefined;
   title: string;

@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Import useEffect
 import Image from "next/legacy/image";
 import { IoRocketOutline } from "react-icons/io5";
 import { motion } from 'framer-motion';
-import { articles } from '../../Data/articlesData';
+import fetchAndCacheArticles from '../../Data/articlesData'; // Adjust the import path as necessary
 import { BiCommentDetail } from "react-icons/bi";
 
 type RocketState = {
@@ -14,16 +14,39 @@ type RocketState = {
   };
 };
 
+type Article = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  likes: number;
+  comments: number;
+  author: string;
+  date: string;
+  isAd?: boolean;
+};
+
 export default function EditorPicks() {
-  const [rocketStates, setRocketStates] = useState<RocketState>(
-    articles.reduce(
-      (acc, article) => ({
-        ...acc,
-        [article.id.toString()]: { isClicked: false, likes: article.likes },
-      }),
-      {}
-    )
-  );
+  const [articles, setArticles] = useState<Article[]>([]); // State to hold articles
+  const [rocketStates, setRocketStates] = useState<RocketState>({});
+
+  useEffect(() => {
+    const loadArticles = async () => {
+      const fetchedArticles = await fetchAndCacheArticles();
+      setArticles(fetchedArticles);
+      // Initialize rocketStates based on fetched articles
+      const initialRocketStates = fetchedArticles.reduce<RocketState>(
+        (acc, article) => ({
+          ...acc,
+          [article.id.toString()]: { isClicked: false, likes: article.likes },
+        }),
+        {}
+      );
+      setRocketStates(initialRocketStates);
+    };
+
+    loadArticles();
+  }, []);
 
   const handleRocketClick = (id: string) => {
     setRocketStates(prevState => ({

@@ -1,17 +1,42 @@
-import fs from 'fs';
-import path from 'path';
 import fetch from 'node-fetch';
-import { parseRssData } from './krone_rss_parser';
+import { parseRssData, FinalArticle } from './krone_rss_parser';
 
-export async function parseRssFeed() {
-  const response = await fetch('https://www.kronews.at/api/get_krone_rss');
-  const { data } = await response.json();
+// Typdefinition für die Struktur der gecachten Daten
+interface CachedData {
+  final_articles: FinalArticle[];
+}
 
-  const { articles, final_articles } = await parseRssData(data);
+// Einfacher In-Memory-Cache
+let cachedData: CachedData | null = null;
+let cacheTime: Date | null = null;
 
-  const filePath = path.join(process.cwd(), 'Data', 'articles.json');
-  fs.writeFileSync(filePath, JSON.stringify(articles, null, 2));
+// Definieren des Rückgabetyps der Funktion
+export async function parseRssFeed(): Promise<FinalArticle[]> {
+  const cacheDuration = 60 * 1000; // 60 Sekunden
+  const now = new Date();
 
-  const finalFilePath = path.join(process.cwd(), 'Data', 'articles_final_format.json');
-  fs.writeFileSync(finalFilePath, JSON.stringify(final_articles, null, 2));
+  // Überprüfen, ob die gecachten Daten noch frisch sind
+  if (cachedData && cacheTime && now.getTime() - cacheTime.getTime() < cacheDuration) {
+    console.log('Verwende gecachte Daten');
+    return cachedData.final_articles;
+  }
+
+  console.log('Lade neue RSS-Daten...');
+  const rssFeedUrl = 'https://api.krone.at/v1/rss/rssfeed-google.xml?id=2311992';
+  const response = await fetch(rssFeedUrl);
+
+  if (!response.ok) {
+    throw new Error(`Fehler beim Laden des RSS-Feeds. Status: ${response.status}`);
+  }
+
+  const data = await response.text();
+  // Stellen Sie sicher, dass parseRssData korrekt typisiert ist, um hier Typsicherheit zu gewährleisten
+  const parsedData: CachedData = await parseRssData(data);
+
+  // Cache aktualisieren
+  cachedData = { final_articles: parsedData.final_articles };
+  cacheTime = now;
+
+  console.log('RSS-Feed erfolgreich geladen und verarbeitet.');
+  return parsedData.final_articles;
 }

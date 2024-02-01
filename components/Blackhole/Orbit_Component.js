@@ -1,10 +1,27 @@
 "use client";
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import React from 'react';
 import Orbit from './Components/Orbit';
-import { orbsData, orbits } from './Components/orbsData'; // Import orbsData and orbits
+import { mapArticlesToOrbs, orbits } from './Components/orbsData'; // Importieren Sie nur die Funktion und die Orbitgrößen
+import fetchAndCacheArticles from '../../Data/articlesData'; // Pfad anpassen
 
-export default function OrbitAnimation() { 
+export default function OrbitAnimation() {
+  const [orbsData, setOrbsData] = useState([[], [], []]); // Initialer Zustand für orbsData
+
+  useEffect(() => {
+    const loadAndProcessArticles = async () => {
+      try {
+        const articles = await fetchAndCacheArticles(); // Laden der Artikel
+        const generatedOrbsData = mapArticlesToOrbs(articles); // Generieren von orbsData basierend auf den Artikeln
+        setOrbsData(generatedOrbsData); // Aktualisieren des Zustands mit den generierten Daten
+      } catch (error) {
+        console.error('Fehler beim Laden und Verarbeiten der Artikel:', error);
+      }
+    };
+
+    loadAndProcessArticles();
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -18,7 +35,7 @@ export default function OrbitAnimation() {
             size={size}
             index={index}
             totalOrbits={orbits.length}
-            orbs={orbsData[index]} 
+            orbs={orbsData[index]} // Verwenden Sie den aktualisierten Zustand von orbsData
           />
         ))}
       </div>
