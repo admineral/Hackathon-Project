@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fetch from 'node-fetch';
 
+
 export async function GET(req: NextRequest) {
   const rss_feed_url = "https://api.krone.at/v1/rss/rssfeed-google.xml?id=2311992";
 
