@@ -55,9 +55,9 @@ export async function parseRssData(data: string) {
     const article: Article = {
       id: index + 1,
       title: item.title,
-      link: item.link.trim(), 
+      link: item.link?.trim() ?? '', 
       guid: guidNumber,
-      description: item.description?.replace("<p>", "").replace("</p>", ""),
+      description: item['media:content']?.['media:description']?._?.trim() ?? '', 
       content: item['content:encoded']?.replace("<p>", "").replace("</p>", ""),
       date,
       time,
@@ -68,7 +68,7 @@ export async function parseRssData(data: string) {
         width: item['media:content']?.$?.width,
         height: item['media:content']?.$?.height,
         description: item['media:content']?.['media:description']?._.trim(), 
-        credit: item['media:content']?.['media:credit']?._.trim()
+        credit: item['media:content']?.['media:credit']?._?.trim() ?? ''
       } : null
     };
 
