@@ -27,6 +27,7 @@ const MapBox = () => {
       style: 'mapbox://styles/mapbox/dark-v11',
       center: [13.4050, 47.7511], //center Austria
       zoom: 6,
+      minZoom: 6,
     });
 
     map.current.on('load', () => {
@@ -73,7 +74,7 @@ const MapBox = () => {
             'interpolate',
             ['linear'],
             ['heatmap-density'],
-            0, 'blue',
+            0, '',
             0.5, 'yellow',
             1, 'red'
           ],
@@ -93,6 +94,7 @@ const MapBox = () => {
         }
       });
     });
+    locateUser();
     map.current.on('move', updateMarkers);
 
   }, []);
@@ -165,6 +167,20 @@ const MapBox = () => {
         markers.current.push(marker);
       }
     });
+  }
+  function locateUser() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        map.current.flyTo({
+          center: [position.coords.longitude, position.coords.latitude],
+          zoom: 10
+        });
+      }, (error) => {
+        console.error('Error getting the geolocation', error);
+      });
+    } else {
+      console.log('Geolocation is not supported by your browser');
+    }
   }
 
 
