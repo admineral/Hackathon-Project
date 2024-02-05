@@ -1,42 +1,33 @@
-import fetch from 'node-fetch';
 import { parseRssData, FinalArticle } from './krone_rss_parser';
 
-// Typdefinition für die Struktur der gecachten Daten
-interface CachedData {
-  final_articles: FinalArticle[];
-}
-
-// Einfacher In-Memory-Cache
-let cachedData: CachedData | null = null;
-let cacheTime: Date | null = null;
-
-// Definieren des Rückgabetyps der Funktion
+/**
+ * Fetches the RSS feed through an API route and processes the data.
+ * @returns A Promise that resolves to an array of FinalArticle objects.
+ */
 export async function parseRssFeed(): Promise<FinalArticle[]> {
-  const cacheDuration = 60 * 1000; // 60 Sekunden
-  const now = new Date();
+  // Log the start of the fetch operation for the RSS feed from the API route
+  console.log('[Service] Starting to fetch the RSS feed from the API route...');
 
-  // Überprüfen, ob die gecachten Daten noch frisch sind
-  if (cachedData && cacheTime && now.getTime() - cacheTime.getTime() < cacheDuration) {
-    console.log('Verwende gecachte Daten');
-    return cachedData.final_articles;
-  }
-
-  console.log('Lade neue RSS-Daten...');
-  const rssFeedUrl = 'https://api.krone.at/v1/rss/rssfeed-google.xml?id=2311992';
-  const response = await fetch(rssFeedUrl);
-
+  // Define the URL of the API route from which the RSS feed will be fetched
+  const apiRouteUrl = '/api/get_krone_rss';
+  
+  // Perform the fetch operation to get the RSS feed data
+  const response = await fetch(apiRouteUrl);
+  // Check if the fetch operation was successful (response status is OK)
   if (!response.ok) {
-    throw new Error(`Fehler beim Laden des RSS-Feeds. Status: ${response.status}`);
+    // If the fetch operation was not successful, throw an error with the response status
+    throw new Error(`[Service] Error fetching the RSS feed from the API route. Status: ${response.status}`);
   }
+  // Parse the response body as JSON and extract the data property
+  const { data } = await response.json();
+  // Log that the data has been successfully fetched from the API route and processing will begin
+  console.log('[Service] Data successfully fetched from the API route. Starting processing...');
 
-  const data = await response.text();
-  // Stellen Sie sicher, dass parseRssData korrekt typisiert ist, um hier Typsicherheit zu gewährleisten
-  const parsedData: CachedData = await parseRssData(data);
+  // Parse the fetched data into an array of FinalArticle objects using the parseRssData function
+  const parsedData: FinalArticle[] = await parseRssData(data);
+  // Log the successful retrieval and processing of the RSS feed from the API route
+  console.log('[Service] RSS feed successfully fetched and processed from the API route.');
 
-  // Cache aktualisieren
-  cachedData = { final_articles: parsedData.final_articles };
-  cacheTime = now;
-
-  console.log('RSS-Feed erfolgreich geladen und verarbeitet.');
-  return parsedData.final_articles;
+  // Return the array of processed FinalArticle objects
+  return parsedData;
 }

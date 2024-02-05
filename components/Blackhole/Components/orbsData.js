@@ -1,4 +1,3 @@
-import fetchAndCacheArticles from '../../../Data/articlesData.js';
 import chroma from 'chroma-js';
 
 // Create a color scale
@@ -60,7 +59,7 @@ function mapArticlesToOrbs(articles) {
       comments: article.comments,
       likes: article.likes,
       isAd: article.isAd,
-      color: colorScale(size / 100).hex(),  // Adjust the color scale sensitivity here
+      color: colorScale(size / 100).hex(),
     };
 
     orbsData[orbitIndex].push(orb);
@@ -68,10 +67,4 @@ function mapArticlesToOrbs(articles) {
 
   return orbsData;
 }
-
-// Use the mapArticlesToOrbs function to transform your articles data
-//const orbsData = mapArticlesToOrbs(articles);
-
-//export { orbsData, orbits };
-
 export { mapArticlesToOrbs, orbits };

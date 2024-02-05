@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'; // Import useEffect
 import Image from "next/legacy/image";
 import { IoRocketOutline } from "react-icons/io5";
 import { motion } from 'framer-motion';
-import fetchAndCacheArticles from '../../Data/articlesData'; // Adjust the import path as necessary
+import { fetchAndCacheArticles } from '../../Data/articlesData'; 
 import { BiCommentDetail } from "react-icons/bi";
 
 type RocketState = {
@@ -27,11 +27,12 @@ type Article = {
 };
 
 export default function EditorPicks() {
-  const [articles, setArticles] = useState<Article[]>([]); // State to hold articles
+  const [articles, setArticles] = useState<Article[]>([]);
   const [rocketStates, setRocketStates] = useState<RocketState>({});
 
   useEffect(() => {
     const loadArticles = async () => {
+      console.log("(Editor-Picks) Fetching articles...");
       const fetchedArticles = await fetchAndCacheArticles();
       setArticles(fetchedArticles);
       // Initialize rocketStates based on fetched articles

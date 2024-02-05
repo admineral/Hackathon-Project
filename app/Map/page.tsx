@@ -1,5 +1,5 @@
 import React from 'react';
-import MapBox from '../../components/Map/Map_Component'; // Adjust the path according to your file structure
+import MapBox from '../../components/Map/Map_Component';
 
 const Page: React.FC = () => {
   return (

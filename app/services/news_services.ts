@@ -5,10 +5,10 @@ export class NewsService {
     try {
       const articles = await parseRssFeed();
       console.log('parsed successfully');
-      return articles; // Ensure that articles are returned here
+      return articles; 
     } catch (error) {
       console.error('Error parsing RSS:', error);
-      throw error; // Rethrow the error to be handled by the caller
+      throw error; 
     }
   }
 }

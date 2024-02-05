@@ -27,4 +27,4 @@ async function fetchAndCacheArticles() {
 }
 
 // Export the function to fetch and cache articles
-export default fetchAndCacheArticles;
+export { fetchAndCacheArticles };

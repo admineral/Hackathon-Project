@@ -2,7 +2,7 @@
 "use client"
 import React from 'react';
 import Head from 'next/head';
-import RoadmapList from '../../components/Roadmap/RoadmapList_Component'; // Importing from components folder
+import RoadmapList from '../../components/Roadmap/RoadmapList_Component';
 
 export default function RedditPostsPage() {
   return (

@@ -12,7 +12,7 @@ export const metadata = {
   description: "Krone-Hackathon",
   url: "https://www.kronews.at/",
   openGraph: {
-    images: '/og-image.png', // replace with your Open Graph image's relative path
+    images: '/og-image.png', 
   },
 };
 

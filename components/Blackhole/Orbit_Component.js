@@ -1,25 +1,27 @@
-"use client";
-import React, { useEffect, useState } from 'react';
+"use client"
+
+import React from 'react';
 import { motion } from 'framer-motion';
 import Orbit from './Components/Orbit';
-import { mapArticlesToOrbs, orbits } from './Components/orbsData'; 
-import fetchAndCacheArticles from '../../Data/articlesData'; 
+import { mapArticlesToOrbs, orbits } from './Components/orbsData';
+import { fetchAndCacheArticles } from '../../Data/articlesData';
+
 
 export default function OrbitAnimation() {
-  const [orbsData, setOrbsData] = useState([[], [], []]); 
+  const [orbsData, setOrbsData] = React.useState([[], [], []]);
 
-  useEffect(() => {
-    const loadAndProcessArticles = async () => {
+  React.useEffect(() => {
+    async function fetchData() {
       try {
         const articles = await fetchAndCacheArticles(); 
-        const generatedOrbsData = mapArticlesToOrbs(articles);
-        setOrbsData(generatedOrbsData); 
+        const mappedOrbs = mapArticlesToOrbs(articles);
+        setOrbsData(mappedOrbs);
       } catch (error) {
-        console.error('Fehler beim Laden und Verarbeiten der Artikel:', error);
+        console.error('Error loading and processing articles:', error);
       }
-    };
+    }
 
-    loadAndProcessArticles();
+    fetchData();
   }, []);
 
   return (
@@ -35,7 +37,7 @@ export default function OrbitAnimation() {
             size={size}
             index={index}
             totalOrbits={orbits.length}
-            orbs={orbsData[index]} 
+            orbs={orbsData[index]}
           />
         ))}
       </div>

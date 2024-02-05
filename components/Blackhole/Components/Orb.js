@@ -11,7 +11,7 @@ export default function Orb({ animation, orb }) {
     <motion.div
       className="absolute rounded-full" 
       style={{
-        backgroundColor: orb.color, // Use the color property here
+        backgroundColor: orb.color, 
         width: `${orb.size}px`, 
         height: `${orb.size}px`, 
         top: '50%',
