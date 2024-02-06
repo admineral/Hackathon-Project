@@ -23,7 +23,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cx(sfPro.variable, inter.variable, "bg-gradient-to-br from-indigo-50 via-white to-cyan-100 min-h-screen flex flex-col justify-between")}>
+      <body className={cx(sfPro.variable, inter.variable, "min-h-screen flex flex-col justify-between")}>
         <Suspense fallback="...">
           <Nav />
         </Suspense>

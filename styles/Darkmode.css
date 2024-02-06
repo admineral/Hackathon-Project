@@ -233,8 +233,6 @@ svg.card {
   fill: none; /* No fill color */
   stroke-width: 1.165; /* Setting the stroke width */
   animation: grow 5s linear both infinite; /* Applying the grow animation */
-  stroke: black !important;
-  
 }
 
 /* Styling the g tag within the .orbits class in the .card class */

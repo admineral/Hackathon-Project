@@ -153,11 +153,21 @@ const Card: React.FC = () => {
               style={{
                 animationDelay: '0.9s',
               }}
-              cx={-69.6}
-              cy={-76}
+              cx={-99} // Adjusted to be on the orbit
+              cy={-30} // Adjusted to be on the orbit
+              r={5.8}
+            />
+            <circle
+              className="orange satellite"
+              style={{
+                animationDelay: '1.2s',
+              }}
+              cx={99} // Adjusted to be on the orbit
+              cy={30} // Adjusted to be on the orbit
               r={5.8}
             />
           </g>
+          
           <g>
             <circle
               className="orbit"
@@ -174,6 +184,15 @@ const Card: React.FC = () => {
               }}
               cx={102.4}
               cy={-123}
+              r={5.8}
+            />
+            <circle
+              className="gray satellite"
+              style={{
+                animationDelay: '1.1s',
+              }}
+              cx={-102.4}
+              cy={123}
               r={5.8}
             />
           </g>

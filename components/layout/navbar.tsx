@@ -42,14 +42,14 @@ export default function NavBar({ session }: { session: Session | null }) {
                 height: "auto",
               }}
             ></Image>
-            <p className="text-black">Kronews</p> 
+            <p className="text-white">Kronews</p> 
           </Link>
           <div>
             {session ? (
               <UserDropdown session={session} />
             ) : (
               <button
-                className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
+                className="rounded-full border border-white bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
                 onClick={() => setShowSignInModal(true)}
               >
                 Sign In
