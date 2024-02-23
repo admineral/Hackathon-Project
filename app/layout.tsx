@@ -6,6 +6,9 @@ import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
 
+
+import StarsCanvas from "@/components/Star/StarBackground";
+
 export const metadata = {
   metadataBase: new URL('https://www.kronews.at'),
   title: "Kronews",
@@ -25,6 +28,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={cx(sfPro.variable, inter.variable, "min-h-screen flex flex-col justify-between")}>
         <Suspense fallback="...">
+        <StarsCanvas />
           <Nav />
         </Suspense>
         <main className="flex-grow w-full flex flex-col items-center justify-center py-32">
