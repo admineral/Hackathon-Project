@@ -6,7 +6,6 @@ import Orbit from './Components/Orbit';
 import { mapArticlesToOrbs, orbits } from './Components/orbsData';
 import { fetchAndCacheArticles } from '../../Data/articlesData';
 
-
 export default function OrbitAnimation() {
   const [orbsData, setOrbsData] = React.useState([[], [], []]);
 
@@ -29,6 +28,7 @@ export default function OrbitAnimation() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 1, duration: 2 }}
+      style={{ position: 'relative', zIndex: 30 }} // Adjusted style here
     >
       <div className="relative w-10 h-10 bg-black rounded-full" style={{ margin: 'auto' }}>
         {orbits.map((size, index) => (

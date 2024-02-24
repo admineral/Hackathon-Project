@@ -23,12 +23,22 @@ body {
   color: var(--bg); /* Setting the color of the selected text */
 }
 
-/* Styling for dark color scheme preference */
-@media (prefers-color-scheme: dark) {
-  body {
-    --fg: white; /* Changing foreground color variable for dark mode */
-    --bg: black; /* Changing background color variable for dark mode */
-  }
+:root {
+  --fg: black; /* Default theme foreground color */
+  --bg: rgb(255, 255, 255); /* Default theme background color */
+  --react: #6170fb; /* No change needed */
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.dark-mode {
+  --fg: white;
+  --bg: black;
+  --react: #6170fb; /* Adjust if needed for dark mode */
+  /* Override more variables for dark mode as needed */
 }
 
 /* Styling the main tag */
