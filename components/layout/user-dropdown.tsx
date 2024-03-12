@@ -31,8 +31,7 @@ export default function UserDropdown({ session }: { session: Session }) {
               </p>
             </div>
             <Link href="/Orbit_Components">
-              <a className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100">
-                <LayoutDashboard className="h-4 w-4" />
+            <a className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm text-black transition-all duration-75 hover:bg-gray-100">                <LayoutDashboard className="h-4 w-4" />
                 <p className="text-sm">Kroniversum</p>
               </a>
             </Link>

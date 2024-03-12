@@ -13,3 +13,8 @@ html, body {
     color: var(--text-color);
     /* Continue to define or override other styles as needed */
 }
+
+
+.text-black {
+  color: black;
+}
