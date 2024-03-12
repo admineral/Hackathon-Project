@@ -9,8 +9,6 @@ const DarkmodeComponent: React.FC = () => {
         <Head />
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <Card />
-      
-          
         </div>
       </>
     );

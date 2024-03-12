@@ -7,7 +7,7 @@ const colorScale = chroma.scale(['lightcyan', 'blue', 'darkblue']);
 const ORBIT_SIZES = [
   { min: 15, max: 16 },
   { min: 5, max: 40 },
-  { min: 25, max: 30 }
+  { min: 1, max: 30 }
 ];
 
 // Define the relevance range for each orbit

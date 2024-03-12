@@ -75,9 +75,9 @@ export default function OrbitAnimation() {
           />
         ))}
       </div>
-      <button onClick={toggleAutomaticMode} style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 40 }}>
-        {isAutomatic ? 'Turn Off Automatic Mode' : 'Turn On Automatic Mode'}
-      </button>
+      <button onClick={toggleAutomaticMode} className="fixed bottom-5 right-5 z-50 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none rounded-lg px-3 py-1.5 text-xs font-medium leading-tight uppercase shadow-sm transition duration-150 ease-in-out transform hover:scale-105">
+  {isAutomatic ? 'Off' : 'On'}
+</button>
     </motion.div>
   );
 }
