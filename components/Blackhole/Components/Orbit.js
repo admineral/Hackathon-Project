@@ -49,5 +49,5 @@ const Orbit = memo(({ size, index, totalOrbits, orbs, activeOrbitIndex, activeOr
     </>
   );
 });
-
+Orbit.displayName = 'Orbit';
 export default Orbit;

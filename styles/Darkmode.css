@@ -17,6 +17,14 @@ body {
   overflow: hidden; /* Hiding overflow */
 }
 
+
+/* Add this to your Darkmode.css */
+.button-container {
+  position: relative; /* or 'fixed' depending on your layout needs */
+  z-index: 1000; /* High value to ensure it's on top; adjust as needed */
+}
+
+
 /* Styling the selected text */
 ::selection {
   background: var(--react); /* Setting the background color of the selected text */

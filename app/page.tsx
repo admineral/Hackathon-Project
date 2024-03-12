@@ -2,6 +2,7 @@ import Header from '../components/layout/Header';
 import DarkmodeComponent from '../components/Darkmode/DarkmodeComponent'; 
 import StarsCanvas from '../components/Star/StarBackground';
 
+
 export default function Home() {
   return (
     <>
