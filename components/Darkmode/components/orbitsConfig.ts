@@ -8,19 +8,19 @@ export const orbits = [
       radius: 103.4,
       gradientId: 'gradient-2',
       satellites: 2,
-      colors: ['gray', 'orange'],
+      colors: ['gray', 'orange','gray'],
     },
     {
       radius: 160.4,
       gradientId: 'gradient-3',
       satellites: 2,
-      colors: ['orange', 'gray'],
+      colors: ['orange', 'gray','orange', 'gray'],
     },
     {
       radius: 267.3,
       gradientId: 'gradient-4',
       satellites: 3,
-      colors: ['orange', 'gray', 'orange'],
+      colors: ['orange', 'gray', 'orange','orange', 'gray', 'orange'],
     },
     {
       radius: 388.5,

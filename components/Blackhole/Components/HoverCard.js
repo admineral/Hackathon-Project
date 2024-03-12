@@ -11,9 +11,11 @@ export default function HoverCard({ orb }) {
   const [hasLiked, setHasLiked] = useState(false); 
   const hoverCardRef = useRef(null); 
 
-  const handleClick = (e) => {
-    if ('ontouchstart' in window || navigator.msMaxTouchPoints) {
-      setActiveOrb(orb);
+  const handleImageClick = (e) => {
+    e.stopPropagation();
+  
+    if (orb.link) {
+      window.location.href = orb.link;
     }
   };
 
@@ -21,7 +23,6 @@ export default function HoverCard({ orb }) {
     let canSwitch = true; 
   
     const interval = setInterval(() => {
-     
       const hoverCardPosition = hoverCardRef.current.getBoundingClientRect();
       if (window.innerWidth <= 768) { 
         if (canSwitch && hoverCardPosition.right > window.innerWidth) {
@@ -42,25 +43,29 @@ export default function HoverCard({ orb }) {
       }
     }, 100); 
   
-    
     return () => clearInterval(interval);
   }, []);
 
-  const handleLike = () => {
+  const handleLike = (e) => {
+    e.stopPropagation(); 
     setHasLiked(!hasLiked);
     setLikes(likes + (hasLiked ? -1 : 1));
   };
+  
 
   return (
     <div 
       ref={hoverCardRef}
       className={`absolute max-w-md p-4 bg-gray-800 rounded-xl shadow-2xl transform transition-transform duration-500 hover:scale-105 text-white`} 
       style={{ zIndex: 1000 }}
-      onClick={handleClick}
+     
     >
       {(activeOrb === null || activeOrb === orb) && (
         <>
-          <div style={{ width: '224px', height: '150px', position: 'relative' }}>
+          <div 
+            style={{ width: '224px', height: '150px', position: 'relative' }}
+            onClick={handleImageClick} 
+          >
             <Image
               src={orb.image}
               alt={orb.headline}

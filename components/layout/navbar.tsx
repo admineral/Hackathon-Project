@@ -1,6 +1,6 @@
 // components/layout/navbar.tsx
 "use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from "next/legacy/image";
 import Link from "next/link";
 import useScroll from "@/lib/hooks/use-scroll";
@@ -11,22 +11,6 @@ import { Session } from "next-auth";
 export default function NavBar({ session }: { session: Session | null }) {
   const signInModal = useSignInModal();
   const scrolled = useScroll(50);
-
-  // Initialize theme based on client-side evaluation only
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedTheme = typeof window !== "undefined" ? localStorage.getItem('theme') : null;
-    const prefersDark = typeof window !== "undefined" ? window.matchMedia('(prefers-color-scheme: dark)').matches : false;
-    console.log('Initial theme preference:', savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light'));
-    return savedTheme ? savedTheme === 'dark' : prefersDark;
-  });
-
-  useEffect(() => {
-    console.log('Applying theme class to body based on isDarkMode:', isDarkMode ? 'Dark' : 'Light');
-    document.body.classList.toggle('dark-mode', isDarkMode);
-    if (typeof window !== "undefined") {
-      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    }
-  }, [isDarkMode]);
 
   if (!signInModal) {
     console.log('SignInModal not available, rendering null.');
@@ -52,25 +36,9 @@ export default function NavBar({ session }: { session: Session | null }) {
                 Sign In
               </button>
             )}
-            <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-              <input type="checkbox" name="toggle" id="toggle" className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked={isDarkMode} onChange={() => setIsDarkMode(!isDarkMode)} />
-              <label htmlFor="toggle" className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-            </div>
           </div>
         </div>
       </div>
-      <style jsx>{`
-        .toggle-checkbox:checked {
-          @apply: right-0 border-green-400;
-          right: 0;
-        }
-        .toggle-checkbox:checked + .toggle-label {
-          @apply: bg-green-400;
-        }
-        .toggle-label {
-          @apply: block bg-gray-200 h-6 rounded-full;
-        }
-      `}</style>
     </>
   );
 }

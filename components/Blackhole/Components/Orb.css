@@ -1,0 +1,23 @@
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .orb:hover {
+    border-width: 4px !important; /* Override the inline style */
+    box-shadow: 0 0 8px 8px currentColor !important; /* Use currentColor to match the border color */
+  }
+  
+  .hover-card {
+    display: none; /* Default state */
+  }
+  
+  .hover-card.show {
+    display: block; /* Shown state */
+  }
+  
+  .orb:hover .hover-card {
+    display: block;
+  }

@@ -28,6 +28,6 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Darkmode/components/Head.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Darkmode/components/Head.jsx", "app/Orbit_Components/AutomaticModeContext.js"],
   "exclude": ["node_modules"]
 }

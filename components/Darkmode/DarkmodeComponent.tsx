@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from './components/Card'; 
-import Footer from './components/Footer_component'; 
 import Head from './components/Head'; 
 import '../../styles/Darkmode.css'; 
 
@@ -10,7 +9,7 @@ const DarkmodeComponent: React.FC = () => {
         <Head />
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <Card />
-          <Footer />
+      
           
         </div>
       </>

@@ -1,8 +1,7 @@
-// Orbit.js
-import React from 'react';
+import React, { memo } from 'react';
 import Orb from './Orb';
 
-export default function Orbit({ size, index, totalOrbits, orbs }) {
+const Orbit = memo(({ size, index, totalOrbits, orbs, activeOrbitIndex, activeOrbIndex }) => {
   const calculateOrbitPath = (angle, offset = 0) => ({
     x: Math.cos(angle + offset) * size,
     y: Math.sin(angle + offset) * size
@@ -15,7 +14,7 @@ export default function Orbit({ size, index, totalOrbits, orbs }) {
   return (
     <>
       <div
-        className="absolute border border-gray-300 rounded-full"
+        className="absolute border rounded-full"
         style={{
           width: size * 2,
           height: size * 2,
@@ -23,6 +22,8 @@ export default function Orbit({ size, index, totalOrbits, orbs }) {
           left: '50%',
           transform: `translate(-50%, -50%)`,
           zIndex: 0,
+          borderColor: 'rgba(255, 255, 255, 0.15)',
+          borderWidth: '1px'
         }}
       />
       {orbs.map((orb, orbIndex) => {
@@ -41,8 +42,12 @@ export default function Orbit({ size, index, totalOrbits, orbs }) {
           }
         };
 
-        return <Orb key={orbIndex} animation={animation} orb={orb} />;
+        // Determine if this orb's hovercard should be shown based on the activeOrbId
+        const showHoverCard = index === activeOrbitIndex && orbIndex === activeOrbIndex;
+        return <Orb key={orbIndex} animation={animation} orb={orb} showHoverCard={showHoverCard} />;
       })}
     </>
   );
-}
+});
+
+export default Orbit;

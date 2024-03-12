@@ -6,8 +6,8 @@ body {
 
 /* Styling the body */
 body {
-  --fg: black; /* Foreground color variable */
-  --bg: rgb(255, 255, 255); /* Background color variable */
+  --fg: rgb(255, 255, 255); /* Foreground color variable */
+  --bg: rgb(0, 0, 0); /* Background color variable */
   --react: #6170fb; /* React color variable */
   margin: 0; /* Removing default margin */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -24,9 +24,9 @@ body {
 }
 
 :root {
-  --fg: black; /* Default theme foreground color */
-  --bg: rgb(255, 255, 255); /* Default theme background color */
-  --react: #6170fb; /* No change needed */
+  --fg: white; /* Dark mode foreground color */
+  --bg: #121212; /* Dark mode background color */
+  --react: #6170fb; /* React color variable, adjust if needed for dark mode */
 }
 
 body {
@@ -34,12 +34,6 @@ body {
   color: var(--fg);
 }
 
-.dark-mode {
-  --fg: white;
-  --bg: black;
-  --react: #6170fb; /* Adjust if needed for dark mode */
-  /* Override more variables for dark mode as needed */
-}
 
 /* Styling the main tag */
 main {
@@ -153,11 +147,9 @@ main .block strong.na {
   }
 }
 
-/* Styling for dark color scheme preference */
-@media (prefers-color-scheme: dark) {
-  main .block:nth-child(1) {
-    --border-color: rgba(255, 255, 255, 0.35); /* Changing the border color variable for dark mode */
-  }
+/* Directly setting dark mode styles as default */
+main .block:nth-child(1) {
+  --border-color: rgba(255, 255, 255, 0.35); /* Suitable for dark mode */
 }
 /* Card animations and styles */
 
@@ -273,7 +265,7 @@ svg.card {
 
 /* Styling the stop tag within the .card class */
 .card stop {
-  stop-color: rgba(0, 0, 0, 0.3); /* Setting the stop color to a semi-transparent black */
+  stop-color: rgba(255, 255, 255, 0.5); /* Setting the stop color to a semi-transparent black */
 }
 
 /* Styling for screens with a minimum width of 800px */
@@ -287,17 +279,6 @@ svg.card {
   }
 }
 
-/* Styling for dark color scheme preference */
-@media (prefers-color-scheme: dark) {
-  .card #gradient-vercel {
-    --g1: #eee; /* Changing gradient color variable 1 for dark mode */
-    --g2: #fff; /* Changing gradient color variable 2 for dark mode */
-  }
-
-  .card stop {
-    stop-color: white; /* Changing the stop color to white for dark mode */
-  }
-}
 
 /* Styling for reduced motion preference */
 @media (prefers-reduced-motion) {

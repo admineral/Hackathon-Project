@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #0d9488; /* Example primary color */
+  --background-color: #121212; /* Slightly off-black background for less harsh contrast */
+  --text-color: #e0e0e0; /* Soft white text color */
+}
+
+html, body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    /* Continue to define or override other styles as needed */
+}

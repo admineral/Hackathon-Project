@@ -6,19 +6,19 @@ const colorScale = chroma.scale(['lightcyan', 'blue', 'darkblue']);
 // Define the size for each orbit
 const ORBIT_SIZES = [
   { min: 15, max: 16 },
-  { min: 5, max: 30 },
-  { min: 20, max: 30 }
+  { min: 5, max: 40 },
+  { min: 25, max: 30 }
 ];
 
 // Define the relevance range for each orbit
 const ORBIT_RELEVANCE_RANGES = [
   { min: 0, max: 100 },
   { min: 51, max: 300 },
-  { min: 201, max: 300 }
+  { min: 101, max: 300 }
 ];
 
 // Define the orbits
-const orbits = [55, 110, 180];
+const orbits = [110, 250, 480];
 
 // Function to calculate the relevance score
 function calculateRelevance(article) {
@@ -33,9 +33,10 @@ function mapRelevanceToSize(relevance, sizeRange) {
   return sizeRange.min + normalizedRelevance * (sizeRange.max - sizeRange.min);
 }
 
-// Function to map articles to orbs
+// Function to map articles to orbs, now including unique IDs
 function mapArticlesToOrbs(articles) {
   const orbsData = [[], [], []];
+  let idCounter = 0; // Initialize a counter for assigning unique IDs
 
   articles.forEach(article => {
     const relevance = calculateRelevance(article);
@@ -52,6 +53,7 @@ function mapArticlesToOrbs(articles) {
     const size = mapRelevanceToSize(relevance, ORBIT_SIZES[orbitIndex]);
 
     const orb = {
+      id: idCounter++, // Assign a unique ID to each orb
       size: size,
       headline: article.title,
       text: article.description,
@@ -60,6 +62,7 @@ function mapArticlesToOrbs(articles) {
       likes: article.likes,
       isAd: article.isAd,
       color: colorScale(size / 100).hex(),
+      link: article.link,
     };
 
     orbsData[orbitIndex].push(orb);
@@ -67,4 +70,5 @@ function mapArticlesToOrbs(articles) {
 
   return orbsData;
 }
+
 export { mapArticlesToOrbs, orbits };
