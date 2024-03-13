@@ -1,11 +1,54 @@
 .fullScreenCenter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-  }
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.leftBox {
+  position: relative;
+  width: 25%; /* Startbreite */
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  overflow-y: auto;
+  resize: horizontal; /* Ermöglicht das horizontale Ändern der Größe */
+  max-width: 60%; /* Maximale Breite */
+  min-width: 1%; /* Minimale Breite angepasst */
+}
+
+.content {
+  flex-grow: 1; /* Nimmt den verbleibenden Platz ein */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.resizeHandle {
+  height: 100%;
+  cursor: ew-resize;
+  width: 10px; /* Stellen Sie sicher, dass die Breite ausreichend ist */
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10; /* Höherer z-index, um Interaktionsprobleme zu vermeiden */
+}
+.toggleButton {
+  position: absolute;
+  top: 50%; /* Zentriert den Button vertikal */
+  transform: translateY(-50%);
+  left: -25px; /* Positioniert den Button links außerhalb der .leftBox */
+  background-color: #007bff; /* Hintergrundfarbe des Buttons */
+  color: white; /* Textfarbe */
+  border: none; /* Entfernt den Standard-Borderrahmen */
+  cursor: pointer; /* Ändert den Cursor beim Überfahren des Buttons */
+  padding: 5px 10px; /* Innerer Abstand */
+  font-size: 16px; /* Schriftgröße */
+  border-radius: 3px; /* Abgerundete Ecken */
+  z-index: 5; /* Stellen Sie sicher, dass der Button über anderen Elementen liegt */
+}
