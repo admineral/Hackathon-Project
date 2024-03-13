@@ -52,7 +52,7 @@
 import { Slider } from "@/components/ui/slider";
 import { ReactionButtons } from "@/components/News/reaction-buttons";
 import { motion, useAnimation } from "framer-motion";
-import { getSynthesisByComplexity } from "@/lib/actions/synthesis";
+import { getSynthesisByComplexity, ComplexityLevel } from "@/lib/actions/synthesis";
 import { useEffect, useState } from "react";
 import { X, Send } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
@@ -61,6 +61,8 @@ import { useChat } from "ai/react";
 import { cn } from "@/lib/utils";
 import { format, parseISO } from "date-fns";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
+
+
 
 // NOTES: I deleted the complexity slider component. Decided it was better to implement in-line here.
 interface SynthesisProps {
@@ -115,19 +117,28 @@ export function Synthesis({
   //   });
   // }, [synthesis]);
 
+  // Add this mapping function inside your Synthesis component or outside as a utility function
+  function mapSliderValueToComplexityLevel(value: number): ComplexityLevel {
+    const mapping = ['concise', 'easy', 'normal', 'very detailed'];
+    return mapping[value] as ComplexityLevel;
+  }
+
   useEffect(() => {
     console.log("sliderValue", sliderValue);
     async function setMod() {
+      // Map sliderValue to a ComplexityLevel
+      const complexityLevel = mapSliderValueToComplexityLevel(sliderValue);
       const { text } = await getSynthesisByComplexity(
         "clusterId",
-        sliderValue,
+        complexityLevel, // Use the mapped value
         synthesis,
         modifiedSynth[sliderValue]
       );
       setModifiedSynth((old) => {
         return old.map((value, index) => {
+          // Stellen Sie sicher, dass `text` immer ein String ist. Verwenden Sie `text || ""`, um `null` oder `undefined` zu einem leeren String zu machen.
           if (index === sliderValue) {
-            return text;
+            return text || ""; // Verwenden Sie einen leeren String als Fallback, falls `text` null ist
           }
           return value;
         });
@@ -135,7 +146,6 @@ export function Synthesis({
     }
     setMod();
   }, [sliderValue]);
-
   const mp = ["Concise", "Easy", "Normal", "Detailed"];
   const [highlightedText, setHighlightedText] = useState("");
   const [activeHighlight, setActiveHighlight] = useState(true);
@@ -156,12 +166,15 @@ export function Synthesis({
   const [showTextbox, setShowTextbox] = useState(false);
 
   const handleTextHighlight = () => {
-    const text = window.getSelection().toString();
-    setHighlightedText(text);
-    setActiveHighlight(false);
+    const selection = window.getSelection();
+    if (selection) { // Überprüfen, ob selection nicht null ist
+      const text = selection.toString();
+      setHighlightedText(text);
+      setActiveHighlight(false);
+    }
   };
 
-  const formatDate = (timestamp) => {
+  const formatDate = (timestamp: string) => {
     try {
       return format(parseISO(timestamp), "h:mm a 'PST on' MM/dd/yy");
     } catch (error) {
@@ -223,7 +236,7 @@ export function Synthesis({
                 defaultValue={[sliderValue + 1]}
                 max={4}
                 min={1}
-                onValueChange={(e) => setSliderValue(e - 1)}
+                onValueChange={(e) => setSliderValue(e[0] - 1)}
               />
               <div>{mp[sliderValue]}</div>
             </div>

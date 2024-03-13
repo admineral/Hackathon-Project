@@ -2,7 +2,7 @@
 import OpenAI from "openai";
 
 // Define a union type for complexity levels
-type ComplexityLevel = 'concise' | 'easy' | 'normal' | 'very detailed';
+export type ComplexityLevel = 'concise' | 'easy' | 'normal' | 'very detailed';
 
 // Function to generate a keyword description
 export async function generateKeywordDescription() {
