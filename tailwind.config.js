@@ -9,6 +9,11 @@ module.exports = {
   },
   theme: {
     extend: {
+      colors: {
+        primary: "rgba(128, 128, 128, 0.5)", // Medium grey with 50% transparency
+        secondary: "rgba(255, 255, 255, 0.5)", // White with 50% transparency
+        // Define other colors used by your slider here
+      },
       fontFamily: {
         display: ["var(--font-sf)", "system-ui", "sans-serif"],
         default: ["var(--font-inter)", "system-ui", "sans-serif"],
