@@ -81,8 +81,8 @@ export async function parseRssData(data: string) {
         type: item['media:content']?.$?.type,
         width: item['media:content']?.$?.width,
         height: item['media:content']?.$?.height,
-        description: item['media:content']?.['media:description']?._.trim(), 
-        credit: item['media:content']?.['media:credit']?._.trim()
+        description: typeof item['media:content']?.['media:description']?._ === 'string' ? item['media:content']?.['media:description']?._.trim() : undefined, 
+        credit: typeof item['media:content']?.['media:credit']?._ === 'string' ? item['media:content']?.['media:credit']?._.trim() : undefined
       } : null
     };
 
