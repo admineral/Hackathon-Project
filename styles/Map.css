@@ -77,7 +77,7 @@
 
 @layer base {
   * {
-    @apply border; /* Ensure 'border' is a valid Tailwind utility */
+
   }
   body {
     @apply bg-background text-foreground;
