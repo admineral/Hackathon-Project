@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
   // Include a system message to start the conversation that contains the article content
   const response = await openai.chat.completions.create({
-    model: "gpt-4-0125-preview",
+    model: "gpt-4o",
     stream: true,
     messages: [
       ...messages,
